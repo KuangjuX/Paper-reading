@@ -8,6 +8,12 @@
 
 - [Firecracker: Lightweight Virtualization for Serverless Applications](paper/hypervisor/nsdi20-paper-agache.pdf)
 
+### Others
+
+- [A First Look at RISC-V Virtualization from an Embedded Systems Perspective](paper/hypervisor/A First Look at RISC-V Virtualization from an Embedded Systems Perspective.pdf)
+
+- [CVA6 RISC-V Virtualization: Architecture, Microarchitecture, and Design Space Exploration](paper/hypervisor/CVA6 RISC-V Virtualization Architecture, Microarchitecture, and Design Space Exploration.pdf)
+
 ## OS
 
 ### Usenix
