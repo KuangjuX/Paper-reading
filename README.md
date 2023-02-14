@@ -10,9 +10,9 @@
 
 ### Others
 
-- [A First Look at RISC-V Virtualization from an Embedded Systems Perspective](paper/hypervisor/A First Look at RISC-V Virtualization from an Embedded Systems Perspective.pdf)
+- [A First Look at RISC-V Virtualization from an Embedded Systems Perspective](paper/hypervisorA-First-Look-at-RISC-V-Virtualization-from-an-Embedded-Systems-Perspective.pdf)
 
-- [CVA6 RISC-V Virtualization: Architecture, Microarchitecture, and Design Space Exploration](paper/hypervisor/CVA6 RISC-V Virtualization Architecture, Microarchitecture, and Design Space Exploration.pdf)
+- [CVA6 RISC-V Virtualization: Architecture, Microarchitecture, and Design Space Exploration](paper/hypervisor/CVA6-RISC-V-Virtualization-Architecture-Microarchitecture-and-Design-Space-Exploration.pdf)
 
 ## OS
 
