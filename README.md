@@ -22,4 +22,4 @@
 
 - [x] RedLeaf: Isolation and Communication in a Safe Operating System[OSDI'20]: [note](https://github.com/KuangjuX/system-notes/blob/main/paper-notes/os/RedLeaf.md)
 
-- Theseus: an Experiment in Operating System Structure and State Management[OSDI'20]
+- [ ] Theseus: an Experiment in Operating System Structure and State Management[OSDI'20]
