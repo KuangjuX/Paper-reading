@@ -12,3 +12,4 @@
 - Unikraft: Fast, Specialized Unikernels the Easy Way[EuroSys'19]: [note](https://github.com/KuangjuX/paper-reading/issues/9)
 - The Deminkernel Datapath OS Architecture for Microsecond-scale Datacenter Systems[SOSP'21]: [note](https://github.com/KuangjuX/system-notes/blob/main/paper-notes/os/Demikernel.md)
 - RedLeaf: Isolation and Communication in a Safe Operating System[OSDI'20]: [note](https://github.com/KuangjuX/system-notes/blob/main/paper-notes/os/RedLeaf.md)
+- Theseus: an Experiment in Operating System Structure and State Management[OSDI'20]
