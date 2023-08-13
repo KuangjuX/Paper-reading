@@ -12,7 +12,7 @@
 
 - [ ] The Tensor Algebra Compiler[OOPSLA'17]
 
-- [ ] Graphiler: A Compiler for Graph Neural Networks[MLSys'21]
+- [ ] Graphiler: A Compiler for Graph Neural Networks[MLSys'22]
 
 - [ ] SparseTIR: Composable Abstractions for Sparse Compilation in Deep Learning[ASPLOS'23]
 
