@@ -20,6 +20,16 @@
 
 - [ ] TASO: Optimizing Deep Learning Computation with Automatic Generation of Graph Substitutions[SOSP'19]: [[Paper](https://www.cs.cmu.edu/~zhihaoj2/papers/sosp19.pdf)]
 
+### Distrubited Training
+
+- [ ] Ray: A Distributed Framework for Emerging AI Applications[OSDI'18]: [[Paper](https://www.usenix.org/system/files/osdi18-moritz.pdf)]
+
+- [ ] Alpa: Automating Inter- and Intra-Operator Parallelism for Distributed Deep Learning[OSDI'22]: [[Paper](https://www.usenix.org/system/files/osdi22-zheng-lianmin.pdf)]
+
+### Accelerator Architecture
+
+- [ ] Microsecond-scale Preemption for Concurrent GPU-accelerated DNN Inferences[OSDI'22]: [[Paper](https://www.usenix.org/system/files/osdi22-han.pdf)]
+
 ## OS
 
 - [x] Unikraft: Fast, Specialized Unikernels the Easy Way[EuroSys'19]: [[Paper](https://dl.acm.org/doi/pdf/10.1145/3447786.3456248)] [[Note](https://github.com/KuangjuX/paper-reading/issues/9)]
@@ -36,6 +46,12 @@
 
 - [x] Security and Performance in the Delegated User-level Virtualization[OSDI'23]: [[Paper](https://www.usenix.org/system/files/osdi23-chen.pdf)]
 
+- [x] System Virtualization for Neural Processing Units[HotOS'23]: [[Paper](https://sigops.org/s/conferences/hotos/2023/papers/xue.pdf)]
+
 - [ ] HyperEnclave: An Open and Cross-platform Trusted Execution Environment[USENIX ATC'22]: [[Paper](https://www.usenix.org/system/files/atc22-jia-yuekai.pdf)]
 
 - [ ] Nephele: Extending Virtualization Environments for Cloning Unikernel-based VMs[EuroSys'23]: [[Paper](http://nets.cs.pub.ro/~costin/files/nephele.pdf)]
+
+## Deep Learning
+
+- [x] On-Device Training Under 256KB Memory[NeurIPS'22]: [[Paper](https://arxiv.org/pdf/2206.15472.pdf)]
