@@ -12,9 +12,9 @@
 
 - [x] Cocktailer: Analyzing and Optimizing Dynamic Control Flow in Deep Learning[OSDI'23]: [[Paper](https://www.usenix.org/system/files/osdi23-zhang-chen.pdf)] [[Note](https://github.com/KuangjuX/paper-reading/issues/21)]
 
-- [ ] ROLLER: Fast and Efficient Tensor Compilation for Deep Learning: [[Paper](https://www.usenix.org/system/files/osdi22-zhu.pdf)]
+- [ ] ROLLER: Fast and Efficient Tensor Compilation for Deep Learning[OSDI'22]: [[Paper](https://www.usenix.org/system/files/osdi22-zhu.pdf)]
 
-- [ ] Welder: Scheduling Deep Learning Memory Access via Tile-graph: [[Paper](https://www.usenix.org/system/files/osdi23-shi.pdf)]
+- [ ] Welder: Scheduling Deep Learning Memory Access via Tile-graph[OSDI'23]: [[Paper](https://www.usenix.org/system/files/osdi23-shi.pdf)]
 
 - [ ] The Tensor Algebra Compiler[OOPSLA'17]: [[Paper](https://dl.acm.org/doi/pdf/10.1145/3133901)]
 
