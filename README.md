@@ -4,6 +4,10 @@
 
 ### DNN Compiler
 
+#### Survey
+
+- [x] The Deep Learning Compiler: A Comprehensive Survey: [[Paper](https://arxiv.org/pdf/2002.03794.pdf)] [[Note](https://github.com/KuangjuX/system-notes/blob/main/paper-notes/ai-compiler/The-Deep-Learning-Compiler-A-Comprehensive-Survey.md)]
+
 #### Graph Optimization
 
 - [x] Rammer: Enabling Holistic Deep Learning Compiler Optimizations with rTasks[OSDI'20]: [[Paper](https://www.usenix.org/system/files/osdi20-ma.pdf)] [[Note](https://github.com/KuangjuX/paper-reading/issues/22)]
@@ -23,9 +27,7 @@
 
 #### MLIR
 
-MLIR: Scaling Compiler Infrastructure for Domain Specifific Computation[CGO'21]: [[Paper](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9370308)] [[Note](https://github.com/KuangjuX/system-notes/blob/main/paper-notes/ai-compiler/MLIR-Scaling-Compiler-Infrastructure-for-Domain-Specific-Computation.md)]
-
-- [x] The Deep Learning Compiler: A Comprehensive Survey: [[Paper](https://arxiv.org/pdf/2002.03794.pdf)] [[Note](https://github.com/KuangjuX/system-notes/blob/main/paper-notes/ai-compiler/The-Deep-Learning-Compiler-A-Comprehensive-Survey.md)]
+- [ ] MLIR: Scaling Compiler Infrastructure for Domain Specifific Computation[CGO'21]: [[Paper](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9370308)] [[Note](https://github.com/KuangjuX/system-notes/blob/main/paper-notes/ai-compiler/MLIR-Scaling-Compiler-Infrastructure-for-Domain-Specific-Computation.md)]
 
 #### Compiler Design
 
