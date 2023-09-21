@@ -10,18 +10,26 @@
 
 #### Graph Optimization
 
-- [x] Rammer: Enabling Holistic Deep Learning Compiler Optimizations with rTasks[OSDI'20]: [[Paper](https://www.usenix.org/system/files/osdi20-ma.pdf)] [[Note](https://github.com/KuangjuX/paper-reading/issues/22)]
-- [ ] Graphiler: A Compiler for Graph Neural Networks[MLSys'22]: [[Paper](https://gnnsys.github.io/papers/GNNSys21_paper_10.pdf)]
-- [ ] EinNet: Optimizing Tensor Programs with Derivation-Based Transformations [OSDI'23]: [[Paper](https://www.usenix.org/system/files/osdi23-zheng.pdf)]
-- [ ] Pet: Optimizing Tensor Programs with Partially Equivalent Transformations and
-  Automated Corrections[OSDI'21]: [[Paper](https://www.usenix.org/system/files/osdi21-wang-haojie.pdf)]
 - [ ] TASO: Optimizing Deep Learning Computation with Automatic Generation of Graph Substitutions[SOSP'19]: [[Paper](https://www.cs.cmu.edu/~zhihaoj2/papers/sosp19.pdf)]
 
-#### Code Generation
+- [ ] Ansor: Generating High-Performance Tensor Programs for Deep Learning[OSDI'20]:   [[Paper](https://www.usenix.org/system/files/osdi20-zheng.pdf)]
 
-- [x] Cocktailer: Analyzing and Optimizing Dynamic Control Flow in Deep Learning[OSDI'23]: [[Paper](https://www.usenix.org/system/files/osdi23-zhang-chen.pdf)] [[Note](https://github.com/KuangjuX/paper-reading/issues/21)]
+- [x] Rammer: Enabling Holistic Deep Learning Compiler Optimizations with rTasks[OSDI'20]: [[Paper](https://www.usenix.org/system/files/osdi20-ma.pdf)] [[Note](https://github.com/KuangjuX/paper-reading/issues/22)]
+
+- [ ] Pet: Optimizing Tensor Programs with Partially Equivalent Transformations and
+  Automated Corrections[OSDI'21]: [[Paper](https://www.usenix.org/system/files/osdi21-wang-haojie.pdf)]
+
+- [ ] Graphiler: A Compiler for Graph Neural Networks[MLSys'22]: [[Paper](https://gnnsys.github.io/papers/GNNSys21_paper_10.pdf)]
+
+- [ ] EinNet: Optimizing Tensor Programs with Derivation-Based Transformations [OSDI'23]: [[Paper](https://www.usenix.org/system/files/osdi23-zheng.pdf)]
+
+#### Kernel Generation
+
+- [ ] Automatic Kernel Generation for Volta Tensor Cores[arxiv'20][Nvidia]: [[Paper](https://arxiv.org/abs/2006.12645)]
 
 - [x] ROLLER: Fast and Efficient Tensor Compilation for Deep Learning[OSDI'22]: [[Paper](https://www.usenix.org/system/files/osdi22-zhu.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/24)]
+
+- [x] Cocktailer: Analyzing and Optimizing Dynamic Control Flow in Deep Learning[OSDI'23]: [[Paper](https://www.usenix.org/system/files/osdi23-zhang-chen.pdf)] [[Note](https://github.com/KuangjuX/paper-reading/issues/21)]
 
 - [ ] Welder: Scheduling Deep Learning Memory Access via Tile-graph[OSDI'23]: [[Paper](https://www.usenix.org/system/files/osdi23-shi.pdf)]
 
@@ -63,11 +71,11 @@
 
 - [x] HyperBench: A Benchmark Suite for Virtualization Capabilities: [[Paper](https://dl.acm.org/doi/pdf/10.1145/3341617.3326138)] [[Note](https://github.com/KuangjuX/system-notes/blob/main/paper-notes/hypervisor/Hyperbench-A-Benchmark-Suite-for-Virtualization-Capabilities.md)]
 
+- [ ] HyperEnclave: An Open and Cross-platform Trusted Execution Environment[USENIX ATC'22]: [[Paper](https://www.usenix.org/system/files/atc22-jia-yuekai.pdf)]
+
 - [x] Security and Performance in the Delegated User-level Virtualization[OSDI'23]: [[Paper](https://www.usenix.org/system/files/osdi23-chen.pdf)]
 
 - [x] System Virtualization for Neural Processing Units[HotOS'23]: [[Paper](https://sigops.org/s/conferences/hotos/2023/papers/xue.pdf)]
-
-- [ ] HyperEnclave: An Open and Cross-platform Trusted Execution Environment[USENIX ATC'22]: [[Paper](https://www.usenix.org/system/files/atc22-jia-yuekai.pdf)]
 
 - [ ] Nephele: Extending Virtualization Environments for Cloning Unikernel-based VMs[EuroSys'23]: [[Paper](http://nets.cs.pub.ro/~costin/files/nephele.pdf)]
 
