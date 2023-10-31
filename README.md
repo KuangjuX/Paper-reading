@@ -21,7 +21,7 @@
 #### Kernel Generation
 
 - [ ] Automatic Kernel Generation for Volta Tensor Cores[arxiv'20][Nvidia]: [[Paper](https://arxiv.org/abs/2006.12645)]
-- [x] AStitch: Enabling a New Multi-dimensional Optimization Space for Memory-Intensive ML Training and Inference on Modern SIMT Architectures[ASPLOS'22]: [[Paper](https://dl.acm.org/doi/10.1145/3503222.3507723)]
+- [x] AStitch: Enabling a New Multi-dimensional Optimization Space for Memory-Intensive ML Training and Inference on Modern SIMT Architectures[ASPLOS'22]: [[Paper](https://dl.acm.org/doi/10.1145/3503222.3507723)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/26)]
 - [ ] Tacker: Tensor-CUDA Core Kernel Fusion for Improving the GPU Utilization while Ensuring QoS[HPCA'22]: [[Paper](paper/mlsys/Kernel_Generation/Tacker_Tensor-CUDA_Core_Kernel_Fusion_for_Improving_the_GPU_Utilization_while_Ensuring_QoS.pdf)]
 
 - [ ] BOLT: BRIDGING THE GAP BETWEEN AUTO-TUNERS AND HARDWARE-NATIVE PERFORMANCE[MLSys'22]: [[Paper](http://yibozhu.com/doc/bolt-mlsys22.pdf)]
