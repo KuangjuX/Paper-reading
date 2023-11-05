@@ -15,6 +15,7 @@
 - [x] Rammer: Enabling Holistic Deep Learning Compiler Optimizations with rTasks[OSDI'20]: [[Paper](https://www.usenix.org/system/files/osdi20-ma.pdf)] [[Note](https://github.com/KuangjuX/paper-reading/issues/22)]
 - [ ] Pet: Optimizing Tensor Programs with Partially Equivalent Transformations and
   Automated Corrections[OSDI'21]: [[Paper](https://www.usenix.org/system/files/osdi21-wang-haojie.pdf)]
+- [ ] DNNFusion: Accelerating Deep Neural Networks Execution with Advanced Operator Fusion[PLDI'21]: [[Paper](https://arxiv.org/pdf/2108.13342.pdf)]
 - [ ] Graphiler: A Compiler for Graph Neural Networks[MLSys'22]: [[Paper](https://gnnsys.github.io/papers/GNNSys21_paper_10.pdf)]
 - [ ] EinNet: Optimizing Tensor Programs with Derivation-Based Transformations [OSDI'23]: [[Paper](https://www.usenix.org/system/files/osdi23-zheng.pdf)]
 
