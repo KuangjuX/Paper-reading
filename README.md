@@ -45,6 +45,7 @@
 
 - [ ] Ray: A Distributed Framework for Emerging AI Applications[OSDI'18]: [[Paper](https://www.usenix.org/system/files/osdi18-moritz.pdf)]
 - [ ] Alpa: Automating Inter- and Intra-Operator Parallelism for Distributed Deep Learning[OSDI'22]: [[Paper](https://www.usenix.org/system/files/osdi22-zheng-lianmin.pdf)]
+- [ ] AlpaServe: Statistical Multiplexing with Model Parallelism for Deep Learning Serving[OSDI'23]: [[Paper](https://www.usenix.org/system/files/osdi23-li-zhuohan.pdf)]
 - [ ] Sia: Heterogeneity-aware, goodput-optimized ML-cluster scheduling[SOSP'23]: [[Paper](https://www.pdl.cmu.edu/PDL-FTP/BigLearning/sia_sosp23-final.pdf)]
 
 ### Accelerator Architecture
