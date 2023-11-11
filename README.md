@@ -11,7 +11,6 @@
 #### Graph Optimization
 
 - [ ] TASO: Optimizing Deep Learning Computation with Automatic Generation of Graph Substitutions[SOSP'19]: [[Paper](https://www.cs.cmu.edu/~zhihaoj2/papers/sosp19.pdf)]
-- [ ] Ansor: Generating High-Performance Tensor Programs for Deep Learning[OSDI'20]:   [[Paper](https://www.usenix.org/system/files/osdi20-zheng.pdf)]
 - [x] Rammer: Enabling Holistic Deep Learning Compiler Optimizations with rTasks[OSDI'20]: [[Paper](https://www.usenix.org/system/files/osdi20-ma.pdf)] [[Note](https://github.com/KuangjuX/paper-reading/issues/22)]
 - [ ] Pet: Optimizing Tensor Programs with Partially Equivalent Transformations and
   Automated Corrections[OSDI'21]: [[Paper](https://www.usenix.org/system/files/osdi21-wang-haojie.pdf)]
@@ -41,6 +40,10 @@
 - [ ] SparseTIR: Composable Abstractions for Sparse Compilation in Deep Learning[ASPLOS'23]: [[Paper](https://arxiv.org/pdf/2207.04606.pdf)]
 - [x] Graphene: An IR for Optimized Tensor Computations on GPUs[ASPLOS'23]: [[Paper](https://dl.acm.org/doi/pdf/10.1145/3582016.3582018)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/27)]
 
+### Auto Schedule
+- [ ] Ansor: Generating High-Performance Tensor Programs for Deep Learning[OSDI'20]:   [[Paper](https://www.usenix.org/system/files/osdi20-zheng.pdf)]
+- [ ] FlexTensor: An Automatic Schedule Exploration and Optimization Framework for Tensor Computation on Heterogeneous System[ASPLOS'20]: [[Paper](https://ceca.pku.edu.cn/docs/20200915213803856105.pdf)]
+
 ### Distrubited Training
 
 - [ ] Ray: A Distributed Framework for Emerging AI Applications[OSDI'18]: [[Paper](https://www.usenix.org/system/files/osdi18-moritz.pdf)]
@@ -53,6 +56,7 @@
 - [ ] Microsecond-scale Preemption for Concurrent GPU-accelerated DNN Inferences[OSDI'22]: [[Paper](https://www.usenix.org/system/files/osdi22-han.pdf)]
 - [ ] FLASHATTENTION: Fast and Memory-Efficient Exact Attention with IO-Awareness[NIPS'22]: [[Paper](https://proceedings.neurips.cc/paper_files/paper/2022/file/67d57c32e20fd0a7a302cb81d36e40d5-Paper-Conference.pdf)]
 - [ ] FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning[arxiv]: [[Paper](https://arxiv.org/pdf/2307.08691.pdf)]
+- [ ] UGache: A Unified GPU Cache for Embedding-based Deep Learning[SOSP'23]: [[Paper](https://dl.acm.org/doi/pdf/10.1145/3600006.3613169)]
 
 ### LLM Architecture
 
