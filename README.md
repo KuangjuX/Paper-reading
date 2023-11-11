@@ -40,7 +40,7 @@
 - [ ] SparseTIR: Composable Abstractions for Sparse Compilation in Deep Learning[ASPLOS'23]: [[Paper](https://arxiv.org/pdf/2207.04606.pdf)]
 - [x] Graphene: An IR for Optimized Tensor Computations on GPUs[ASPLOS'23]: [[Paper](https://dl.acm.org/doi/pdf/10.1145/3582016.3582018)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/27)]
 
-### Auto Schedule
+#### Auto Schedule
 - [ ] Ansor: Generating High-Performance Tensor Programs for Deep Learning[OSDI'20]:   [[Paper](https://www.usenix.org/system/files/osdi20-zheng.pdf)]
 - [ ] FlexTensor: An Automatic Schedule Exploration and Optimization Framework for Tensor Computation on Heterogeneous System[ASPLOS'20]: [[Paper](https://ceca.pku.edu.cn/docs/20200915213803856105.pdf)]
 
