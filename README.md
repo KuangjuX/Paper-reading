@@ -66,6 +66,10 @@
 
 - [ ] PIT: Optimization of Dynamic Sparse Deep Learning Models via Permutation Invariant Transformation[SOSP'23]: [[Paper](https://arxiv.org/pdf/2301.10936.pdf)]
 
+### On-device Training
+- [x] On-Device Training Under 256KB Memory[NeurIPS'22]: [[Paper](https://arxiv.org/pdf/2206.15472.pdf)]
+- [ ] PockEngine: Sparse and Efficient Fine-tuning in a Pocket[MICRO'23]: [[Paper](https://arxiv.org/pdf/2310.17752.pdf)]
+
 ## OS
 
 - [x] Unikraft: Fast, Specialized Unikernels the Easy Way[EuroSys'19]: [[Paper](https://dl.acm.org/doi/pdf/10.1145/3447786.3456248)] [[Note](https://github.com/KuangjuX/paper-reading/issues/9)]
@@ -83,5 +87,4 @@
 
 ## Deep Learning
 
-- [x] On-Device Training Under 256KB Memory[NeurIPS'22]: [[Paper](https://arxiv.org/pdf/2206.15472.pdf)]
 - [ ] Full Stack Optimization of Transformer Inference: a Survey[arxiv]: [[Paper](https://arxiv.org/pdf/2302.14017.pdf)]
