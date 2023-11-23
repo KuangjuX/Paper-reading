@@ -18,7 +18,7 @@
 - [ ] Graphiler: A Compiler for Graph Neural Networks[MLSys'22]: [[Paper](https://gnnsys.github.io/papers/GNNSys21_paper_10.pdf)]
 - [ ] EinNet: Optimizing Tensor Programs with Derivation-Based Transformations [OSDI'23]: [[Paper](https://www.usenix.org/system/files/osdi23-zheng.pdf)]
 
-#### Kernel Generation
+#### Kernel Fusion
 
 - [ ] Automatic Kernel Generation for Volta Tensor Cores[arxiv'20][Nvidia]: [[Paper](https://arxiv.org/abs/2006.12645)]
 - [x] AStitch: Enabling a New Multi-dimensional Optimization Space for Memory-Intensive ML Training and Inference on Modern SIMT Architectures[ASPLOS'22]: [[Paper](https://dl.acm.org/doi/10.1145/3503222.3507723)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/26)]
@@ -32,6 +32,7 @@
 #### Compiler Design
 
 - [ ] The Tensor Algebra Compiler[OOPSLA'17]: [[Paper](https://dl.acm.org/doi/pdf/10.1145/3133901)]
+- [ ] Bring Your Own Codegen to Deep Learning Compiler[arxiv]: [[Paper](https://arxiv.org/pdf/2105.03215.pdf)]
 - [ ] DISTAL: The Distributed Tensor Algebra Compiler[PLDI'22]: [[Paper](https://dl.acm.org/doi/pdf/10.1145/3519939.3523437)]
 
 #### IR Design
