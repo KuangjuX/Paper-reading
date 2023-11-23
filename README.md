@@ -24,7 +24,7 @@
 - [x] AStitch: Enabling a New Multi-dimensional Optimization Space for Memory-Intensive ML Training and Inference on Modern SIMT Architectures[ASPLOS'22]: [[Paper](https://dl.acm.org/doi/10.1145/3503222.3507723)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/26)]
 - [ ] Tacker: Tensor-CUDA Core Kernel Fusion for Improving the GPU Utilization while Ensuring QoS[HPCA'22]: [[Paper](paper/mlsys/Kernel_Generation/Tacker_Tensor-CUDA_Core_Kernel_Fusion_for_Improving_the_GPU_Utilization_while_Ensuring_QoS.pdf)]
 
-- [ ] BOLT: BRIDGING THE GAP BETWEEN AUTO-TUNERS AND HARDWARE-NATIVE PERFORMANCE[MLSys'22]: [[Paper](http://yibozhu.com/doc/bolt-mlsys22.pdf)]
+- [x] BOLT: BRIDGING THE GAP BETWEEN AUTO-TUNERS AND HARDWARE-NATIVE PERFORMANCE[MLSys'22]: [[Paper](http://yibozhu.com/doc/bolt-mlsys22.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/28)]
 - [x] ROLLER: Fast and Efficient Tensor Compilation for Deep Learning[OSDI'22]: [[Paper](https://www.usenix.org/system/files/osdi22-zhu.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/24)]
 - [x] Cocktailer: Analyzing and Optimizing Dynamic Control Flow in Deep Learning[OSDI'23]: [[Paper](https://www.usenix.org/system/files/osdi23-zhang-chen.pdf)] [[Note](https://github.com/KuangjuX/paper-reading/issues/21)]
 - [x] Welder: Scheduling Deep Learning Memory Access via Tile-graph[OSDI'23]: [[Paper](https://www.usenix.org/system/files/osdi23-shi.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/25)]
