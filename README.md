@@ -22,12 +22,12 @@
 - [ ] Automatic Kernel Generation for Volta Tensor Cores[arxiv'20][Nvidia]: [[Paper](https://arxiv.org/abs/2006.12645)]
 - [ ] DNNFusion: Accelerating Deep Neural Networks Execution with Advanced Operator Fusion[PLDI'21]: [[Paper](https://arxiv.org/pdf/2108.13342.pdf)]
 - [x] AStitch: Enabling a New Multi-dimensional Optimization Space for Memory-Intensive ML Training and Inference on Modern SIMT Architectures[ASPLOS'22]: [[Paper](https://dl.acm.org/doi/10.1145/3503222.3507723)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/26)]
-- [ ] Tacker: Tensor-CUDA Core Kernel Fusion for Improving the GPU Utilization while Ensuring QoS[HPCA'22]: [[Paper](paper/mlsys/Kernel_Generation/Tacker_Tensor-CUDA_Core_Kernel_Fusion_for_Improving_the_GPU_Utilization_while_Ensuring_QoS.pdf)]
+- [ ] Tacker: Tensor-CUDA Core Kernel Fusion for Improving the GPU Utilization while Ensuring QoS[HPCA'22]: [[Paper](papers/mlsys/fusion/Tacker_Tensor-CUDA_Core_Kernel_Fusion_for_Improving_the_GPU_Utilization_while_Ensuring_QoS.pdf)]
 - [x] BOLT: BRIDGING THE GAP BETWEEN AUTO-TUNERS AND HARDWARE-NATIVE PERFORMANCE[MLSys'22]: [[Paper](http://yibozhu.com/doc/bolt-mlsys22.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/28)]
 - [x] ROLLER: Fast and Efficient Tensor Compilation for Deep Learning[OSDI'22]: [[Paper](https://www.usenix.org/system/files/osdi22-zhu.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/24)]
 - [x] Cocktailer: Analyzing and Optimizing Dynamic Control Flow in Deep Learning[OSDI'23]: [[Paper](https://www.usenix.org/system/files/osdi23-zhang-chen.pdf)] [[Note](https://github.com/KuangjuX/paper-reading/issues/21)]
 - [x] Welder: Scheduling Deep Learning Memory Access via Tile-graph[OSDI'23]: [[Paper](https://www.usenix.org/system/files/osdi23-shi.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/25)]
-- [ ] Chimera: An Analytical Optimizing Framework for Effective Compute-intensive Operators Fusion[ASPLOS'23]
+- [ ] Chimera: An Analytical Optimizing Framework for Effective Compute-intensive Operators Fusion[HPCA'23]: [[Paper](papers/mlsys/fusion/Chimera_An_Analytical_Optimizing_Framework_for_Effective_Compute-intensive_Operators_Fusion.pdf)]
 
 #### Compiler Design
 
@@ -44,6 +44,7 @@
 - [ ] Relax: Composable Abstractions for End-to-End Dynamic Machine Learning[arxiv]: [[Paper](https://arxiv.org/pdf/2311.02103.pdf)]
 
 #### Auto Schedule
+
 - [ ] Ansor: Generating High-Performance Tensor Programs for Deep Learning[OSDI'20]:   [[Paper](https://www.usenix.org/system/files/osdi20-zheng.pdf)]
 - [ ] FlexTensor: An Automatic Schedule Exploration and Optimization Framework for Tensor Computation on Heterogeneous System[ASPLOS'20]: [[Paper](https://ceca.pku.edu.cn/docs/20200915213803856105.pdf)]
 
@@ -70,6 +71,7 @@
 - [ ] PIT: Optimization of Dynamic Sparse Deep Learning Models via Permutation Invariant Transformation[SOSP'23]: [[Paper](https://arxiv.org/pdf/2301.10936.pdf)]
 
 ### On-device Training
+
 - [x] On-Device Training Under 256KB Memory[NeurIPS'22]: [[Paper](https://arxiv.org/pdf/2206.15472.pdf)]
 - [ ] PockEngine: Sparse and Efficient Fine-tuning in a Pocket[MICRO'23]: [[Paper](https://arxiv.org/pdf/2310.17752.pdf)]
 
