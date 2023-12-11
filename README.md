@@ -44,9 +44,12 @@
 - [ ] Relax: Composable Abstractions for End-to-End Dynamic Machine Learning[arxiv]: [[Paper](https://arxiv.org/pdf/2311.02103.pdf)]
 
 #### Auto Schedule
-
-- [ ] Ansor: Generating High-Performance Tensor Programs for Deep Learning[OSDI'20]:   [[Paper](https://www.usenix.org/system/files/osdi20-zheng.pdf)]
+- [ ] Ansor: Generating High-Performance Tensor Programs for Deep Learning[OSDI'20]: [[Paper](https://www.usenix.org/system/files/osdi20-zheng.pdf)]
 - [ ] FlexTensor: An Automatic Schedule Exploration and Optimization Framework for Tensor Computation on Heterogeneous System[ASPLOS'20]: [[Paper](https://ceca.pku.edu.cn/docs/20200915213803856105.pdf)]
+
+#### Space Exploration
+- [ ] Analytical Characterization and Design Space Exploration for Optimization of CNNs[ASPLOS'21]: [[Paper](https://dl.acm.org/doi/pdf/10.1145/3445814.3446759)]
+- [ ] Mind Mappings: Enabling Efficient Algorithm-Accelerator Mapping Space Search[ASPLOS'21]: [[Paper](https://dl.acm.org/doi/pdf/10.1145/3445814.3446762)]
 
 ### Distrubited Training
 
