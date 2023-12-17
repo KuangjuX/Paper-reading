@@ -33,7 +33,7 @@
 
 - [ ] The Tensor Algebra Compiler[OOPSLA'17]: [[Paper](https://dl.acm.org/doi/pdf/10.1145/3133901)]
 - [ ] Bring Your Own Codegen to Deep Learning Compiler[arxiv]: [[Paper](https://arxiv.org/pdf/2105.03215.pdf)]
-- [ ] DISTAL: The Distributed Tensor Algebra Compiler[PLDI'22]: [[Paper](https://dl.acm.org/doi/pdf/10.1145/3519939.3523437)]
+- [ ] DISTAL: The Distributed Tensor Algebra Compiler[PLDI'22]: [[Paper](papers/compiler-design/distal.pdf)]
 
 #### IR Design
 
