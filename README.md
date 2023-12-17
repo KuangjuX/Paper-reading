@@ -84,6 +84,14 @@
 
 - [ ] Full Stack Optimization of Transformer Inference: a Survey[arxiv]: [[Paper](https://arxiv.org/pdf/2302.14017.pdf)]
 
+## HPC/CUDA
+
+- [ ] POSTER: Stream-K: Work-centric Parallel Decomposition for Dense Matrix-Matrix Multiplication on the GPU[PPOPP'23]: [[Paper](papers/hpc/stream-k.pdf)]
+
+## Computer Architecutre
+
+- [ ] Clockhands: Rename-free Instruction Set Architecture for Out-of-order Processors[MICRO'23]: [[Paper](papers/arch/clockhands.pdf)]
+
 ## OS
 
 - [x] RedLeaf: Isolation and Communication in a Safe Operating System[OSDI'20]: [[Paper](https://www.usenix.org/system/files/osdi20-narayanan_vikram.pdf)] [[Note](https://github.com/KuangjuX/system-notes/blob/main/paper-notes/os/RedLeaf.md)]
