@@ -89,6 +89,7 @@
 - [x] The Deminkernel Datapath OS Architecture for Microsecond-scale Datacenter Systems[SOSP'21]: [[Paper](https://irenezhang.net/papers/demikernel-sosp21.pdf)] [[Note](https://github.com/KuangjuX/system-notes/blob/main/paper-notes/os/Demikernel.md)]
 - [ ] FlexOS: towards flexible OS isolation[ASPLOS'22]: [[Paper](papers/os/flexos.pdf)]
 - [ ] Unikernel Linux (UKL)[EuroSys'23]: [[Paper](papers/os/ukl.pdf)]
+- [ ] TreeSLS: A Whole-system Persistent Microkernel with Tree-structured State Checkpoint on NVM[SOSP'23 Best Paper]: [[Paper](papers/os/treesls.pdf)]
 
 ## Hypervisor
 - [x] HyperBench: A Benchmark Suite for Virtualization Capabilities: [[Paper](https://dl.acm.org/doi/pdf/10.1145/3341617.3326138)] [[Note](https://github.com/KuangjuX/system-notes/blob/main/paper-notes/hypervisor/Hyperbench-A-Benchmark-Suite-for-Virtualization-Capabilities.md)]
