@@ -19,6 +19,7 @@
 #### Kernel Fusion
 - [ ] Automatic Kernel Generation for Volta Tensor Cores[arxiv'20][Nvidia]: [[Paper](https://arxiv.org/abs/2006.12645)]
 - [ ] DNNFusion: Accelerating Deep Neural Networks Execution with Advanced Operator Fusion[PLDI'21]: [[Paper](https://arxiv.org/pdf/2108.13342.pdf)]
+- [ ] Automatic Horizontal Fusion for GPU Kernels[CGO'22]: [[Paper](papers/mlsys/fusion/CGO53902.2022.9741270.pdf)]
 - [x] AStitch: Enabling a New Multi-dimensional Optimization Space for Memory-Intensive ML Training and Inference on Modern SIMT Architectures[ASPLOS'22]: [[Paper](https://dl.acm.org/doi/10.1145/3503222.3507723)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/26)]
 - [ ] Tacker: Tensor-CUDA Core Kernel Fusion for Improving the GPU Utilization while Ensuring QoS[HPCA'22]: [[Paper](papers/mlsys/fusion/Tacker_Tensor-CUDA_Core_Kernel_Fusion_for_Improving_the_GPU_Utilization_while_Ensuring_QoS.pdf)]
 - [x] BOLT: BRIDGING THE GAP BETWEEN AUTO-TUNERS AND HARDWARE-NATIVE PERFORMANCE[MLSys'22]: [[Paper](http://yibozhu.com/doc/bolt-mlsys22.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/28)]
