@@ -53,6 +53,7 @@
 ### Inter-Operator Optimization
 - [ ] FLASHATTENTION: Fast and Memory-Efficient Exact Attention with IO-Awareness[NIPS'22]: [[Paper](https://proceedings.neurips.cc/paper_files/paper/2022/file/67d57c32e20fd0a7a302cb81d36e40d5-Paper-Conference.pdf)]
 - [ ] FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning[arxiv]: [[Paper](https://arxiv.org/pdf/2307.08691.pdf)]
+- [ ] FLASHDECODING++: FASTER LARGE LANGUAGE MODEL INFERENCE ON GPUS[arxiv]: [[Paper](https://arxiv.org/pdf/2311.01282.pdf)]
 
 ### Distrubited Training
 - [ ] Ray: A Distributed Framework for Emerging AI Applications[OSDI'18]: [[Paper](https://www.usenix.org/system/files/osdi18-moritz.pdf)]
@@ -64,8 +65,6 @@
 - [ ] Microsecond-scale Preemption for Concurrent GPU-accelerated DNN Inferences[OSDI'22]: [[Paper](https://www.usenix.org/system/files/osdi22-han.pdf)]
 - [ ] UGache: A Unified GPU Cache for Embedding-based Deep Learning[SOSP'23]: [[Paper](https://dl.acm.org/doi/pdf/10.1145/3600006.3613169)]
 
-### LLM Architecture
-- [ ] FLASHDECODING++: FASTER LARGE LANGUAGE MODEL INFERENCE ON GPUS[arxiv]: [[Paper](https://arxiv.org/pdf/2311.01282.pdf)]
 
 ### Sparse Model
 - [ ] PIT: Optimization of Dynamic Sparse Deep Learning Models via Permutation Invariant Transformation[SOSP'23]: [[Paper](https://arxiv.org/pdf/2301.10936.pdf)]
