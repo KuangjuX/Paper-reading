@@ -1,9 +1,7 @@
 # Paper Reading
 
 ## MLSys
-
 ### DNN Compiler
-
 #### Survey
 - [x] The Deep Learning Compiler: A Comprehensive Survey: [[Paper](https://arxiv.org/pdf/2002.03794.pdf)] [[Note](https://github.com/KuangjuX/system-notes/blob/main/paper-notes/ai-compiler/The-Deep-Learning-Compiler-A-Comprehensive-Survey.md)]
 
@@ -72,6 +70,9 @@
 ### On-device Training
 - [x] On-Device Training Under 256KB Memory[NeurIPS'22]: [[Paper](https://arxiv.org/pdf/2206.15472.pdf)]
 - [ ] PockEngine: Sparse and Efficient Fine-tuning in a Pocket[MICRO'23]: [[Paper](https://arxiv.org/pdf/2310.17752.pdf)]
+
+### LLM Infer
+- [ ] PowerInfer: Fast Large Language Model Serving with a Consumer-grade GPU: [[Paper](papers/mlsys/LLM/powerinfer-20231219.pdf)]
 
 ## Deep Learning
 - [ ] Full Stack Optimization of Transformer Inference: a Survey[arxiv]: [[Paper](https://arxiv.org/pdf/2302.14017.pdf)]
