@@ -54,6 +54,13 @@
 - [ ] FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning[arxiv]: [[Paper](https://arxiv.org/pdf/2307.08691.pdf)]
 - [ ] FLASHDECODING++: FASTER LARGE LANGUAGE MODEL INFERENCE ON GPUS[arxiv]: [[Paper](https://arxiv.org/pdf/2311.01282.pdf)]
 
+### Software-Hardware Co-Design
+- [ ] HASCO: Towards Agile Hardware and Software CO-design for Tensor Computation[ISCA'21]: [[Paper](papers/mlsys/soft-hard-co-design/HASCO-ISCA.pdf)]
+- [ ] CoSA: Scheduling by Constrained Optimization for Spatial Accelerators[ISCA'21]: [[Paper](papers/mlsys/soft-hard-co-design/CoSA-ISCA.pdf)]
+- [ ] SARA: Scaling a Reconfigurable Dataflow Accelerator[ISCA'21]: [[Paper](papers/mlsys/soft-hard-co-design/SARA-ISCA.pdf)]
+- [ ] Effectively Scheduling Computational Graphs of Deep Neural Networks
+toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-hard-co-design/osdi23-zhao.pdf)]
+
 ### Distrubited Training
 - [ ] Ray: A Distributed Framework for Emerging AI Applications[OSDI'18]: [[Paper](https://www.usenix.org/system/files/osdi18-moritz.pdf)]
 - [ ] Alpa: Automating Inter- and Intra-Operator Parallelism for Distributed Deep Learning[OSDI'22]: [[Paper](https://www.usenix.org/system/files/osdi22-zheng-lianmin.pdf)]
@@ -83,6 +90,10 @@
 
 ## Computer Architecutre
 - [ ] Clockhands: Rename-free Instruction Set Architecture for Out-of-order Processors[MICRO'23]: [[Paper](papers/arch/clockhands.pdf)]
+
+## Compiler
+- [ ] egg: Fast and Extensible Equality Saturation[POPL'21]: [[Paper](papers/compiler/egg-PLDI-21.pdf)]
+- [ ] Reticle: A Virtual Machine for Programming Modern FPGAs[PLDI'21]: [[Paper](papers/compiler/pldi21reticle.pdf)]
 
 ## OS
 - [x] RedLeaf: Isolation and Communication in a Safe Operating System[OSDI'20]: [[Paper](https://www.usenix.org/system/files/osdi20-narayanan_vikram.pdf)] [[Note](https://github.com/KuangjuX/system-notes/blob/main/paper-notes/os/RedLeaf.md)]
