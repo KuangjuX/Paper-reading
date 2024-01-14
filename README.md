@@ -1,7 +1,7 @@
 # Paper Reading
 
 ## MLSys
-### DNN Compiler
+### DL Compiler
 #### Survey
 - [x] The Deep Learning Compiler: A Comprehensive Survey: [[Paper](https://arxiv.org/pdf/2002.03794.pdf)] [[Note](https://github.com/KuangjuX/system-notes/blob/main/paper-notes/ai-compiler/The-Deep-Learning-Compiler-A-Comprehensive-Survey.md)]
 
@@ -49,17 +49,18 @@
 - [ ] Analytical Characterization and Design Space Exploration for Optimization of CNNs[ASPLOS'21]: [[Paper](https://dl.acm.org/doi/pdf/10.1145/3445814.3446759)]
 - [ ] Mind Mappings: Enabling Efficient Algorithm-Accelerator Mapping Space Search[ASPLOS'21]: [[Paper](https://dl.acm.org/doi/pdf/10.1145/3445814.3446762)]
 
-### Inter-Operator Optimization
-- [ ] FLASHATTENTION: Fast and Memory-Efficient Exact Attention with IO-Awareness[NIPS'22]: [[Paper](https://proceedings.neurips.cc/paper_files/paper/2022/file/67d57c32e20fd0a7a302cb81d36e40d5-Paper-Conference.pdf)]
-- [ ] FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning[arxiv]: [[Paper](https://arxiv.org/pdf/2307.08691.pdf)]
-- [ ] FLASHDECODING++: FASTER LARGE LANGUAGE MODEL INFERENCE ON GPUS[arxiv]: [[Paper](https://arxiv.org/pdf/2311.01282.pdf)]
-
-### Software-Hardware Co-Design
+#### Software-Hardware Co-Design
 - [ ] HASCO: Towards Agile Hardware and Software CO-design for Tensor Computation[ISCA'21]: [[Paper](papers/mlsys/soft-hard-co-design/HASCO-ISCA.pdf)]
 - [ ] CoSA: Scheduling by Constrained Optimization for Spatial Accelerators[ISCA'21]: [[Paper](papers/mlsys/soft-hard-co-design/CoSA-ISCA.pdf)]
 - [ ] SARA: Scaling a Reconfigurable Dataflow Accelerator[ISCA'21]: [[Paper](papers/mlsys/soft-hard-co-design/SARA-ISCA.pdf)]
 - [ ] Effectively Scheduling Computational Graphs of Deep Neural Networks
 toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-hard-co-design/osdi23-zhao.pdf)]
+
+### Inter-Operator Optimization
+- [ ] FLASHATTENTION: Fast and Memory-Efficient Exact Attention with IO-Awareness[NIPS'22]: [[Paper](https://proceedings.neurips.cc/paper_files/paper/2022/file/67d57c32e20fd0a7a302cb81d36e40d5-Paper-Conference.pdf)]
+- [ ] FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning[arxiv]: [[Paper](https://arxiv.org/pdf/2307.08691.pdf)]
+- [ ] FLASHDECODING++: FASTER LARGE LANGUAGE MODEL INFERENCE ON GPUS[arxiv]: [[Paper](https://arxiv.org/pdf/2311.01282.pdf)]
+
 
 ### Distrubited Training
 - [ ] Ray: A Distributed Framework for Emerging AI Applications[OSDI'18]: [[Paper](https://www.usenix.org/system/files/osdi18-moritz.pdf)]
