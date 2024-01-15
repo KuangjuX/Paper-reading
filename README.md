@@ -53,6 +53,7 @@
 - [ ] HASCO: Towards Agile Hardware and Software CO-design for Tensor Computation[ISCA'21]: [[Paper](papers/mlsys/soft-hard-co-design/HASCO-ISCA.pdf)]
 - [ ] CoSA: Scheduling by Constrained Optimization for Spatial Accelerators[ISCA'21]: [[Paper](papers/mlsys/soft-hard-co-design/CoSA-ISCA.pdf)]
 - [ ] SARA: Scaling a Reconfigurable Dataflow Accelerator[ISCA'21]: [[Paper](papers/mlsys/soft-hard-co-design/SARA-ISCA.pdf)]
+- [ ] AutoSA: A Polyhedral Compiler for High-Performance Systolic Arrays on FPGA[FPGA'21]: [[Paper](papers/mlsys/soft-hard-co-design/AutoSA-FPGA.pdf)]
 - [ ] Effectively Scheduling Computational Graphs of Deep Neural Networks
 toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-hard-co-design/osdi23-zhao.pdf)]
 
