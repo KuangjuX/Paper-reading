@@ -57,6 +57,9 @@
 - [ ] Effectively Scheduling Computational Graphs of Deep Neural Networks
 toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-hard-co-design/osdi23-zhao.pdf)]
 
+### Polyhedral
+- [ ] AKG: Automatic Kernel Generation for Neural Processing Units using Polyhedral Transformations[PLDI'21]: [[Paper](papers/mlsys/polyhedral/AKG-PLDI.pdf)]
+
 ### Inter-Operator Optimization
 - [ ] FLASHATTENTION: Fast and Memory-Efficient Exact Attention with IO-Awareness[NIPS'22]: [[Paper](https://proceedings.neurips.cc/paper_files/paper/2022/file/67d57c32e20fd0a7a302cb81d36e40d5-Paper-Conference.pdf)]
 - [ ] FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning[arxiv]: [[Paper](https://arxiv.org/pdf/2307.08691.pdf)]
