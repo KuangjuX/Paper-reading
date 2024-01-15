@@ -58,6 +58,7 @@
 toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-hard-co-design/osdi23-zhao.pdf)]
 
 #### Polyhedral
+- [ ] TIRAMISU: A Polyhedral Compiler for Expressing Fast and Portable Code[CGO'19]: [[Paper](papers/mlsys/polyhedral/Tiramisu-CGO.pdf)]
 - [ ] AKG: Automatic Kernel Generation for Neural Processing Units using Polyhedral Transformations[PLDI'21]: [[Paper](papers/mlsys/polyhedral/AKG-PLDI.pdf)]
 
 ### Inter-Operator Optimization
