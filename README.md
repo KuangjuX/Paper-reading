@@ -57,7 +57,7 @@
 - [ ] Effectively Scheduling Computational Graphs of Deep Neural Networks
 toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-hard-co-design/osdi23-zhao.pdf)]
 
-### Polyhedral
+#### Polyhedral
 - [ ] AKG: Automatic Kernel Generation for Neural Processing Units using Polyhedral Transformations[PLDI'21]: [[Paper](papers/mlsys/polyhedral/AKG-PLDI.pdf)]
 
 ### Inter-Operator Optimization
