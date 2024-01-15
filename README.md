@@ -89,8 +89,9 @@ toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-h
 - [ ] PowerInfer: Fast Large Language Model Serving with a Consumer-grade GPU: [[Paper](papers/mlsys/LLM/powerinfer-20231219.pdf)]
 
 ## Deep Learning
-- [ ] Attention is all you need[NIPS'17]: [[Paper](papers/DL/Attention-NIPS.pdf)]
+- [ ] Attention is all you need[NIPS'17]: [[Paper](papers/DL/Attention-NIPS.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/32)]
 - [ ] Full Stack Optimization of Transformer Inference: a Survey[arxiv]: [[Paper](https://arxiv.org/pdf/2302.14017.pdf)]
+- [ ] Llama 2: Open Foundation and Fine-Tuned Chat Models[arxiv]: [[Paper](papers/DL/llama2.pdf)]
 
 ## HPC/CUDA
 - [ ] POSTER: Stream-K: Work-centric Parallel Decomposition for Dense Matrix-Matrix Multiplication on the GPU[PPOPP'23]: [[Paper](papers/hpc/stream-k.pdf)]
