@@ -89,6 +89,7 @@ toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-h
 - [ ] PowerInfer: Fast Large Language Model Serving with a Consumer-grade GPU: [[Paper](papers/mlsys/LLM/powerinfer-20231219.pdf)]
 
 ## Deep Learning
+- [ ] Attention is all you need[NIPS'17]: [[Paper](papers/DL/Attention-NIPS.pdf)]
 - [ ] Full Stack Optimization of Transformer Inference: a Survey[arxiv]: [[Paper](https://arxiv.org/pdf/2302.14017.pdf)]
 
 ## HPC/CUDA
