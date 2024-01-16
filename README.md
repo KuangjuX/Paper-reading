@@ -86,10 +86,13 @@ toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-h
 - [ ] PockEngine: Sparse and Efficient Fine-tuning in a Pocket[MICRO'23]: [[Paper](papers/mlsys/on-device/pockengine.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/29)]
 
 ### LLM Infer
-- [ ] PowerInfer: Fast Large Language Model Serving with a Consumer-grade GPU: [[Paper](papers/mlsys/LLM/powerinfer-20231219.pdf)]
+- [ ] Deja Vu: Contextual Sparsity for Efficient LLMs at Inference Time[ICML'23]: [[Paper](papers/mlsys/LLM/liu23am.pdf)]
+- [ ] Efficient Memory Management for Large Language Model Serving with PagedAttention[SOSP'23]: [[Paper](papers/mlsys/LLM/vllm-sosp.pdf)]
+- [ ] LLM in a flash: Efficient Large Language Model Inference with Limited Memory[arxiv]: [[Paper](papers/mlsys/LLM/LLM-In-a-Flash.pdf)]
+- [ ] PowerInfer: Fast Large Language Model Serving with a Consumer-grade GPU[arxiv]: [[Paper](papers/mlsys/LLM/powerinfer-20231219.pdf)]
 
 ## Deep Learning
-- [ ] Attention is all you need[NIPS'17]: [[Paper](papers/DL/Attention-NIPS.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/32)]
+- [x] Attention is all you need[NIPS'17]: [[Paper](papers/DL/Attention-NIPS.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/32)]
 - [ ] Full Stack Optimization of Transformer Inference: a Survey[arxiv]: [[Paper](https://arxiv.org/pdf/2302.14017.pdf)]
 - [ ] Llama 2: Open Foundation and Fine-Tuned Chat Models[arxiv]: [[Paper](papers/DL/llama2.pdf)]
 
