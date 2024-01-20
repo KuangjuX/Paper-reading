@@ -99,6 +99,9 @@ toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-h
 ## HPC/CUDA
 - [ ] POSTER: Stream-K: Work-centric Parallel Decomposition for Dense Matrix-Matrix Multiplication on the GPU[PPOPP'23]: [[Paper](papers/hpc/stream-k.pdf)]
 
+## Parallelism
+- [ ] A Loop Transformation Theory and an Algorithm to Maximize Parallelism[TPDS'1991]: [[Paper](papers/parallelism/1991-tpds-wolf-unimodular.pdf)]
+
 ## Computer Architecutre
 - [ ] Clockhands: Rename-free Instruction Set Architecture for Out-of-order Processors[MICRO'23]: [[Paper](papers/arch/clockhands.pdf)]
 
