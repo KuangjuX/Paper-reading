@@ -25,12 +25,14 @@
 - [x] Cocktailer: Analyzing and Optimizing Dynamic Control Flow in Deep Learning[OSDI'23]: [[Paper](https://www.usenix.org/system/files/osdi23-zhang-chen.pdf)] [[Note](https://github.com/KuangjuX/paper-reading/issues/21)]
 - [x] Welder: Scheduling Deep Learning Memory Access via Tile-graph[OSDI'23]: [[Paper](https://www.usenix.org/system/files/osdi23-shi.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/25)]
 - [ ] Chimera: An Analytical Optimizing Framework for Effective Compute-intensive Operators Fusion[HPCA'23]: [[Paper](papers/mlsys/fusion/Chimera_An_Analytical_Optimizing_Framework_for_Effective_Compute-intensive_Operators_Fusion.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/30)]
+- [x] Effectively Scheduling Computational Graphs of Deep Neural Networks
+toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-hard-co-design/osdi23-zhao.pdf)]
+- [ ] Operator Fusion in XLA: Analysis and Evaluation: [[Paper](papers/mlsys/compiler-design/XLA.pdf)]
 
 #### Compiler Design
 - [ ] The Tensor Algebra Compiler[OOPSLA'17]: [[Paper](https://dl.acm.org/doi/pdf/10.1145/3133901)]
 - [ ] Bring Your Own Codegen to Deep Learning Compiler[arxiv]: [[Paper](https://arxiv.org/pdf/2105.03215.pdf)]
 - [ ] DISTAL: The Distributed Tensor Algebra Compiler[PLDI'22]: [[Paper](papers/mlsys/compiler-design/distal.pdf)]
-- [ ] Operator Fusion in XLA: Analysis and Evaluation: [[Paper](papers/mlsys/compiler-design/XLA.pdf)]
 
 #### IR Design
 - [ ] Triton: An Intermediate Language and Compiler for Tiled Neural Network Computations[MAPL'19]: [[Paper](papers/mlsys/IR/2019-triton.pdf)]
@@ -54,8 +56,6 @@
 - [ ] CoSA: Scheduling by Constrained Optimization for Spatial Accelerators[ISCA'21]: [[Paper](papers/mlsys/soft-hard-co-design/CoSA-ISCA.pdf)]
 - [ ] SARA: Scaling a Reconfigurable Dataflow Accelerator[ISCA'21]: [[Paper](papers/mlsys/soft-hard-co-design/SARA-ISCA.pdf)]
 - [ ] AutoSA: A Polyhedral Compiler for High-Performance Systolic Arrays on FPGA[FPGA'21]: [[Paper](papers/mlsys/soft-hard-co-design/AutoSA-FPGA.pdf)]
-- [ ] Effectively Scheduling Computational Graphs of Deep Neural Networks
-toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-hard-co-design/osdi23-zhao.pdf)]
 
 #### Polyhedral
 - [ ] TIRAMISU: A Polyhedral Compiler for Expressing Fast and Portable Code[CGO'19]: [[Paper](papers/mlsys/polyhedral/Tiramisu-CGO.pdf)]
@@ -83,7 +83,7 @@ toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-h
 
 ### On-device Training
 - [x] On-Device Training Under 256KB Memory[NeurIPS'22]: [[Paper](https://arxiv.org/pdf/2206.15472.pdf)]
-- [ ] PockEngine: Sparse and Efficient Fine-tuning in a Pocket[MICRO'23]: [[Paper](papers/mlsys/on-device/pockengine.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/29)]
+- [x] PockEngine: Sparse and Efficient Fine-tuning in a Pocket[MICRO'23]: [[Paper](papers/mlsys/on-device/pockengine.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/29)]
 
 ### LLM Infer
 - [ ] Deja Vu: Contextual Sparsity for Efficient LLMs at Inference Time[ICML'23]: [[Paper](papers/mlsys/LLM/liu23am.pdf)]
