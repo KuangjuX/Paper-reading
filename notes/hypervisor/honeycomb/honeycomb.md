@@ -37,9 +37,19 @@ Validator 将 GPU kernel 解码成控制流和数据流，使用 scalar evolutio
 ## Validator
 
 在 Honeycomb 中 validator 检查每个 GPU kernel 代码并确保有以下安全不变形：
-- 没有悬垂访问
+- 没有 dangling accesses
 - 所有内存访问都在它们自己的内存区域内
 - 控制流完整性
 
 ![](figure3.png)
+
+- **检查未初始化的值.** validator 开始解析 GPU kernel 的二进制代码并且将其构建为 SSA 表示，对于每个 kernel 将其构建为控制流图（CFG）。validator 通过检查 SSA 表示是否有效来检查悬垂访问。
+- **检查内存访问.** 对于每个内存指令，validator 将会构建一个符号表达式并且提取每个内存指令的目标地址。算法混合了 scalar evolution analyise 和多面体模型，是流敏感和路径敏感的。Validator 可以通过 iteration vector, iteration domain 等信息组成内存访问信息。
+- **强迫控制流完整.** 由于现代 GPU 具有 RISC 风格指令集，因此解码 GPU kernel 较为简单。Validator 仅仅验证所有分支指令是否跳转到有效的指令，validator 不支持间接分支。根据经验，间接分支很少使用，开发者可以修改间接分支转变为一系列目标明确的分支。
+
+## Security monitors
+在 Honeycomb 中有两种类型的 security monitors 来和 GPU 进行交互。每个应用运行在自己的 TEE VM 中。SVSM 调节应用程序与 GPU 之间的交互。在 sandbox VM 中的 security monitor(SM) 用来管理驱动和 GPU 之间的交互。SM 也会跟踪物理页所有权组织以外的内存共享。
+
+## Secure and efficient IPC
+Honeycomb 能够使两个 enclaves 在设备内存中安全交换纯文本数据。为了做 IPC，Honeycomb 将 IPC buffer 映射到 sender 的保护区域和 receiver 的 RO 区域。
 
