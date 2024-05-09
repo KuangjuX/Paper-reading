@@ -108,6 +108,7 @@ toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-h
 ## Compiler
 - [ ] egg: Fast and Extensible Equality Saturation[POPL'21]: [[Paper](papers/compiler/egg-PLDI-21.pdf)]
 - [ ] Reticle: A Virtual Machine for Programming Modern FPGAs[PLDI'21]: [[Paper](papers/compiler/pldi21reticle.pdf)]
+- [x] HIDA: A Hierarchical Dataflow Compiler for High-Level Synthesis[ASPLOS'24]: [[Paper](papers/compiler/asplos24-hida.pdf)] [[Note](notes/compiler/hida/hida.md)]
 
 ## OS
 - [x] RedLeaf: Isolation and Communication in a Safe Operating System[OSDI'20]: [[Paper](https://www.usenix.org/system/files/osdi20-narayanan_vikram.pdf)] [[Note](https://github.com/KuangjuX/system-notes/blob/main/paper-notes/os/RedLeaf.md)]
@@ -127,6 +128,7 @@ toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-h
 - [x] Security and Performance in the Delegated User-level Virtualization[OSDI'23]: [[Paper](https://www.usenix.org/system/files/osdi23-chen.pdf)]
 - [x] System Virtualization for Neural Processing Units[HotOS'23]: [[Paper](https://sigops.org/s/conferences/hotos/2023/papers/xue.pdf)]
 - [ ] Nephele: Extending Virtualization Environments for Cloning Unikernel-based VMs[EuroSys'23]: [[Paper](http://nets.cs.pub.ro/~costin/files/nephele.pdf)]
+- [x] Honeycomb: Secure and Efficient GPU Executions via Static Validation[OSDI'23]: [[Paper](papers/hypervisor/osdi23-mai.pdf)] [[Note](notes/hypervisor/honeycomb/honeycomb.md)]
 
 ## RISC-V
 - [x] A First Look at RISC-V Virtualization from an Embedded Systems Perspective[TC'21]: [[Paper](https://arxiv.org/pdf/2103.14951.pdf)]
