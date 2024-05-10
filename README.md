@@ -127,7 +127,7 @@ toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-h
 - [x] AvA: Accelerated Virtualization of Accelerators[ASPLOS'22]: [[Paper](https://dl.acm.org/doi/pdf/10.1145/3373376.3378466)]
 - [x] Security and Performance in the Delegated User-level Virtualization[OSDI'23]: [[Paper](https://www.usenix.org/system/files/osdi23-chen.pdf)] [[Note](notes/hypervisor/duvisor/duvisor.md)]
 - [x] System Virtualization for Neural Processing Units[HotOS'23]: [[Paper](https://sigops.org/s/conferences/hotos/2023/papers/xue.pdf)]
-- [ ] Nephele: Extending Virtualization Environments for Cloning Unikernel-based VMs[EuroSys'23]: [[Paper](http://nets.cs.pub.ro/~costin/files/nephele.pdf)] [[Note](notes/hypervisor/nephele/nephele.md)]
+- [x] Nephele: Extending Virtualization Environments for Cloning Unikernel-based VMs[EuroSys'23]: [[Paper](http://nets.cs.pub.ro/~costin/files/nephele.pdf)] [[Note](notes/hypervisor/nephele/nephele.md)]
 - [x] Honeycomb: Secure and Efficient GPU Executions via Static Validation[OSDI'23]: [[Paper](papers/hypervisor/osdi23-mai.pdf)] [[Note](notes/hypervisor/honeycomb/honeycomb.md)]
 
 ## RISC-V
