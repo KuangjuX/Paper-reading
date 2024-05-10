@@ -67,6 +67,8 @@ Figure 5 展示了一个 vEXT 是如何使用用户态中断派发的。举例�
 
 ## Conclusions
 
+介绍了第一盒代理虚拟化结构，能够将所有 VM-plane 的虚拟化函数带了到用户空间而不需要陷入内核，能够最小化攻击接口。介绍了 DV-Ext 和 DuVisor 用来启动代理虚拟化。在 RISC-V 上实现了 DV-Ext 和 DuVisor 的原型。
+
 ### 安全验证
 
 ![](table6.png)
