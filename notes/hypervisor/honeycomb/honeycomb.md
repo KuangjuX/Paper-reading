@@ -53,3 +53,11 @@ Validator 将 GPU kernel 解码成控制流和数据流，使用 scalar evolutio
 ## Secure and efficient IPC
 Honeycomb 能够使两个 enclaves 在设备内存中安全交换纯文本数据。为了做 IPC，Honeycomb 将 IPC buffer 映射到 sender 的保护区域和 receiver 的 RO 区域。
 
+## Conclusion
+
+Honeycomb 证明静态分析（验证）是一种实用且灵活的技术，可增强 GPU 应用程序的安全性。结合硬件和操作系统支持，Honeycomb 的验证保证了强大的系统范围不变量，例如应用程序中的每次内存访问都符合安全策略。因此，Honeycomb 将 TCB 的大小减少了 18 倍，并提供了比传统方法快 529 倍的安全 IPC 原语。 
+
+Honeycomb 对五个代表性基准测试套件、总共 23 个应用程序的评估表明，Honeycomb 实用且高效，可以为实际应用程序提供安全的 GPU TEE。它需要在 GPU 内核中插入很少或根本不需要运行时检查来验证它们，因此运行时开销很小。 BERT 和 NanoGPT 等大型语言模型工作负载在 Honeycomb 上的运行时开销约为 2%。
+
+
+
