@@ -108,6 +108,7 @@ toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-h
 ## Compiler
 - [ ] egg: Fast and Extensible Equality Saturation[POPL'21]: [[Paper](papers/compiler/egg-PLDI-21.pdf)]
 - [ ] Reticle: A Virtual Machine for Programming Modern FPGAs[PLDI'21]: [[Paper](papers/compiler/pldi21reticle.pdf)]
+- [x] Honeycomb: Secure and Efficient GPU Executions via Static Validation[OSDI'23]: [[Paper](papers/hypervisor/osdi23-mai.pdf)] [[Note](notes/hypervisor/honeycomb/honeycomb.md)]
 - [x] HIDA: A Hierarchical Dataflow Compiler for High-Level Synthesis[ASPLOS'24]: [[Paper](papers/compiler/asplos24-hida.pdf)] [[Note](notes/compiler/hida/hida.md)]
 
 ## OS
