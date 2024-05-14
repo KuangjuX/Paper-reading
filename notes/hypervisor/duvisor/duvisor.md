@@ -17,6 +17,25 @@
 - 安全威胁：仅仅将 VM 的硬件资源移到用户态将会扩大供给面。例如如果允许 QEMU 修改 VM 两阶段页表将会带来严重的安全威胁。
 - 性能消耗：VM exits 现在将从 kernel 转发到 user 处理。然后控制流必须返回 kernel 再次消耗 VM 执行，导致过多的性能损耗。
 
+![](table2.png)
+
+### Vulnerabilities of Hypervisors
+
+一些遭受到的威胁：
+
+- **Large Vulnerability Quantity.** host DoS, privilege escalation of guest VM
+- **Servere Security Threats.** 由于内核组件的高特权，它们可能会摧毁整个系统。例如 NULL 指针接引用或者越界发起 DoS 攻击。
+- **Low Exploit Costs.** 
+
+### Limitations of Deprivileged Execution
+
+![](table3.png)
+
+一些工作(NOVAm DeHype) 尝试通过将一些 hypervisor 的功能卸载到用户模式来解决这些问题。
+
+- **Non-eliminable In-kernel Vulnerabilities.** 由于硬件的限制，例如特权寄存器的访问，所以实际上无法消除影响。
+- **Redundant and Costly Mode Switching.** 由于 Hypervisor 必须使用内核组件来扩展硬件虚拟化扩展，因此将大部分内核组件移至用户控件将导致 VM 和 Hypervisor 之间的交互会更加频繁和昂贵，将导致更高的性能开销。
+
 ## Proposed Methods
 
 基于 RISC-V 提出了 **Delegated Virtualization Extension(DV-Ext)** 通过将将存在的硬件虚拟化机制暴露给用户模式。基于 DV-Ext，所有的 VM-plane functions 都被卸载到用户态的 Duvisor 进程中。
@@ -35,6 +54,14 @@ Duvisor 这篇文章中引入了 **delegated virtualization** 来安全保护整
 - DV-Ext
 - per-VM DuVisor hypervisor process
 - global DV-driver in the kernel
+
+DV-Ext 必须安装在硬件上，它授权 host kernel 是否将硬件虚拟化代理到 HU mode。如果开启了代理模式，非特权软件就可以访问硬件虚拟化接口而无需陷入 kernel。如果未启用，DV-Ext 和传统虚拟化一致。
+
+HU-mode DuVisor 利用 DV-Ext 暴露的硬件接口控制未修改的 VM。为了支持 VM 的正常执行，DuVisor 动态虚拟化物理资源处理 VM exits。此外，为了支持 HU-mode 下的内存虚拟化。DuVisor 为 VM 构建第二阶段页表。如果第二阶段页表映射丢失或者无效，它将会动态更新和添加 entries。
+
+一个 tiny DV-driver 被嵌入到 host-kernel 中作为 Hypervisor-Plane，偶尔参与 DuVisor 的物理资源管理，不会干扰 runtime VM exits。DV-driver 使用 DV-Ext 来 enable/disable 委托模式和分配至元。为了降低安全风险，它还限制 DuVisor 的物理内存 view 并处理紧急情况。
+
+![](table4.png)
 
 ### Delegated Virtualization Extension
 Duvisor 设计了 DV-Ext 硬件，将原本内核中才能够使用的虚拟化硬件接口如寄存器，指令等安全地导入到了用户态，从而使得用户态软件可以直接获得虚拟机下陷信息并操作虚拟机的部分行为。DV扩展还能够让虚拟机下陷可被宿主内核配置为直接下陷到用户态，而不再是内核态。
