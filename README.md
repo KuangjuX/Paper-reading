@@ -24,7 +24,7 @@
 - [x] ROLLER: Fast and Efficient Tensor Compilation for Deep Learning[OSDI'22]: [[Paper](https://www.usenix.org/system/files/osdi22-zhu.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/24)]
 - [x] Cocktailer: Analyzing and Optimizing Dynamic Control Flow in Deep Learning[OSDI'23]: [[Paper](https://www.usenix.org/system/files/osdi23-zhang-chen.pdf)] [[Note](https://github.com/KuangjuX/paper-reading/issues/21)]
 - [x] Welder: Scheduling Deep Learning Memory Access via Tile-graph[OSDI'23]: [[Paper](https://www.usenix.org/system/files/osdi23-shi.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/25)]
-- [ ] Chimera: An Analytical Optimizing Framework for Effective Compute-intensive Operators Fusion[HPCA'23]: [[Paper](papers/mlsys/fusion/Chimera_An_Analytical_Optimizing_Framework_for_Effective_Compute-intensive_Operators_Fusion.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/30)]
+- [x] Chimera: An Analytical Optimizing Framework for Effective Compute-intensive Operators Fusion[HPCA'23]: [[Paper](papers/mlsys/fusion/Chimera_An_Analytical_Optimizing_Framework_for_Effective_Compute-intensive_Operators_Fusion.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/30)]
 - [x] Effectively Scheduling Computational Graphs of Deep Neural Networks
 toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-hard-co-design/osdi23-zhao.pdf)]
 - [ ] Operator Fusion in XLA: Analysis and Evaluation: [[Paper](papers/mlsys/compiler-design/XLA.pdf)]
