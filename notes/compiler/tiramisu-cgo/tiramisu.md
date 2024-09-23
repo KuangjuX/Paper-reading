@@ -72,3 +72,49 @@
 - 提出了一个 polyhedral compiler，并且有 novel scheduling language 来控制数据通信，同步，以及映射到不同的 memory hierarchy。
 - 将 IR 分为四层，将算法和 code transformation, data layout 分开，方便移植。
 - 在 deep learning 和 linear algebra 上，Tiramisu 生成的代码比 Intel MKL 快 2.3 倍。
+
+## Related Work
+
+按照正常的论文进度，这里应该讲 Background and Motivation，这节命名为 Related Work，我理解为背景。
+
+分为了几个部分：
+- Polyhedral compilers with automatic scheduling
+- Polyhedral compilers with a scheduling language
+- Non-polyhedral compilers with a scheduling language
+- Other Compilers
+
+> a) Polyhedral compilers with automatic scheduling: Polyhedral compilers such as PENCIL [4], [3], Pluto [8], Polly [22], Tensor Comprehensions [46], and PolyMage [34] are fully automatic. Some of them are designed for specific domains (such as Tensor Comprehensions and PolyMage), while Pluto, PENCIL, and Polly are more general. While fully automatic compilers provide productivity, they may not always obtain the best performance. This suboptimal performance is due to several reasons: first, these compilers do not implement some key optimizations such as array packing [20], register blocking, data prefetching, and asynchronous communication (which are all supported by TIRAMISU); second, they do not have a precise cost-model to decide which optimizations are profitable. For example, the Pluto [8] automatic scheduling algorithm (used in Pluto, PENCIL and Polly) tries to minimize the distance between producer and consumer statements while maximizing outermost parallelism, but it does not consider data layout, redundant computations, or the complexity of the control of the generated code. Instead of fully automatic scheduling, TIRAMISU relies on a set of scheduling commands, giving the user full control over scheduling.
+
+> Polyhedral frameworks proposed by Amarasinghe et al. [1] and Bondhugula et al. [7] address the problem of automatic code generation for distributed systems. Instead of being fully automatic, TIRAMISU relies on the user to provide scheduling commands to control choices in the generated code (synchronous/asynchronous communication, the granularity of communication, buffer sizes, when to send and receive, cost of communication versus re-computation, etc.).
+
+首先介绍了一下当前自动调度的 polyhedral compilers，随后指出了它们存在的一些问题：
+- 没有实现 array packing, register blocking, data prefetching, asynchronous communication 这些优化。
+- 没有精确的 cost model 来决定哪些优化是 profitable 的。
+
+随后讲了下 Tiramisu 和它们的区别，Tiramisu 提供了 scheduling commands 来控制生成的代码。
+
+> b) Polyhedral compilers with a scheduling language: AlphaZ [51], CHiLL [10], [24] and URUK [19] are polyhedral frameworks developed to allow users to express high-level transformations using scheduling commands. Since these frameworks are polyhedral, they can express any affine transformation. However, their scheduling languages do not target distributed architectures. In contrast, TIRAMISU features scheduling commands for partitioning computations (for distributed systems), synchronization and distribution of data across nodes. The first four columns of Table I compare between TIRAMISU and three representative polyhedral frameworks.
+
+第二种是 Polyhedral compilers with a scheduling language。这种编译器可以表示任何仿射变换，但它们无法 codegen 到不同的硬件架构。在 Tiramisu 中则可以。
+
+> c) Non-polyhedral compilers with a scheduling language: Halide [39] is an image processing DSL with a scheduling language that uses intervals to represent iteration spaces instead of the polyhedral model. This limits the expressiveness of Halide. For example, unlike TIRAMISU, Halide cannot naturally represent non-rectangular iteration spaces, and this is the reason why distributed Halide [15] over-approximates the amount of data to communicate (send and receive) when generating distributed code. This also makes some Halide passes overapproximate non-rectangular iteration spaces, potentially leading to less efficient code (for example, it prevents Halide from performing precise bounds inference for non-rectangular iteration spaces). The use of intervals also prevents Halide from performing many complex affine transformations, such as iteration space skewing.
+
+> Halide does not have dependence analysis and thus relies on conservative rules to determine whether a schedule is legal. For example, Halide does not allow the fusion of two loops (using the compute_with command) if the second loop reads a value produced by the first loop. While this rule avoids illegal fusion, it prevents fusing many legal cases, which may lead to suboptimal performance. Halide also assumes the program has an acyclic dataflow graph in order to simplify checking the legality of a schedule. This prevents users from expressing many programs with cyclic dataflow. It is possible in some cases to work around the above restrictions, but such work-around methods are not general. TIRAMISU avoids overconservative constraints by relying on dependence analysis to check for the correctness of code transformations, enabling more possible schedules. Table I summarizes the comparison between TIRAMISU and Halide.
+
+> Vocke et al. [48] extend Halide to target DSPs, and add scheduling commands such as store_in to specify in which memory hierarchy data should be stored. TVM [11] is another system that shares many similarities with Halide. It uses a modified form of the Halide IR internally. Since TVM is also a non-polyhedral compiler, the differences between Halide and TIRAMISU that are due to the use of polyhedral model also apply to TVM.
+
+> POET [50] is a system that uses an XML-based description of code and transformation behavior to parametrize loop transformations. It uses syntactic transformations, which are less general than the polyhedral transformations used in TIRAMISU. GraphIt [52] is another compiler that has a scheduling language but that is mainly designed for the area of graph applications.
+
+这里主要介绍了下 Halide，Halide 是使用 intervals 而不是多面体模型来表示迭代空间的，这将会限制 Halide 的表达能力。Halide 不能表示非矩阵迭代空间，因此在分布式中 Halide 会对 send/receive 的数据量进行过度估计。除此之外，Halide 没有依赖分析，不允许 fuse 两个 loop。这是由于 DAG 阻止用户表达许多程序。
+
+> Other Compilers: Delite [9] is a generic framework for building DSL compilers. It exposes several parallel computation patterns that DSLs can use to express parallelism. NOVA [12] and Lift [42] are IRs for DSL compilers. They are functional languages that rely on a suite of higher-order functions such as map, reduce, and scan to express parallelism. TIRAMISU is complementary to these frameworks as TIRAMISU allows complex affine transformations that are easier to express in the polyhedral model.
+
+解释了一下其他编译器的设计，主要介绍了下 Delite，NOVA，Lift。依赖于 functional language，例如 map，reduce，scan 来表达并行。Tiramisu 和这些框架是互补的，Tiramisu 允许更复杂的仿射变换，这些变换在多面体模型中更容易表达。
+
+## The Tiramosu Embedded DSL
+
+第三章，其实就是在讲 Design。
+
+> TIRAMISU is a domain-specific language (DSL) embedded in C++. It provides a C++ API that allows users to write a high level, architecture-independent algorithm and a set of scheduling commands that guide code generation. Input TIRAMISU code can either be written directly by a programmer, or generated by a different DSL compiler. TIRAMISU then constructs a high level intermediate representation (IR), applies the user-specified loop and data-layout transformations, and generates optimized backend code that takes advantage of target hardware features (LLVM IR for multicores and distributed machines and LLVM IR + CUDA for GPUs).
+
+首先介绍 Tiramisu DSL 的一个简短的流程。
