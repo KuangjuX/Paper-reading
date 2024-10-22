@@ -93,8 +93,10 @@ toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-h
 
 ## Deep Learning
 - [x] Attention is all you need[NIPS'17]: [[Paper](papers/DL/Attention-NIPS.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/32)]
+- [x] Big bird: transformers for longer sequences[NIPS'20]: [[Paper](papers/DL/bigbird.pdf)] [[Note](https://github.com/KuangjuX/Notes/blob/main/DeepLearning/SparseAttention.md)]
 - [ ] Full Stack Optimization of Transformer Inference: a Survey[arxiv]: [[Paper](https://arxiv.org/pdf/2302.14017.pdf)]
 - [ ] Llama 2: Open Foundation and Fine-Tuned Chat Models[arxiv]: [[Paper](papers/DL/llama2.pdf)]
+- [x] Gated Linear Attention Transformers with Hardware-Efficient Training[arxiv]: [[Paper](papers/DL/GLA.pdf)] [[Note](https://github.com/KuangjuX/Notes/blob/main/DeepLearning/LinearAttention.md)]
 
 ## HPC/CUDA
 - [ ] POSTER: Stream-K: Work-centric Parallel Decomposition for Dense Matrix-Matrix Multiplication on the GPU[PPOPP'23]: [[Paper](papers/hpc/stream-k.pdf)]
