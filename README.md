@@ -58,12 +58,12 @@ toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-h
 - [ ] AutoSA: A Polyhedral Compiler for High-Performance Systolic Arrays on FPGA[FPGA'21]: [[Paper](papers/mlsys/soft-hard-co-design/AutoSA-FPGA.pdf)]
 
 #### Polyhedral
-- [ ] TIRAMISU: A Polyhedral Compiler for Expressing Fast and Portable Code[CGO'19]: [[Paper](papers/mlsys/polyhedral/Tiramisu-CGO.pdf)]
+- [x] TIRAMISU: A Polyhedral Compiler for Expressing Fast and Portable Code[CGO'19]: [[Paper](papers/mlsys/polyhedral/Tiramisu-CGO.pdf)] [[Note](notes/compiler/tiramisu-cgo/tiramisu.md)]
 - [ ] AKG: Automatic Kernel Generation for Neural Processing Units using Polyhedral Transformations[PLDI'21]: [[Paper](papers/mlsys/polyhedral/AKG-PLDI.pdf)]
 
 ### Inter-Operator Optimization
-- [ ] FLASHATTENTION: Fast and Memory-Efficient Exact Attention with IO-Awareness[NIPS'22]: [[Paper](https://proceedings.neurips.cc/paper_files/paper/2022/file/67d57c32e20fd0a7a302cb81d36e40d5-Paper-Conference.pdf)]
-- [ ] FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning[arxiv]: [[Paper](https://arxiv.org/pdf/2307.08691.pdf)]
+- [x] FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness[NIPS'22]: [[Paper](https://proceedings.neurips.cc/paper_files/paper/2022/file/67d57c32e20fd0a7a302cb81d36e40d5-Paper-Conference.pdf)] [[Note](https://github.com/KuangjuX/Notes/blob/main/DeepLearning/FlashAttention.md)]
+- [x] FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning[arxiv]: [[Paper](https://arxiv.org/pdf/2307.08691.pdf)] [[Note](https://github.com/KuangjuX/Notes/blob/main/DeepLearning/FlashAttention.md)]
 - [ ] FLASHDECODING++: FASTER LARGE LANGUAGE MODEL INFERENCE ON GPUS[arxiv]: [[Paper](https://arxiv.org/pdf/2311.01282.pdf)]
 
 
