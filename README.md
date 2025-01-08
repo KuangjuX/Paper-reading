@@ -15,7 +15,7 @@
   - [x] ROLLER: Fast and Efficient Tensor Compilation for Deep Learning[OSDI'22]: [[Paper](https://www.usenix.org/system/files/osdi22-zhu.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/24)]
 
 - Efficient Compute-intensive Kernel Fusion
-  - [x] BOLT: BRIDGING THE GAP BETWEEN AUTO-TUNERS AND HARDWARE-NATIVE PERFORMANCE[MLSys'22]: [[Paper](http://yibozhu.com/doc/bolt-mlsys22.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/28)]
+  - [x] BOLT: Brinding The Gap Between Auto-Tunners and Hardware-Native Performance[MLSys'22]: [[Paper](http://yibozhu.com/doc/bolt-mlsys22.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/28)]
 
 - Efficient Memory-intensive Kernel Fusion
   - [x] AStitch: Enabling a New Multi-dimensional Optimization Space for Memory-Intensive ML Training and Inference on Modern SIMT Architectures[ASPLOS'22]: [[Paper](https://dl.acm.org/doi/10.1145/3503222.3507723)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/26)]
@@ -53,6 +53,7 @@ toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-h
 
 - [x] FlashInfer: Efficient and Customizable Attention Engine for LLM Inference Serving[Arxiv'2024]: [[Paper](papers/mlsys/2501.01005v1.pdf)]
 - [x] ThunderKittens: Simple, Fast, and Adorable AI Kernels[Arxiv'2024]: [[Paper](papers/mlsys/ThunderKittens.pdf)]
+- [x] SGLang: Efficient Execution of Structured language Model Programs[Arxiv'24]: [[Paper](papers/mlsys/sglang.pdf)]
 
 
 ## Deep Learning
@@ -62,7 +63,8 @@ toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-h
 - [x] Attention is all you need[NIPS'17]: [[Paper](papers/DL/Attention-NIPS.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/32)]
 - [x] Big bird: transformers for longer sequences[NIPS'20]: [[Paper](papers/DL/bigbird.pdf)] [[Note](https://github.com/KuangjuX/Notes/blob/main/DeepLearning/SparseAttention.md)]
 - [x] FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness[NIPS'22]: [[Paper](https://proceedings.neurips.cc/paper_files/paper/2022/file/67d57c32e20fd0a7a302cb81d36e40d5-Paper-Conference.pdf)] [[Note](https://github.com/KuangjuX/Notes/blob/main/DeepLearning/FlashAttention.md)]
-- [x] FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning[arxiv]: [[Paper](https://arxiv.org/pdf/2307.08691.pdf)] [[Note](https://github.com/KuangjuX/Notes/blob/main/DeepLearning/FlashAttention.md)]
+- [x] FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning[Arxiv]: [[Paper](https://arxiv.org/pdf/2307.08691.pdf)] [[Note](https://github.com/KuangjuX/Notes/blob/main/DeepLearning/FlashAttention.md)]
+- [x] Flash-Decoding for long-context inference[Blog]: [[Paper](https://crfm.stanford.edu/2023/10/12/flashdecoding.html)] [[Note](https://github.com/KuangjuX/Notes/blob/main/DeepLearning/FlashDecoding.md)]
 
 ### New Architecture for LLM
 
