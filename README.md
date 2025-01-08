@@ -1,7 +1,14 @@
 # Paper Reading
 
 ## MLSys
-### DL Compiler
+
+### Kernel Library for LLM
+
+- [x] FlashInfer: Efficient and Customizable Attention Engine for LLM Inference Serving[Arxiv'2024]: [[Paper](papers/mlsys/2501.01005v1.pdf)]
+- [x] ThunderKittens: Simple, Fast, and Adorable AI Kernels[Arxiv'2024]: [[Paper](papers/mlsys/ThunderKittens.pdf)]
+
+### Deep Learning Compiler
+
 #### Survey
 - [x] The Deep Learning Compiler: A Comprehensive Survey: [[Paper](https://arxiv.org/pdf/2002.03794.pdf)] [[Note](https://github.com/KuangjuX/system-notes/blob/main/paper-notes/ai-compiler/The-Deep-Learning-Compiler-A-Comprehensive-Survey.md)]
 
@@ -78,8 +85,6 @@ toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-h
 - [ ] UGache: A Unified GPU Cache for Embedding-based Deep Learning[SOSP'23]: [[Paper](https://dl.acm.org/doi/pdf/10.1145/3600006.3613169)]
 
 
-### Sparse Model
-- [ ] PIT: Optimization of Dynamic Sparse Deep Learning Models via Permutation Invariant Transformation[SOSP'23]: [[Paper](https://arxiv.org/pdf/2301.10936.pdf)]
 
 ### On-device Training
 - [x] On-Device Training Under 256KB Memory[NeurIPS'22]: [[Paper](https://arxiv.org/pdf/2206.15472.pdf)]
