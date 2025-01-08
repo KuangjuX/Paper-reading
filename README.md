@@ -1,7 +1,14 @@
 # Paper Reading
 
 ## MLSys
-### DL Compiler
+
+### Kernel Library for LLM
+
+- [x] FlashInfer: Efficient and Customizable Attention Engine for LLM Inference Serving[Arxiv'2024]: [[Paper](papers/mlsys/2501.01005v1.pdf)]
+- [x] ThunderKittens: Simple, Fast, and Adorable AI Kernels[Arxiv'2024]: [[Paper](papers/mlsys/ThunderKittens.pdf)]
+
+### Deep Learning Compiler
+
 #### Survey
 - [x] The Deep Learning Compiler: A Comprehensive Survey: [[Paper](https://arxiv.org/pdf/2002.03794.pdf)] [[Note](https://github.com/KuangjuX/system-notes/blob/main/paper-notes/ai-compiler/The-Deep-Learning-Compiler-A-Comprehensive-Survey.md)]
 
@@ -58,12 +65,12 @@ toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-h
 - [ ] AutoSA: A Polyhedral Compiler for High-Performance Systolic Arrays on FPGA[FPGA'21]: [[Paper](papers/mlsys/soft-hard-co-design/AutoSA-FPGA.pdf)]
 
 #### Polyhedral
-- [ ] TIRAMISU: A Polyhedral Compiler for Expressing Fast and Portable Code[CGO'19]: [[Paper](papers/mlsys/polyhedral/Tiramisu-CGO.pdf)]
+- [x] TIRAMISU: A Polyhedral Compiler for Expressing Fast and Portable Code[CGO'19]: [[Paper](papers/mlsys/polyhedral/Tiramisu-CGO.pdf)] [[Note](notes/compiler/tiramisu-cgo/tiramisu.md)]
 - [ ] AKG: Automatic Kernel Generation for Neural Processing Units using Polyhedral Transformations[PLDI'21]: [[Paper](papers/mlsys/polyhedral/AKG-PLDI.pdf)]
 
 ### Inter-Operator Optimization
-- [ ] FLASHATTENTION: Fast and Memory-Efficient Exact Attention with IO-Awareness[NIPS'22]: [[Paper](https://proceedings.neurips.cc/paper_files/paper/2022/file/67d57c32e20fd0a7a302cb81d36e40d5-Paper-Conference.pdf)]
-- [ ] FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning[arxiv]: [[Paper](https://arxiv.org/pdf/2307.08691.pdf)]
+- [x] FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness[NIPS'22]: [[Paper](https://proceedings.neurips.cc/paper_files/paper/2022/file/67d57c32e20fd0a7a302cb81d36e40d5-Paper-Conference.pdf)] [[Note](https://github.com/KuangjuX/Notes/blob/main/DeepLearning/FlashAttention.md)]
+- [x] FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning[arxiv]: [[Paper](https://arxiv.org/pdf/2307.08691.pdf)] [[Note](https://github.com/KuangjuX/Notes/blob/main/DeepLearning/FlashAttention.md)]
 - [ ] FLASHDECODING++: FASTER LARGE LANGUAGE MODEL INFERENCE ON GPUS[arxiv]: [[Paper](https://arxiv.org/pdf/2311.01282.pdf)]
 
 
@@ -78,8 +85,6 @@ toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-h
 - [ ] UGache: A Unified GPU Cache for Embedding-based Deep Learning[SOSP'23]: [[Paper](https://dl.acm.org/doi/pdf/10.1145/3600006.3613169)]
 
 
-### Sparse Model
-- [ ] PIT: Optimization of Dynamic Sparse Deep Learning Models via Permutation Invariant Transformation[SOSP'23]: [[Paper](https://arxiv.org/pdf/2301.10936.pdf)]
 
 ### On-device Training
 - [x] On-Device Training Under 256KB Memory[NeurIPS'22]: [[Paper](https://arxiv.org/pdf/2206.15472.pdf)]
