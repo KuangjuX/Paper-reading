@@ -8,7 +8,6 @@
   - [x] The Deep Learning Compiler: A Comprehensive Survey: [[Paper](https://arxiv.org/pdf/2002.03794.pdf)] [[Note](https://github.com/KuangjuX/system-notes/blob/main/paper-notes/ai-compiler/The-Deep-Learning-Compiler-A-Comprehensive-Survey.md)]
 
 - Graph Optimization
-
   - [x] Rammer: Enabling Holistic Deep Learning Compiler Optimizations with rTasks[OSDI'20]: [[Paper](https://www.usenix.org/system/files/osdi20-ma.pdf)] [[Note](https://github.com/KuangjuX/paper-reading/issues/22)]
 
 - Efficient Compute-intensive Kernel Generation
@@ -33,7 +32,6 @@ toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-h
 
 
 - Polyhedral Optimization
-
   - [x] TIRAMISU: A Polyhedral Compiler for Expressing Fast and Portable Code[CGO'19]: [[Paper](papers/mlsys/polyhedral/Tiramisu-CGO.pdf)] [[Note](notes/compiler/tiramisu-cgo/tiramisu.md)]
 
 - Efficient Hardware Mapping
@@ -51,6 +49,7 @@ toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-h
 
 ### System for SIMT GPU Programming
 
+- [x] Triton: an intermediate language and compiler for tiled neural network computations[MAPL'19]: [[Paper](https://dl.acm.org/doi/10.1145/3315508.3329973)]
 - [x] FlashInfer: Efficient and Customizable Attention Engine for LLM Inference Serving[Arxiv'2024]: [[Paper](papers/mlsys/2501.01005v1.pdf)]
 - [x] ThunderKittens: Simple, Fast, and Adorable AI Kernels[Arxiv'2024]: [[Paper](papers/mlsys/ThunderKittens.pdf)]
 - [x] SGLang: Efficient Execution of Structured language Model Programs[Arxiv'24]: [[Paper](papers/mlsys/sglang.pdf)]
