@@ -20,27 +20,27 @@
 - Efficient Memory-intensive Kernel Fusion
   - [x] AStitch: Enabling a New Multi-dimensional Optimization Space for Memory-Intensive ML Training and Inference on Modern SIMT Architectures[ASPLOS'22]: [[Paper](https://dl.acm.org/doi/10.1145/3503222.3507723)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/26)]
   - [x] Welder: Scheduling Deep Learning Memory Access via Tile-graph[OSDI'23]: [[Paper](https://www.usenix.org/system/files/osdi23-shi.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/25)]
+  - [x] Effectively Scheduling Computational Graphs of Deep Neural Networks
+toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-hard-co-design/osdi23-zhao.pdf)]
 
 - Dataflow Analytical
   - [x] Cocktailer: Analyzing and Optimizing Dynamic Control Flow in Deep Learning[OSDI'23]: [[Paper](https://www.usenix.org/system/files/osdi23-zhang-chen.pdf)] [[Note](https://github.com/KuangjuX/paper-reading/issues/21)]
   - [x] Chimera: An Analytical Optimizing Framework for Effective Compute-intensive Operators Fusion[HPCA'23]: [[Paper](papers/mlsys/fusion/Chimera_An_Analytical_Optimizing_Framework_for_Effective_Compute-intensive_Operators_Fusion.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/30)]
 
-- Efficient Hardware Mapping
-    - [x] AMOS: Enabling Automatic Mapping for Tensor Computations On Spatial Accelerators with Hardware Abstraction[ISCA'22]: [[Paper](papers/mlsys/IR/AMOS-ISCA.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/31)]
-
 - IR Design
-
   - [x] MLIR: Scaling Compiler Infrastructure for Domain Specifific Computation[CGO'21]: [[Paper](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9370308)] [[Note](https://github.com/KuangjuX/system-notes/blob/main/paper-notes/ai-compiler/MLIR-Scaling-Compiler-Infrastructure-for-Domain-Specific-Computation.md)]
   - [x] Graphene: An IR for Optimized Tensor Computations on GPUs[ASPLOS'23]: [[Paper](https://dl.acm.org/doi/pdf/10.1145/3582016.3582018)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/27)]
-
-
 
 
 - Polyhedral Optimization
 
   - [x] TIRAMISU: A Polyhedral Compiler for Expressing Fast and Portable Code[CGO'19]: [[Paper](papers/mlsys/polyhedral/Tiramisu-CGO.pdf)] [[Note](notes/compiler/tiramisu-cgo/tiramisu.md)]
-  - [x] Effectively Scheduling Computational Graphs of Deep Neural Networks
-toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-hard-co-design/osdi23-zhao.pdf)]
+
+- Efficient Hardware Mapping
+    - [x] AMOS: Enabling Automatic Mapping for Tensor Computations On Spatial Accelerators with Hardware Abstraction[ISCA'22]: [[Paper](papers/mlsys/IR/AMOS-ISCA.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/31)]
+
+- Loop Program Analysis and Nested Data Parallelism 
+  - [x] Uncovering Nested Data Parallelism and Data Reuse in DNN Computation with FractalTensor[SOSP'24]: [[Paper](https://dl.acm.org/doi/10.1145/3694715.3695961)]
 
 
 
