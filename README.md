@@ -1,14 +1,11 @@
 # Paper Reading
 
-## Machine Learning System
-
-### Deep Learning Compiler
+## Deep Learning Compiler
 
 - Survey
   - [x] The Deep Learning Compiler: A Comprehensive Survey: [[Paper](https://arxiv.org/pdf/2002.03794.pdf)] [[Note](https://github.com/KuangjuX/system-notes/blob/main/paper-notes/ai-compiler/The-Deep-Learning-Compiler-A-Comprehensive-Survey.md)]
 
 - Graph Optimization
-
   - [x] Rammer: Enabling Holistic Deep Learning Compiler Optimizations with rTasks[OSDI'20]: [[Paper](https://www.usenix.org/system/files/osdi20-ma.pdf)] [[Note](https://github.com/KuangjuX/paper-reading/issues/22)]
 
 - Efficient Compute-intensive Kernel Generation
@@ -42,18 +39,28 @@ toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-h
 - Loop Program Analysis and Nested Data Parallelism 
   - [x] Uncovering Nested Data Parallelism and Data Reuse in DNN Computation with FractalTensor[SOSP'24]: [[Paper](https://dl.acm.org/doi/10.1145/3694715.3695961)]
 
+- DSL
+  - [x] ThunderKittens: Simple, Fast, and Adorable AI Kernels[Arxiv'2024]: [[Paper](papers/mlsys/ThunderKittens.pdf)]
 
 
-### System for Edge and Mobile
+## LLM Inference
+
+### Long Context Inference Attention
+- [x] Training-Free Long-Context Scaling of Large Language Models[ICML'24]: [[Paper](https://arxiv.org/pdf/2402.17463)] [[Note](https://github.com/KuangjuX/Notes/blob/main/DeepLearning/DCA.md)]
+- [ ] Efficient Streaming Language Models with Attention Sinks[ICLR'24]: [[Paper](https://arxiv.org/pdf/2309.17453)]
+- [ ] DuoAttention: Efficient Long-Context LLM Inference with Retrieval and Streaming Heads[ICLR'25]: [[Paper](https://arxiv.org/pdf/2410.10819v1)]
+
+### LLM Serving
+- [x] SGLang: Efficient Execution of Structured language Model Programs[Arxiv'24]: [[Paper](papers/mlsys/sglang.pdf)]
+- [x] FlashInfer: Efficient and Customizable Attention Engine for LLM Inference Serving[Arxiv'2024]: [[Paper](papers/mlsys/2501.01005v1.pdf)]
+
+
+## LLM System for Mobile
 
 - [x] On-Device Training Under 256KB Memory[NeurIPS'22]: [[Paper](https://arxiv.org/pdf/2206.15472.pdf)]
 - [x] PockEngine: Sparse and Efficient Fine-tuning in a Pocket[MICRO'23]: [[Paper](papers/mlsys/on-device/pockengine.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/29)]
 
-### System for SIMT GPU Programming
 
-- [x] FlashInfer: Efficient and Customizable Attention Engine for LLM Inference Serving[Arxiv'2024]: [[Paper](papers/mlsys/2501.01005v1.pdf)]
-- [x] ThunderKittens: Simple, Fast, and Adorable AI Kernels[Arxiv'2024]: [[Paper](papers/mlsys/ThunderKittens.pdf)]
-- [x] SGLang: Efficient Execution of Structured language Model Programs[Arxiv'24]: [[Paper](papers/mlsys/sglang.pdf)]
 
 
 ## Deep Learning
