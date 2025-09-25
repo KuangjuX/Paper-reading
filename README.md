@@ -51,8 +51,10 @@ toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-h
 - [ ] DuoAttention: Efficient Long-Context LLM Inference with Retrieval and Streaming Heads[ICLR'25]: [[Paper](https://arxiv.org/pdf/2410.10819v1)]
 
 ### LLM Serving
-- [x] SGLang: Efficient Execution of Structured language Model Programs[Arxiv'24]: [[Paper](papers/mlsys/sglang.pdf)]
-- [x] FlashInfer: Efficient and Customizable Attention Engine for LLM Inference Serving[Arxiv'2024]: [[Paper](papers/mlsys/2501.01005v1.pdf)]
+- [x] SGLang: Efficient Execution of Structured language Model Programs  [[Paper](papers/mlsys/sglang.pdf)]
+- [x] FlashInfer: Efficient and Customizable Attention Engine for LLM Inference Serving [[Paper](papers/mlsys/2501.01005v1.pdf)]
+- [ ] DistServe: Disaggregating Prefill and Decoding for Goodput-optimized Large Language Model Serving[OSDI'24] [[Paper](https://www.usenix.org/system/files/osdi24-zhong-yinmin.pdf)]
+- [ ] Mooncake: Trading More Storage for Less Computation — A KVCache-centric Architecture for Serving LLM Chatbot[FAST'25] [[Paper](https://www.usenix.org/system/files/fast25-qin.pdf)]
 - [ ] A Suvery of LLM Inference Systems [[Paper](https://arxiv.org/pdf/2506.21901)]
 
 ## LLM Training
