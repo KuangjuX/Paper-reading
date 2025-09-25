@@ -53,7 +53,31 @@ toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-h
 ### LLM Serving
 - [x] SGLang: Efficient Execution of Structured language Model Programs[Arxiv'24]: [[Paper](papers/mlsys/sglang.pdf)]
 - [x] FlashInfer: Efficient and Customizable Attention Engine for LLM Inference Serving[Arxiv'2024]: [[Paper](papers/mlsys/2501.01005v1.pdf)]
+- [ ] A Suvery of LLM Inference Systems [[Paper](https://arxiv.org/pdf/2506.21901)]
 
+## LLM Training
+
+### Distributed Training
+
+- [ ] LoongTrain: Efficient Training of Long-Sequence LLMs  with Head-Context Parallelism [[Paper](https://arxiv.org/pdf/2406.18485)]
+
+### Compute-Communication Overlap
+- [x] Flux: Fast Software-based Communication Overlap on GPUs through Kernel Fusion [[Paper](https://arxiv.org/pdf/2406.06858v1)] 
+- [ ] Comet: Fine-grained Computation-communication
+Overlapping for Mixture-of-Experts [[Paper](https://arxiv.org/pdf/2502.19811)]
+- [ ] Centauri: Enabling Efficient Scheduling for
+Communication-Computation Overlap in Large Model
+Training via Communication Partitioning[ASPLOS'24 Best Paper] [[Paper](https://dl.acm.org/doi/pdf/10.1145/3620666.3651379)] 
+- [ ] TileLink: Generating Efficient Compute-Communication Overlapping Kernels using Tile-Centric Primitives[MLSys'25] [[Paper](https://arxiv.org/pdf/2503.20313)]
+- [ ] Triton-distributed: Programming Overlapping Kernels on Distributed AI Systems with the Triton Compiler [[Paper](https://arxiv.org/pdf/2504.19442)]
+- [ ] FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation[Eurosys'25] [[Paper](https://arxiv.org/pdf/2504.19519)]
+- [ ] TokenWeave: Efficient Compute-Communication
+Overlap for Distributed LLM Inference [[Paper](https://arxiv.org/pdf/2505.11329)]
+
+## LLM Attention
+
+- [ ] A Survey of Efficient Attention Methods: Hardware-efficient,
+Sparse, Compact, and Linear Attention [[Paper](https://attention-survey.github.io/files/Attention_Survey.pdf)]
 
 ## LLM System for Mobile
 
