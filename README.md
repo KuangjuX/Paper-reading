@@ -2,50 +2,35 @@
 
 ## Deep Learning Compiler
 
-- Survey
-  - [x] The Deep Learning Compiler: A Comprehensive Survey: [[Paper](https://arxiv.org/pdf/2002.03794.pdf)] [[Note](https://github.com/KuangjuX/system-notes/blob/main/paper-notes/ai-compiler/The-Deep-Learning-Compiler-A-Comprehensive-Survey.md)]
-
-- Graph Optimization
-  - [x] Rammer: Enabling Holistic Deep Learning Compiler Optimizations with rTasks[OSDI'20]: [[Paper](https://www.usenix.org/system/files/osdi20-ma.pdf)] [[Note](https://github.com/KuangjuX/paper-reading/issues/22)]
-
-- Efficient Compute-intensive Kernel Generation
-  - [x] ROLLER: Fast and Efficient Tensor Compilation for Deep Learning[OSDI'22]: [[Paper](https://www.usenix.org/system/files/osdi22-zhu.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/24)]
-
-- Efficient Compute-intensive Kernel Fusion
-  - [x] BOLT: Brinding The Gap Between Auto-Tunners and Hardware-Native Performance[MLSys'22]: [[Paper](http://yibozhu.com/doc/bolt-mlsys22.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/28)]
-
-- Efficient Memory-intensive Kernel Fusion
-  - [x] AStitch: Enabling a New Multi-dimensional Optimization Space for Memory-Intensive ML Training and Inference on Modern SIMT Architectures[ASPLOS'22]: [[Paper](https://dl.acm.org/doi/10.1145/3503222.3507723)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/26)]
-  - [x] Welder: Scheduling Deep Learning Memory Access via Tile-graph[OSDI'23]: [[Paper](https://www.usenix.org/system/files/osdi23-shi.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/25)]
-  - [x] Effectively Scheduling Computational Graphs of Deep Neural Networks
+- [x] The Deep Learning Compiler: A Comprehensive Survey: [[Paper](https://arxiv.org/pdf/2002.03794.pdf)] [[Note](https://github.com/KuangjuX/system-notes/blob/main/paper-notes/ai-compiler/The-Deep-Learning-Compiler-A-Comprehensive-Survey.md)]xw
+- [x] Rammer: Enabling Holistic Deep Learning Compiler Optimizations with rTasks[OSDI'20]: [[Paper](https://www.usenix.org/system/files/osdi20-ma.pdf)] [[Note](https://github.com/KuangjuX/paper-reading/issues/22)]
+- [x] ROLLER: Fast and Efficient Tensor Compilation for Deep Learning[OSDI'22]: [[Paper](https://www.usenix.org/system/files/osdi22-zhu.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/24)]
+- [x] BOLT: Brinding The Gap Between Auto-Tunners and Hardware-Native Performance[MLSys'22]: [[Paper](http://yibozhu.com/doc/bolt-mlsys22.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/28)]
+- [x] AStitch: Enabling a New Multi-dimensional Optimization Space for Memory-Intensive ML Training and Inference on Modern SIMT Architectures[ASPLOS'22]: [[Paper](https://dl.acm.org/doi/10.1145/3503222.3507723)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/26)]
+- [x] Welder: Scheduling Deep Learning Memory Access via Tile-graph[OSDI'23]: [[Paper](https://www.usenix.org/system/files/osdi23-shi.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/25)]
+- [x] Effectively Scheduling Computational Graphs of Deep Neural Networks
 toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-hard-co-design/osdi23-zhao.pdf)]
-
-- Dataflow Analytical
-  - [x] Cocktailer: Analyzing and Optimizing Dynamic Control Flow in Deep Learning[OSDI'23]: [[Paper](https://www.usenix.org/system/files/osdi23-zhang-chen.pdf)] [[Note](https://github.com/KuangjuX/paper-reading/issues/21)]
-  - [x] Chimera: An Analytical Optimizing Framework for Effective Compute-intensive Operators Fusion[HPCA'23]: [[Paper](papers/mlsys/fusion/Chimera_An_Analytical_Optimizing_Framework_for_Effective_Compute-intensive_Operators_Fusion.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/30)]
-
-- IR Design
-  - [x] MLIR: Scaling Compiler Infrastructure for Domain Specifific Computation[CGO'21]: [[Paper](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9370308)] [[Note](https://github.com/KuangjuX/system-notes/blob/main/paper-notes/ai-compiler/MLIR-Scaling-Compiler-Infrastructure-for-Domain-Specific-Computation.md)]
-  - [x] Graphene: An IR for Optimized Tensor Computations on GPUs[ASPLOS'23]: [[Paper](https://dl.acm.org/doi/pdf/10.1145/3582016.3582018)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/27)]
-
-
-- Polyhedral Optimization
-
-  - [x] TIRAMISU: A Polyhedral Compiler for Expressing Fast and Portable Code[CGO'19]: [[Paper](papers/mlsys/polyhedral/Tiramisu-CGO.pdf)] [[Note](notes/compiler/tiramisu-cgo/tiramisu.md)]
-
-- Efficient Hardware Mapping
-    - [x] AMOS: Enabling Automatic Mapping for Tensor Computations On Spatial Accelerators with Hardware Abstraction[ISCA'22]: [[Paper](papers/mlsys/IR/AMOS-ISCA.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/31)]
-
-- Loop Program Analysis and Nested Data Parallelism 
-  - [x] Uncovering Nested Data Parallelism and Data Reuse in DNN Computation with FractalTensor[SOSP'24]: [[Paper](https://dl.acm.org/doi/10.1145/3694715.3695961)]
-
-- DSL
-  - [x] ThunderKittens: Simple, Fast, and Adorable AI Kernels[Arxiv'2024]: [[Paper](papers/mlsys/ThunderKittens.pdf)]
-
+- [x] Cocktailer: Analyzing and Optimizing Dynamic Control Flow in Deep Learning[OSDI'23]: [[Paper](https://www.usenix.org/system/files/osdi23-zhang-chen.pdf)] [[Note](https://github.com/KuangjuX/paper-reading/issues/21)]
+- [x] Chimera: An Analytical Optimizing Framework for Effective Compute-intensive Operators Fusion[HPCA'23]: [[Paper](papers/mlsys/fusion/Chimera_An_Analytical_Optimizing_Framework_for_Effective_Compute-intensive_Operators_Fusion.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/30)]
+- [x] MLIR: Scaling Compiler Infrastructure for Domain Specifific Computation[CGO'21]: [[Paper](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9370308)] [[Note](https://github.com/KuangjuX/system-notes/blob/main/paper-notes/ai-compiler/MLIR-Scaling-Compiler-Infrastructure-for-Domain-Specific-Computation.md)]
+- [x] Graphene: An IR for Optimized Tensor Computations on GPUs[ASPLOS'23]: [[Paper](https://dl.acm.org/doi/pdf/10.1145/3582016.3582018)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/27)]
+- [x] TIRAMISU: A Polyhedral Compiler for Expressing Fast and Portable Code[CGO'19]: [[Paper](papers/mlsys/polyhedral/Tiramisu-CGO.pdf)] [[Note](notes/compiler/tiramisu-cgo/tiramisu.md)]
+- [x] AMOS: Enabling Automatic Mapping for Tensor Computations On Spatial Accelerators with Hardware Abstraction[ISCA'22]: [[Paper](papers/mlsys/IR/AMOS-ISCA.pdf)] [[Note](https://github.com/KuangjuX/Paper-reading/issues/31)]
+- [x] Uncovering Nested Data Parallelism and Data Reuse in DNN Computation with FractalTensor[SOSP'24] [[Paper](https://dl.acm.org/doi/10.1145/3694715.3695961)]
+- [x] ThunderKittens: Simple, Fast, and Adorable AI Kernels [[Paper](papers/mlsys/ThunderKittens.pdf)]
+- [x] Mirage: A Multi-Level Superoptimizer for Tensor Programs[OSDI'25] [[Paper](https://www.usenix.org/system/files/osdi25-wu-mengdi.pdf)]
+- [x] PipeThreader: Software-Defined Pipelining for Efficient DNN Execution[OSDI'25] [[Paper](https://www.usenix.org/system/files/osdi25-cheng.pdf)]
+- [ ] KPerfIR: Towards a Open and Compiler-centric
+Ecosystem for GPU Kernel Performance Tooling
+on Modern AI Workloads[OSDI'25] [[Paper](https://www.usenix.org/system/files/osdi25-guan.pdf)]
+- [x] TileLang: A Composable Tiled Programming Model for AI
+Systems [[Paper](https://arxiv.org/pdf/2504.17577)]
 
 ## LLM Inference
 
-### Long Context Inference Attention
+- [ ] WaferLLM: Large Language Model Inference at Wafer Scale [OSDI'25] [[Paper](https://www.usenix.org/system/files/osdi25-he.pdf)]
+
+### Long Context Inference
 - [x] Training-Free Long-Context Scaling of Large Language Models[ICML'24]: [[Paper](https://arxiv.org/pdf/2402.17463)] [[Note](https://github.com/KuangjuX/Notes/blob/main/DeepLearning/DCA.md)]
 - [ ] Efficient Streaming Language Models with Attention Sinks[ICLR'24]: [[Paper](https://arxiv.org/pdf/2309.17453)]
 - [ ] DuoAttention: Efficient Long-Context LLM Inference with Retrieval and Streaming Heads[ICLR'25]: [[Paper](https://arxiv.org/pdf/2410.10819v1)]
@@ -54,7 +39,10 @@ toward Their Domain-Specific Accelerators[OSDI'23]: [[Paper](papers/mlsys/soft-h
 - [x] SGLang: Efficient Execution of Structured language Model Programs  [[Paper](papers/mlsys/sglang.pdf)]
 - [x] FlashInfer: Efficient and Customizable Attention Engine for LLM Inference Serving [[Paper](papers/mlsys/2501.01005v1.pdf)]
 - [ ] DistServe: Disaggregating Prefill and Decoding for Goodput-optimized Large Language Model Serving[OSDI'24] [[Paper](https://www.usenix.org/system/files/osdi24-zhong-yinmin.pdf)]
+- [ ] LoongServe: Efficiently Serving Long-Context Large
+Language Models with Elastic Sequence Parallelism[SOSP'24] [[Paper](https://dl.acm.org/doi/pdf/10.1145/3694715.3695948)]
 - [ ] Mooncake: Trading More Storage for Less Computation — A KVCache-centric Architecture for Serving LLM Chatbot[FAST'25] [[Paper](https://www.usenix.org/system/files/fast25-qin.pdf)]
+- [ ] NanoFlow: Towards Optimal Large Language Model Serving Throughput[OSDI'25] [[Paper](https://www.usenix.org/system/files/osdi25-zhu-kan.pdf)]
 - [ ] A Suvery of LLM Inference Systems [[Paper](https://arxiv.org/pdf/2506.21901)]
 
 ## LLM Training
