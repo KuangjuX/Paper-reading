@@ -1,5 +1,9 @@
 # Paper Reading
 
+## Math
+
+- [ ] Categorical Foundations for CuTe Layouts [[Paper](https://research.colfax-intl.com/categorical-foundations-for-cute-layouts/)]
+
 ## Deep Learning Compiler
 
 - [x] The Deep Learning Compiler: A Comprehensive Survey: [[Paper](https://arxiv.org/pdf/2002.03794.pdf)] [[Note](https://github.com/KuangjuX/system-notes/blob/main/paper-notes/ai-compiler/The-Deep-Learning-Compiler-A-Comprehensive-Survey.md)]xw
