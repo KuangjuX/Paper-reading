@@ -52,6 +52,8 @@ Language Models with Elastic Sequence Parallelism[SOSP'24] [[Paper](https://dl.a
 
 ### MegaKernel
 - [x] Look Ma, No Bubbles! Designing a Low-Latency Megakernel for Llama-1B [[Paper](https://hazyresearch.stanford.edu/blog/2025-05-27-no-bubbles)]
+- [ ] Compiling LLMs into a MegaKernel: A Path to Low-Latency Inference
+ [[Paper](https://zhihaojia.medium.com/compiling-llms-into-a-megakernel-a-path-to-low-latency-inference-cf7840913c17)]
 
 ## LLM Training
 
