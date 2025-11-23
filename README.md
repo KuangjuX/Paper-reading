@@ -50,6 +50,9 @@ Language Models with Elastic Sequence Parallelism[SOSP'24] [[Paper](https://dl.a
 - [ ] NanoFlow: Towards Optimal Large Language Model Serving Throughput[OSDI'25] [[Paper](https://www.usenix.org/system/files/osdi25-zhu-kan.pdf)]
 - [x] A Suvery of LLM Inference Systems [[Paper](https://arxiv.org/pdf/2506.21901)] [[Note](https://github.com/KuangjuX/Notes/blob/main/PaperNotes/LLM/Inference/llm_inference_survey.pdf)]
 
+### MegaKernel
+- [x] Look Ma, No Bubbles! Designing a Low-Latency Megakernel for Llama-1B [[Paper](https://hazyresearch.stanford.edu/blog/2025-05-27-no-bubbles)]
+
 ## LLM Training
 
 ### Distributed Training
