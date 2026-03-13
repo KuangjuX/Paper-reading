@@ -52,7 +52,7 @@
 | ✅ | **PipeThreader: Software-Defined Pipelining for Efficient DNN Execution** | OSDI'25 | [Paper](https://www.usenix.org/system/files/osdi25-cheng.pdf) |
 | ✅ | **TileLang: A Composable Tiled Programming Model for AI Systems** | — | [Paper](https://arxiv.org/pdf/2504.17577) |
 | ✅ | **Tawa: Automatic Warp Specialization for Modern GPUs with Asynchronous References** | arXiv'25 | [Paper](https://arxiv.org/pdf/2510.14719) |
-| ⬜ | **KPerfIR: Towards an Open and Compiler-centric Ecosystem for GPU Kernel Performance Tooling on Modern AI Workloads** | OSDI'25 | [Paper](https://www.usenix.org/system/files/osdi25-guan.pdf) |
+| ✅ | **KPerfIR: Towards an Open and Compiler-centric Ecosystem for GPU Kernel Performance Tooling on Modern AI Workloads** | OSDI'25 | [Paper](https://www.usenix.org/system/files/osdi25-guan.pdf) |
 
 ## 🚀 LLM Inference
 
@@ -91,7 +91,7 @@
 | ✅ | **Mirage Persistent Kernel: A Compiler and Runtime for Mega-Kernelizing Tensor Programs** | arXiv'25 | [Paper](https://arxiv.org/pdf/2512.22219) |
 | ✅ | **TileRT: Tile-Based Runtime for Ultra-Low-Latency LLM Inference** | — | [Paper](https://github.com/tile-ai/TileRT) |
 | ✅ | **SonicMoE: Accelerating MoE with IO and Tile-aware Optimizations** | arXiv'25 | [Paper](https://arxiv.org/pdf/2512.14080) |
-| ⬜ | **Compiling LLMs into a MegaKernel: A Path to Low-Latency Inference** | Blog | [Paper](https://zhihaojia.medium.com/compiling-llms-into-a-megakernel-a-path-to-low-latency-inference-cf7840913c17) |
+| ✅ | **Compiling LLMs into a MegaKernel: A Path to Low-Latency Inference** | Blog | [Paper](https://zhihaojia.medium.com/compiling-llms-into-a-megakernel-a-path-to-low-latency-inference-cf7840913c17) |
 
 ## 🏋️ LLM Training
 
