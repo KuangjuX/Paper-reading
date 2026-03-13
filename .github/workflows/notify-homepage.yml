@@ -1,0 +1,26 @@
+# Place this file at .github/workflows/notify-homepage.yml in the Paper-reading repo.
+#
+# Prerequisites:
+#   Create a GitHub Personal Access Token (classic) with `repo` scope,
+#   then add it as a secret named HOMEPAGE_DISPATCH_TOKEN in the Paper-reading repo:
+#     Paper-reading repo → Settings → Secrets → Actions → New repository secret
+
+name: Notify Homepage
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "README.md"
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger homepage sync
+        run: |
+          curl -X POST \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token ${{ secrets.HOMEPAGE_DISPATCH_TOKEN }}" \
+            https://api.github.com/repos/KuangjuX/KuangjuX.github.io/dispatches \
+            -d '{"event_type": "paper-reading-updated"}'
