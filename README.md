@@ -5,8 +5,8 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Papers-75-blue?style=flat-square" alt="Papers">
-  <img src="https://img.shields.io/badge/Read-59-green?style=flat-square" alt="Read">
+  <img src="https://img.shields.io/badge/Papers-76-blue?style=flat-square" alt="Papers">
+  <img src="https://img.shields.io/badge/Read-60-green?style=flat-square" alt="Read">
   <img src="https://img.shields.io/badge/To_Read-16-orange?style=flat-square" alt="To Read">
 </p>
 
@@ -18,6 +18,7 @@
 - [LLM Inference](#-llm-inference)
 - [LLM Training](#-llm-training)
 - [Deep Learning](#-deep-learning)
+- [LLM for Kernel Optimization](#-llm-for-kernel-optimization)
 - [GPU Microarchitecture](#-gpu-microarchitecture)
 - [Math Foundations](#-math-foundations)
 - [Compiler](#-compiler)
@@ -147,6 +148,12 @@
 |:------:|-------|-------|-------|
 | ✅ | **On-Device Training Under 256KB Memory** | NeurIPS'22 | [Paper](https://arxiv.org/pdf/2206.15472.pdf) |
 | ✅ | **PockEngine: Sparse and Efficient Fine-tuning in a Pocket** | MICRO'23 | [Paper](papers/mlsys/on-device/pockengine.pdf) / [Note](https://github.com/KuangjuX/Paper-reading/issues/29) |
+
+## 🤖 LLM for Kernel Optimization
+
+| Status | Paper | Venue | Links |
+|:------:|-------|-------|-------|
+| ✅ | **AVO: Agentic Variation Operators for Autonomous Evolutionary Search** | arXiv'26 | [Paper](https://arxiv.org/abs/2603.24517) / [Note](notes/llm-for-kernel/avo.md) |
 
 ## 🖥️ GPU Microarchitecture
 
