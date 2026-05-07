@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 410" font-family="Helvetica, Arial, sans-serif" font-size="13">
+  <style>
+    .title{font-size:16px;font-weight:600;}
+    .sub{font-size:11px;fill:#666;}
+    .box{stroke:#444;stroke-width:1.2;}
+    .grp{font-size:13px;font-weight:600;}
+    .disp{fill:#dde7ff;}
+    .ld{fill:#e7d8f0;}
+    .mma{fill:#ffe2c8;}
+    .epi{fill:#d9efd0;}
+    .reg{fill:#f4f4f4;}
+  </style>
+
+  <text x="20" y="28" class="title">&#x56FE; 2  &#x6BCF;&#x4E2A; SM &#x7684; 16 &#x4E2A;&#x7EBF;&#x7A0B;&#x675F;&#x89D2;&#x8272;&#x4E0E;&#x5BC4;&#x5B58;&#x5668;&#x914D;&#x989D;</text>
+  <text x="20" y="46" class="sub">&#x603B;&#x7EBF;&#x7A0B;&#x6570; = 128 + 128 + 256 = 512&#xFF1B;CTA cluster &#x5927;&#x5C0F; = 2&#xFF0C;&#x4E24;&#x4E2A;&#x76F8;&#x90BB; SM &#x5171;&#x4EAB; 2-CTA UMMA &#x4E0E;&#x5F20;&#x91CF;&#x5185;&#x5B58;</text>
+
+  <!-- Dispatch group: 4 warps -->
+  <text x="40" y="90" class="grp">&#x5206;&#x53D1;&#x7EBF;&#x7A0B;&#x675F;&#xFF08;4 &#x4E2A;&#xFF0C;128 &#x7EBF;&#x7A0B;&#xFF0C;48 reg/&#x7EBF;&#x7A0B;&#xFF09;</text>
+  <g>
+    <rect class="box disp" x="40" y="100" width="200" height="60"/>
+    <text x="140" y="125" text-anchor="middle">W0..W3</text>
+    <text x="140" y="145" text-anchor="middle" class="sub">&#x8BFB; topk_idx&#xFF1B;&#x5199;&#x6E90;&#x7D22;&#x5F15;&#xFF1B;&#x62C9;&#x53D6;&#x8BCD;&#x5143;&#xFF1B;&#x6E05;&#x7406;</text>
+  </g>
+
+  <!-- Non-epilogue MMA: 4 warps -->
+  <text x="40" y="195" class="grp">&#x975E;&#x5C3E;&#x58F0;&#x77E9;&#x9635;&#x4E58;&#x7EBF;&#x7A0B;&#x675F;&#xFF08;4 &#x4E2A;&#xFF0C;128 &#x7EBF;&#x7A0B;&#xFF0C;40 reg/&#x7EBF;&#x7A0B;&#xFF09;</text>
+  <g>
+    <rect class="box ld" x="40" y="205" width="65" height="60"/>
+    <text x="72" y="230" text-anchor="middle">W4</text>
+    <text x="72" y="248" text-anchor="middle" class="sub">TMA load A</text>
+
+    <rect class="box ld" x="110" y="205" width="65" height="60"/>
+    <text x="142" y="230" text-anchor="middle">W5</text>
+    <text x="142" y="248" text-anchor="middle" class="sub">TMA load B</text>
+
+    <rect class="box mma" x="180" y="205" width="80" height="60"/>
+    <text x="220" y="230" text-anchor="middle">W6</text>
+    <text x="220" y="248" text-anchor="middle" class="sub">UMMA &#x53D1;&#x5C04;</text>
+
+    <rect class="box reg" x="265" y="205" width="65" height="60"/>
+    <text x="297" y="230" text-anchor="middle">W7</text>
+    <text x="297" y="248" text-anchor="middle" class="sub">&#x7A7A;&#xFF08;&#x5907;&#x7528;&#xFF09;</text>
+  </g>
+
+  <!-- Epilogue: 8 warps = 2 warpgroups -->
+  <text x="40" y="300" class="grp">&#x5C3E;&#x58F0;/&#x5408;&#x5E76;&#x7EBF;&#x7A0B;&#x675F;&#xFF08;8 &#x4E2A;&#xFF0C;256 &#x7EBF;&#x7A0B;&#xFF0C;208 reg/&#x7EBF;&#x7A0B;&#xFF0C;&#x5206; 2 &#x4E2A; warpgroup&#xFF09;</text>
+  <g>
+    <rect class="box epi" x="40" y="310" width="180" height="60"/>
+    <text x="130" y="335" text-anchor="middle">W8..W11&#xFF08;WG0&#xFF09;</text>
+    <text x="130" y="353" text-anchor="middle" class="sub">L1 SwiGLU+&#x91CF;&#x5316; / L2 &#x8FDC;&#x7AEF;&#x5199;&#x56DE; / &#x5408;&#x5E76;&#x5F52;&#x7EA6;</text>
+
+    <rect class="box epi" x="225" y="310" width="180" height="60"/>
+    <text x="315" y="335" text-anchor="middle">W12..W15&#xFF08;WG1&#xFF09;</text>
+    <text x="315" y="353" text-anchor="middle" class="sub">&#x540C;&#x4E0A;&#xFF1A;&#x6BCF;&#x4E2A; WG &#x5404;&#x8D1F;&#x8D23; BLOCK_M/2 &#x884C;</text>
+  </g>
+
+  <!-- Side panel: shared resources -->
+  <g>
+    <rect class="box reg" x="500" y="100" width="380" height="270"/>
+    <text x="690" y="125" text-anchor="middle" class="grp">2-CTA cluster &#x5171;&#x4EAB;&#x8D44;&#x6E90;</text>
+
+    <rect class="box disp" x="520" y="140" width="340" height="40"/>
+    <text x="690" y="165" text-anchor="middle">&#x5BF9;&#x79F0;&#x663E;&#x5B58;&#x6620;&#x5C04; SymBuffer&#xFF08;&#x8DE8;&#x8FDB;&#x7A0B;&#x5171;&#x4EAB;&#x6307;&#x9488;&#xFF09;</text>
+
+    <rect class="box ld" x="520" y="190" width="340" height="40"/>
+    <text x="690" y="215" text-anchor="middle">&#x5171;&#x4EAB;&#x5185;&#x5B58;&#xFF1A;dispatch + CD + (A/B/SFA/SFB &#x00D7; Stages)</text>
+
+    <rect class="box mma" x="520" y="240" width="340" height="40"/>
+    <text x="690" y="265" text-anchor="middle">&#x5F20;&#x91CF;&#x5185;&#x5B58;&#xFF08;TMEM&#xFF09;&#xFF1A;&#x7D2F;&#x52A0;&#x5668; &#x00D7; 2 stage + SFA + SFB</text>
+
+    <rect class="box epi" x="520" y="290" width="340" height="65"/>
+    <text x="690" y="312" text-anchor="middle">&#x5C4F;&#x969C;&#x6570;&#x7EC4; barrier_start_ptr</text>
+    <text x="690" y="330" text-anchor="middle" class="sub">dispatch + full/empty + tmem_full/empty + combine</text>
+    <text x="690" y="346" text-anchor="middle" class="sub">grid_sync &#x8BA1;&#x6570;&#x5668; + NVLink &#x5C4F;&#x969C; phase &#x4FE1;&#x53F7;</text>
+  </g>
+</svg>

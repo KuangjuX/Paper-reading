@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 780" font-family="Helvetica, Arial, sans-serif" font-size="12">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#444"/>
+    </marker>
+    <marker id="arr-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#c00"/>
+    </marker>
+    <marker id="arr-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0070b8"/>
+    </marker>
+  </defs>
+  <style>
+    .title{font-size:16px;font-weight:700;}
+    .subtitle{font-size:11px;fill:#555;}
+    .lane-label{font-size:13px;font-weight:700;}
+    .block-label{font-size:10.5px;font-weight:600;}
+    .block-sub{font-size:9.5px;fill:#555;}
+    .dep-label{font-size:10px;font-weight:600;}
+    .note{font-size:10px;fill:#555;font-style:italic;}
+    .axis{stroke:#bbb;stroke-width:1;}
+    .axis-label{font-size:10px;fill:#888;}
+    .lane-bg-a{fill:#edf2ff;stroke:none;}
+    .lane-bg-b{fill:#fef6ec;stroke:none;}
+    .lane-bg-c{fill:#eef7ea;stroke:none;}
+    .blk{stroke-width:1.2;rx:4;ry:4;}
+    .blk-disp{fill:#c4d4f0;stroke:#4a6fa5;}
+    .blk-nvl{fill:#f0d0d0;stroke:#c00;}
+    .blk-l1m{fill:#f5d9a8;stroke:#b87333;}
+    .blk-l2m{fill:#c8e0b0;stroke:#4a8c3f;}
+    .blk-l1e{fill:#ffe680;stroke:#b89b00;}
+    .blk-l2e{fill:#b8d8a0;stroke:#3d7a30;}
+    .blk-comb{fill:#f4c0c0;stroke:#c44;}
+    .blk-clean{fill:#d8d8e8;stroke:#888;}
+    .dep-data{stroke:#444;stroke-width:1.4;fill:none;}
+    .dep-fine{stroke:#0070b8;stroke-width:1.6;fill:none;}
+    .dep-sync{stroke:#c00;stroke-width:1.6;fill:none;stroke-dasharray:5 3;}
+    .dep-tmem{stroke:#b87333;stroke-width:1.4;fill:none;}
+    .overlap-band{fill:#0070b8;opacity:0.07;}
+    .summary-box{fill:#f8faff;stroke:#0070b8;stroke-width:1.2;rx:6;ry:6;}
+    .legend-swatch{stroke:#666;stroke-width:0.8;rx:2;ry:2;}
+  </style>
+
+  <!-- Title -->
+  <text x="30" y="28" class="title">图 5  三组线程束的协同与重叠逻辑（单波次时间轴）</text>
+  <text x="30" y="46" class="subtitle">蓝色实线箭头 = 细粒度数据依赖（分块级解锁）；棕色实线 = TMEM 满/空屏障（累加器双缓冲）；红色虚线 = 全局屏障（NVLink / grid_sync）</text>
+
+  <!-- Time axis -->
+  <line x1="150" y1="540" x2="1030" y2="540" class="axis" marker-end="url(#arr)"/>
+  <text x="150" y="558" class="axis-label">t = 0</text>
+  <text x="1010" y="558" class="axis-label" text-anchor="end">核结束</text>
+  <text x="590" y="558" class="axis-label" text-anchor="middle">时间 →</text>
+
+  <!-- ========== Lane backgrounds ========== -->
+  <rect class="lane-bg-a" x="148" y="62" width="884" height="110"/>
+  <rect class="lane-bg-b" x="148" y="172" width="884" height="150"/>
+  <rect class="lane-bg-c" x="148" y="322" width="884" height="218"/>
+
+  <!-- Lane borders -->
+  <line x1="148" y1="172" x2="1032" y2="172" stroke="#ccc" stroke-width="0.8"/>
+  <line x1="148" y1="322" x2="1032" y2="322" stroke="#ccc" stroke-width="0.8"/>
+
+  <!-- ========== Lane labels ========== -->
+  <text x="20" y="88" class="lane-label" fill="#4a6fa5">组 A</text>
+  <text x="20" y="104" class="lane-label" fill="#4a6fa5">分发</text>
+  <text x="20" y="120" font-size="10" fill="#4a6fa5">128 线程</text>
+  <text x="20" y="134" font-size="10" fill="#4a6fa5">4 warp</text>
+
+  <text x="20" y="228" class="lane-label" fill="#b87333">组 B</text>
+  <text x="20" y="244" class="lane-label" fill="#b87333">矩阵乘</text>
+  <text x="20" y="260" font-size="10" fill="#b87333">128 线程</text>
+  <text x="20" y="274" font-size="10" fill="#b87333">4 warp</text>
+
+  <text x="20" y="368" class="lane-label" fill="#3d7a30">组 C</text>
+  <text x="20" y="384" class="lane-label" fill="#3d7a30">尾声</text>
+  <text x="20" y="400" font-size="10" fill="#3d7a30">256 线程</text>
+  <text x="20" y="414" font-size="10" fill="#3d7a30">8 warp</text>
+
+  <!-- ========== Overlap bands (vertical shading) ========== -->
+  <rect class="overlap-band" x="280" y="62" width="190" height="478"/>
+  <rect class="overlap-band" x="530" y="62" width="160" height="478"/>
+  <rect class="overlap-band" x="760" y="62" width="170" height="478"/>
+
+  <text x="375" y="76" text-anchor="middle" fill="#0070b8" font-size="9" font-weight="600">重叠区 I</text>
+  <text x="610" y="76" text-anchor="middle" fill="#0070b8" font-size="9" font-weight="600">重叠区 II</text>
+  <text x="845" y="76" text-anchor="middle" fill="#0070b8" font-size="9" font-weight="600">重叠区 III</text>
+
+  <!-- ============================================================== -->
+  <!-- LANE A: Dispatch warps                                         -->
+  <!-- ============================================================== -->
+
+  <!-- A1: route stats -->
+  <rect class="blk blk-disp" x="155" y="88" width="110" height="44"/>
+  <text x="210" y="106" text-anchor="middle" class="block-label">统计路由</text>
+  <text x="210" y="120" text-anchor="middle" class="block-sub">读 topk_idx</text>
+
+  <!-- A2: write source index -->
+  <rect class="blk blk-disp" x="270" y="88" width="110" height="44"/>
+  <text x="325" y="106" text-anchor="middle" class="block-label">写源索引</text>
+  <text x="325" y="120" text-anchor="middle" class="block-sub">对称显存映射</text>
+
+  <!-- NVLink barrier -->
+  <rect class="blk blk-nvl" x="385" y="88" width="60" height="44"/>
+  <text x="415" y="106" text-anchor="middle" class="block-label" fill="#c00">NVL</text>
+  <text x="415" y="120" text-anchor="middle" class="block-sub" fill="#c00">屏障</text>
+
+  <!-- A3: pull tokens block 0,1,2... -->
+  <rect class="blk blk-disp" x="450" y="88" width="72" height="44"/>
+  <text x="486" y="106" text-anchor="middle" class="block-label">拉块 0</text>
+  <text x="486" y="120" text-anchor="middle" class="block-sub">专家 E₀</text>
+
+  <rect class="blk blk-disp" x="527" y="88" width="72" height="44"/>
+  <text x="563" y="106" text-anchor="middle" class="block-label">拉块 1</text>
+  <text x="563" y="120" text-anchor="middle" class="block-sub">专家 E₀</text>
+
+  <rect class="blk blk-disp" x="604" y="88" width="72" height="44"/>
+  <text x="640" y="106" text-anchor="middle" class="block-label">拉块 0</text>
+  <text x="640" y="120" text-anchor="middle" class="block-sub">专家 E₁</text>
+
+  <rect class="blk blk-disp" x="681" y="88" width="50" height="44"/>
+  <text x="706" y="112" text-anchor="middle" class="block-label">...</text>
+
+  <!-- A4: cleanup -->
+  <rect class="blk blk-clean" x="820" y="88" width="120" height="44"/>
+  <text x="880" y="106" text-anchor="middle" class="block-label">清理</text>
+  <text x="880" y="120" text-anchor="middle" class="block-sub">重置 workspace</text>
+
+  <!-- ============================================================== -->
+  <!-- LANE B: MMA warps                                              -->
+  <!-- ============================================================== -->
+
+  <!-- L1 GEMM blocks -->
+  <rect class="blk blk-l1m" x="310" y="198" width="80" height="44"/>
+  <text x="350" y="216" text-anchor="middle" class="block-label">L1 块 0</text>
+  <text x="350" y="230" text-anchor="middle" class="block-sub">TMA+UMMA</text>
+
+  <rect class="blk blk-l1m" x="395" y="198" width="80" height="44"/>
+  <text x="435" y="216" text-anchor="middle" class="block-label">L1 块 1</text>
+  <text x="435" y="230" text-anchor="middle" class="block-sub">TMA+UMMA</text>
+
+  <rect class="blk blk-l1m" x="480" y="198" width="80" height="44"/>
+  <text x="520" y="216" text-anchor="middle" class="block-label">L1 块 2</text>
+  <text x="520" y="230" text-anchor="middle" class="block-sub">TMA+UMMA</text>
+
+  <rect class="blk blk-l1m" x="565" y="198" width="50" height="44"/>
+  <text x="590" y="222" text-anchor="middle" class="block-label">...</text>
+
+  <!-- L2 GEMM blocks -->
+  <rect class="blk blk-l2m" x="620" y="268" width="80" height="44"/>
+  <text x="660" y="286" text-anchor="middle" class="block-label">L2 块 0</text>
+  <text x="660" y="300" text-anchor="middle" class="block-sub">TMA+UMMA</text>
+
+  <rect class="blk blk-l2m" x="705" y="268" width="80" height="44"/>
+  <text x="745" y="286" text-anchor="middle" class="block-label">L2 块 1</text>
+  <text x="745" y="300" text-anchor="middle" class="block-sub">TMA+UMMA</text>
+
+  <rect class="blk blk-l2m" x="790" y="268" width="80" height="44"/>
+  <text x="830" y="286" text-anchor="middle" class="block-label">L2 块 2</text>
+  <text x="830" y="300" text-anchor="middle" class="block-sub">TMA+UMMA</text>
+
+  <rect class="blk blk-l2m" x="875" y="268" width="50" height="44"/>
+  <text x="900" y="292" text-anchor="middle" class="block-label">...</text>
+
+  <!-- L1/L2 phase label -->
+  <text x="440" y="192" text-anchor="middle" fill="#b87333" font-size="10" font-weight="600">— L1 阶段 —</text>
+  <text x="770" y="262" text-anchor="middle" fill="#3d7a30" font-size="10" font-weight="600">— L2 阶段 —</text>
+
+  <!-- ============================================================== -->
+  <!-- LANE C: Epilogue warps                                         -->
+  <!-- ============================================================== -->
+
+  <!-- L1 epilogue blocks -->
+  <rect class="blk blk-l1e" x="395" y="348" width="90" height="44"/>
+  <text x="440" y="366" text-anchor="middle" class="block-label">SwiGLU 块 0</text>
+  <text x="440" y="380" text-anchor="middle" class="block-sub">+ FP8 量化</text>
+
+  <rect class="blk blk-l1e" x="490" y="348" width="90" height="44"/>
+  <text x="535" y="366" text-anchor="middle" class="block-label">SwiGLU 块 1</text>
+  <text x="535" y="380" text-anchor="middle" class="block-sub">+ FP8 量化</text>
+
+  <rect class="blk blk-l1e" x="585" y="348" width="55" height="44"/>
+  <text x="612" y="372" text-anchor="middle" class="block-label">...</text>
+
+  <!-- L2 epilogue blocks -->
+  <rect class="blk blk-l2e" x="705" y="418" width="90" height="44"/>
+  <text x="750" y="436" text-anchor="middle" class="block-label">L2 写回 块 0</text>
+  <text x="750" y="450" text-anchor="middle" class="block-sub">BF16→远端</text>
+
+  <rect class="blk blk-l2e" x="800" y="418" width="90" height="44"/>
+  <text x="845" y="436" text-anchor="middle" class="block-label">L2 写回 块 1</text>
+  <text x="845" y="450" text-anchor="middle" class="block-sub">BF16→远端</text>
+
+  <rect class="blk blk-l2e" x="895" y="418" width="40" height="44"/>
+  <text x="915" y="442" text-anchor="middle" class="block-label">...</text>
+
+  <!-- Combine -->
+  <rect class="blk blk-nvl" x="940" y="418" width="18" height="44"/>
+
+  <rect class="blk blk-comb" x="960" y="488" width="70" height="44"/>
+  <text x="995" y="506" text-anchor="middle" class="block-label">合并</text>
+  <text x="995" y="520" text-anchor="middle" class="block-sub">topk 归约</text>
+
+  <!-- L1/L2/Combine phase label -->
+  <text x="535" y="342" text-anchor="middle" fill="#b89b00" font-size="10" font-weight="600">— L1 尾声 —</text>
+  <text x="845" y="412" text-anchor="middle" fill="#3d7a30" font-size="10" font-weight="600">— L2 尾声 —</text>
+
+  <!-- ============================================================== -->
+  <!-- DEPENDENCY ARROWS                                              -->
+  <!-- ============================================================== -->
+
+  <!-- ❶ Dispatch → L1 MMA: l1_arrival_count (fine-grained) -->
+  <path d="M486 132 L486 150 C486 170 350 175 350 198" class="dep-fine" marker-end="url(#arr-blue)"/>
+  <text x="390" y="166" class="dep-label" fill="#0070b8">❶ l1_arrival</text>
+  <text x="390" y="178" class="note" fill="#0070b8">拉完一块即可加载</text>
+
+  <!-- ❷ L1 MMA → L1 Epilogue: tmem_full (per stage) -->
+  <path d="M390 242 L390 260 C390 290 440 310 440 348" class="dep-tmem" marker-end="url(#arr)"/>
+  <text x="355" y="298" class="dep-label" fill="#b87333">❷ tmem_full</text>
+
+  <!-- L1 Epilogue → L1 MMA: tmem_empty (return) -->
+  <path d="M395 370 C340 370 340 230 395 220" class="dep-tmem" marker-end="url(#arr)"/>
+  <text x="318" y="296" class="dep-label" fill="#b87333">tmem_empty</text>
+  <text x="330" y="308" class="note" fill="#b87333">双缓冲</text>
+
+  <!-- ❸ L1 Epilogue → L2 MMA: l2_arrival_mask (fine-grained) -->
+  <path d="M580 370 C610 370 615 310 620 290" class="dep-fine" marker-end="url(#arr-blue)"/>
+  <text x="610" y="350" class="dep-label" fill="#0070b8">❸ l2_mask</text>
+  <text x="610" y="362" class="note" fill="#0070b8">两位到齐即可加载</text>
+
+  <!-- ❹ L2 MMA → L2 Epilogue: tmem_full -->
+  <path d="M745 312 L745 330 C745 370 750 390 750 418" class="dep-tmem" marker-end="url(#arr)"/>
+  <text x="718" y="378" class="dep-label" fill="#b87333">❹ tmem_full</text>
+
+  <!-- L2 Epilogue → L2 MMA: tmem_empty -->
+  <path d="M705 440 C670 440 670 310 705 290" class="dep-tmem" marker-end="url(#arr)"/>
+  <text x="653" y="372" class="dep-label" fill="#b87333">tmem_empty</text>
+
+  <!-- ❺ L2 Epilogue → Combine: NVLink barrier -->
+  <path d="M950 440 L960 488" class="dep-sync" marker-end="url(#arr-red)"/>
+  <text x="974" y="475" class="dep-label" fill="#c00">❺ NVL</text>
+
+  <!-- ============================================================== -->
+  <!-- BOTTOM SUMMARY                                                 -->
+  <!-- ============================================================== -->
+  <rect class="summary-box" x="30" y="576" width="1000" height="190"/>
+  <text x="50" y="600" font-weight="700" font-size="13" fill="#0070b8">五条依赖链与三个重叠区间</text>
+
+  <!-- Dep 1 -->
+  <rect class="blk blk-disp" x="50" y="614" width="12" height="12"/>
+  <text x="68" y="625" class="dep-label" fill="#0070b8">❶ 分发 → L1 MMA</text>
+  <text x="215" y="625" font-size="10.5">l1_arrival_count — 拉完一个 pool block 就递增，L1 TMA 立即加载该块（不等全部词元）</text>
+
+  <!-- Dep 2 -->
+  <rect class="blk blk-l1m" x="50" y="636" width="12" height="12"/>
+  <text x="68" y="647" class="dep-label" fill="#b87333">❷ L1 MMA → L1 尾声</text>
+  <text x="233" y="647" font-size="10.5">tmem_full / tmem_empty — MMA 写满一个 stage 后尾声立即读，MMA 继续写下一个（双缓冲）</text>
+
+  <!-- Dep 3 -->
+  <rect class="blk blk-l1e" x="50" y="658" width="12" height="12"/>
+  <text x="68" y="669" class="dep-label" fill="#0070b8">❸ L1 尾声 → L2 MMA</text>
+  <text x="233" y="669" font-size="10.5">l2_arrival_mask — 每完成一个 N 块置位一位，L2 看到相邻两位为 1 就加载该 K 块（不等整个 L1）</text>
+
+  <!-- Dep 4 -->
+  <rect class="blk blk-l2m" x="50" y="680" width="12" height="12"/>
+  <text x="68" y="691" class="dep-label" fill="#b87333">❹ L2 MMA → L2 尾声</text>
+  <text x="233" y="691" font-size="10.5">tmem_full / tmem_empty — 同 ❷，L2 累加器产出后尾声即刻转 BF16 写回远端</text>
+
+  <!-- Dep 5 -->
+  <rect class="blk blk-comb" x="50" y="702" width="12" height="12"/>
+  <text x="68" y="713" class="dep-label" fill="#c00">❺ L2 尾声 → 合并</text>
+  <text x="233" y="713" font-size="10.5">NVLink 屏障 — 波次内所有 L2 写回完毕后跨卡确认可见性，尾声线程束切角色做 topk 归约</text>
+
+  <!-- Key insight -->
+  <line x1="50" y1="730" x2="1010" y2="730" stroke="#0070b8" stroke-width="0.5" opacity="0.5"/>
+  <text x="530" y="750" text-anchor="middle" font-weight="700" font-size="11.5" fill="#0070b8">关键洞察：❶❷❸❹ 的解锁粒度都是"一个分块"而非"整个阶段"，三组线程束大部分时间并行工作。</text>
+  <text x="530" y="764" text-anchor="middle" font-size="10.5" fill="#555">总耗时 ≈ max(通信延迟, 计算延迟)，而非 sum(通信延迟, 计算延迟)。只有 ❺ 需要等整个波次完成。</text>
+</svg>

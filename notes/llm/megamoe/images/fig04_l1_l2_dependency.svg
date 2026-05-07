@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 470" font-family="Helvetica, Arial, sans-serif" font-size="12">
+  <defs>
+    <marker id="ar3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#444"/>
+    </marker>
+  </defs>
+  <style>
+    .title{font-size:16px;font-weight:600;}
+    .sub{font-size:11px;fill:#666;}
+    .box{stroke:#333;stroke-width:1.2;}
+    .gate{fill:#fde8c8;}
+    .up{fill:#fff2a8;}
+    .swi{fill:#d9efd0;}
+    .l2blk{fill:#dde7ff;}
+    .mask0{fill:#eee;}
+    .mask1{fill:#9ad19a;}
+    .lab{font-weight:600;}
+    .arr{stroke:#444;fill:none;}
+  </style>
+
+  <text x="20" y="28" class="title">&#x56FE; 4  L1&#x2192;L2 &#x7684;&#x7EC6;&#x7C92;&#x5EA6;&#x4F9D;&#x8D56;&#xFF1A;&#x7B2C;&#x4E8C;&#x5C42;&#x6BCF;&#x4E2A; K &#x5757;&#x9700;&#x8981;&#x7B49;&#x7B2C;&#x4E00;&#x5C42;&#x4E24;&#x4E2A; N &#x5757;&#x5230;&#x4F4D;</text>
+  <text x="20" y="46" class="sub">&#x7B2C;&#x4E00;&#x5C42;&#x8F93;&#x51FA;&#x5BBD;&#x5EA6;&#x662F; 2&#x00B7;intermediate_hidden&#xFF08;gate||up&#xFF09;&#xFF0C;SwiGLU &#x540E;&#x5BBD;&#x5EA6;&#x51CF;&#x534A;&#xFF0C;&#x56E0;&#x6B64;&#x4E00;&#x4E2A; L2 &#x8F93;&#x5165;&#x5206;&#x5757;&#x5BF9;&#x5E94;&#x4E24;&#x4E2A; L1 &#x8F93;&#x51FA;&#x5206;&#x5757;</text>
+
+  <!-- L1 GEMM output tiles per pool block -->
+  <text x="40" y="90" class="lab">L1 &#x8F93;&#x51FA;&#xFF08;&#x6BCF;&#x4E2A; pool block &#x5185;&#x7684; N &#x5757;&#xFF09;</text>
+  <g>
+    <rect class="box gate" x="40"  y="100" width="80" height="50"/>
+    <text x="80" y="125" text-anchor="middle">N=0 (gate0)</text>
+    <text x="80" y="142" text-anchor="middle" class="sub">2&#x00B7;I &#x5BBD;&#x5EA6;&#x4E0A;&#x7684;&#x5076;&#x6570;&#x69FD;</text>
+
+    <rect class="box up"   x="125" y="100" width="80" height="50"/>
+    <text x="165" y="125" text-anchor="middle">N=1 (up0)</text>
+
+    <rect class="box gate" x="220" y="100" width="80" height="50"/>
+    <text x="260" y="125" text-anchor="middle">N=2 (gate1)</text>
+
+    <rect class="box up"   x="305" y="100" width="80" height="50"/>
+    <text x="345" y="125" text-anchor="middle">N=3 (up1)</text>
+  </g>
+
+  <!-- SwiGLU box -->
+  <rect class="box swi" x="40" y="170" width="345" height="40"/>
+  <text x="212" y="195" text-anchor="middle">SwiGLU + &#x8DEF;&#x7531;&#x6743;&#x91CD; + FP8 &#x518D;&#x91CF;&#x5316;&#xFF08;&#x5728; L1 epilogue &#x5185;&#xFF09;</text>
+
+  <!-- L2 inputs (post-SwiGLU intermediate, width I) -->
+  <text x="40" y="240" class="lab">&#x7B2C;&#x4E8C;&#x5C42;&#x8F93;&#x5165;&#xFF08;&#x5BBD;&#x5EA6; I&#xFF09;= L1 &#x8F93;&#x51FA; / 2</text>
+  <g>
+    <rect class="box swi" x="40"  y="250" width="170" height="40"/>
+    <text x="125" y="275" text-anchor="middle">H &#x5757; 0 = SwiGLU(gate0, up0)</text>
+    <rect class="box swi" x="215" y="250" width="170" height="40"/>
+    <text x="300" y="275" text-anchor="middle">H &#x5757; 1 = SwiGLU(gate1, up1)</text>
+  </g>
+
+  <!-- L2 K block consumption -->
+  <text x="40" y="320" class="lab">L2 GEMM &#x7684; K &#x7EF4;&#x5206;&#x5757;&#xFF08;&#x6D88;&#x8D39;&#x65B9;&#xFF09;</text>
+  <rect class="box l2blk" x="40" y="330" width="170" height="40"/>
+  <text x="125" y="355" text-anchor="middle">L2 K-block 0 &#x7B49;&#x5F85; H &#x5757; 0 &#x5230;&#x4F4D;</text>
+  <rect class="box l2blk" x="215" y="330" width="170" height="40"/>
+  <text x="300" y="355" text-anchor="middle">L2 K-block 1 &#x7B49;&#x5F85; H &#x5757; 1 &#x5230;&#x4F4D;</text>
+
+  <!-- arrival mask -->
+  <text x="500" y="90" class="lab">l2_arrival_mask&#xFF08;per pool block 64 &#x4F4D;&#xFF09;</text>
+  <g font-family="monospace" font-size="13">
+    <rect class="box mask0" x="500" y="100" width="40" height="36"/>
+    <text x="520" y="123" text-anchor="middle">&#x2026;0</text>
+    <rect class="box mask0" x="540" y="100" width="40" height="36"/>
+    <text x="560" y="123" text-anchor="middle">0</text>
+    <rect class="box mask1" x="580" y="100" width="40" height="36"/>
+    <text x="600" y="123" text-anchor="middle">1</text>
+    <rect class="box mask1" x="620" y="100" width="40" height="36"/>
+    <text x="640" y="123" text-anchor="middle">1</text>
+    <rect class="box mask1" x="660" y="100" width="40" height="36"/>
+    <text x="680" y="123" text-anchor="middle">1</text>
+    <rect class="box mask1" x="700" y="100" width="40" height="36"/>
+    <text x="720" y="123" text-anchor="middle">1</text>
+  </g>
+  <text x="500" y="155" class="sub">&#x6BCF;&#x4E2A; L1 &#x8F93;&#x51FA;&#x5206;&#x5757;&#x5B8C;&#x6210; &#x2192; epilogue &#x7528;&#x6309;&#x4F4D;&#x6216;&#x5728;&#x5BF9;&#x5E94; bit &#x4E0A;&#x7F6E; 1&#x3002;</text>
+  <text x="500" y="172" class="sub">L2 &#x52A0;&#x8F7D;&#x65B9;&#x7B49;&#x5F85; needed = 3ull &lt;&lt; (k_block * 2)&#xFF0C;&#x5373;&#x201C;&#x76F8;&#x90BB;&#x4E24;&#x4F4D;&#x201D;&#x90FD;&#x7F6E; 1&#x3002;</text>
+
+  <rect x="500" y="200" width="440" height="220" fill="#fafafa" stroke="#bbb"/>
+  <text x="510" y="222" font-weight="600">&#x4E3A;&#x4EC0;&#x4E48;&#x662F;&#x201C;&#x76F8;&#x90BB;&#x4E24;&#x4F4D;&#x201D;&#xFF1F;</text>
+  <text x="510" y="244" class="sub">L1 GEMM &#x7684; N &#x7EF4;&#x771F;&#x6B63;&#x957F;&#x5EA6;&#x662F; 2&#x00B7;intermediate_hidden&#xFF08;gate &#x548C; up &#x62FC;&#x8D77;&#x6765;&#xFF09;&#xFF0C;</text>
+  <text x="510" y="262" class="sub">&#x4EE3;&#x7801;&#x5F3A;&#x5236; BLOCK_K == BLOCK_N&#xFF0C;&#x6240;&#x4EE5;&#x4E00;&#x4E2A; L2 K-block &#x5BF9;&#x5E94; L1 &#x4E0A;&#x4E24;&#x4E2A; N-block&#x3002;</text>
+  <text x="510" y="284" class="sub">SwiGLU &#x628A; (gate_i, up_i) &#x7F29;&#x6210;&#x4E00;&#x534A;&#x901A;&#x9053;&#xFF0C;&#x56E0;&#x6B64;&#x201C;gate0/up0&#x201D;&#x51D1;&#x9F50;&#x624D;&#x51FA; H &#x5757; 0&#x3002;</text>
+  <text x="510" y="306" class="sub">&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#xFF1A;epilogue &#x5B8C;&#x6210; N-block n &#x65F6;&#x6267;&#x884C;</text>
+  <text x="520" y="328" font-family="monospace" font-size="12">red_or_rel_gpu(l2_arrival_mask, 1ull &lt;&lt; n);</text>
+  <text x="510" y="354" class="sub">L2 &#x52A0;&#x8F7D;&#x65B9;&#x8F6E;&#x8BE2;&#xFF0C;&#x76F4;&#x5230;</text>
+  <text x="520" y="376" font-family="monospace" font-size="12">(mask &amp; (3ull &lt;&lt; (k_block * 2))) == (3ull &lt;&lt; (k_block * 2));</text>
+  <text x="510" y="402" class="sub">&#x8FD9;&#x79CD;&#x4F4D;&#x63A9;&#x7801;&#x540C;&#x6B65;&#x6BD4;&#x6BCF;&#x5206;&#x5757;&#x5355;&#x72EC;&#x4FE1;&#x53F7;&#x53D8;&#x91CF;&#x66F4;&#x7D27;&#x51D1;&#xFF0C;&#x4E5F;&#x907F;&#x514D;&#x5047;&#x5524;&#x9192;&#x3002;</text>
+
+  <!-- Connect SwiGLU -> L2 -->
+  <path d="M125 290 L125 330" class="arr" marker-end="url(#ar3)"/>
+  <path d="M300 290 L300 330" class="arr" marker-end="url(#ar3)"/>
+  <path d="M385 270 C 470 270 470 122 500 122" class="arr" marker-end="url(#ar3)"/>
+  <text x="430" y="200" class="sub">epilogue &#x5199; mask</text>
+</svg>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 470" font-family="Helvetica, Arial, sans-serif" font-size="13">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#444"/>
+    </marker>
+  </defs>
+  <style>
+    .title{font-size:16px;font-weight:600;}
+    .lab{font-size:12px;}
+    .sub{font-size:11px;fill:#666;}
+    .box{stroke:#444;stroke-width:1.2;}
+    .disp{fill:#dde7ff;}
+    .l1{fill:#fde8c8;}
+    .swi{fill:#fff2a8;}
+    .l2{fill:#d9efd0;}
+    .comb{fill:#f4cccc;}
+    .axis{stroke:#aaa;stroke-width:1;}
+    .barrier{stroke:#c00;stroke-dasharray:4 3;stroke-width:1.4;}
+    .baracross{stroke:#0070b8;stroke-dasharray:4 3;stroke-width:1.4;}
+  </style>
+
+  <text x="20" y="28" class="title">&#x56FE; 1  MegaMoE &#x5355;&#x4E2A; wave &#x5185;&#x7684;&#x6838;&#x5185;&#x65F6;&#x95F4;&#x7EBF;&#xFF08;&#x6BCF;&#x884C;&#x662F;&#x4E00;&#x7EC4;&#x7EBF;&#x7A0B;&#x675F;&#x7684;&#x5DE5;&#x4F5C;&#xFF09;</text>
+  <text x="20" y="46" class="sub">&#x7EA2;&#x865A;&#x7EBF; = &#x8FDB;&#x7A0B;&#x5185;&#x7F51;&#x683C;&#x5C4F;&#x969C;&#xFF1B;&#x84DD;&#x865A;&#x7EBF; = &#x8DE8;&#x8FDB;&#x7A0B; NVLink &#x5C4F;&#x969C;&#xFF1B;&#x7BAD;&#x5934; = &#x6570;&#x636E;/&#x5230;&#x8FBE;&#x4F9D;&#x8D56;</text>
+
+  <!-- Time axis -->
+  <line x1="120" y1="430" x2="940" y2="430" class="axis"/>
+  <text x="120" y="450" class="sub">t=0</text>
+  <text x="935" y="450" class="sub" text-anchor="end">&#x6838;&#x7ED3;&#x675F;</text>
+
+  <!-- Lane labels -->
+  <text x="20" y="90" class="lab" font-weight="600">&#x5206;&#x53D1;&#x7EBF;&#x7A0B;&#x675F;</text>
+  <text x="20" y="160" class="lab" font-weight="600">TMA &#x52A0;&#x8F7D; A/B</text>
+  <text x="20" y="230" class="lab" font-weight="600">UMMA &#x53D1;&#x5C04;</text>
+  <text x="20" y="300" class="lab" font-weight="600">&#x5C3E;&#x58F0; (L1 / L2)</text>
+  <text x="20" y="370" class="lab" font-weight="600">&#x5408;&#x5E76;&#x5F52;&#x7EA6;</text>
+
+  <!-- Dispatch lane -->
+  <rect class="box disp" x="120" y="70" width="170" height="32"/>
+  <text x="205" y="91" text-anchor="middle">&#x7EDF;&#x8BA1; + &#x5199;&#x6E90;&#x7D22;&#x5F15;</text>
+  <rect class="box disp" x="300" y="70" width="200" height="32"/>
+  <text x="400" y="91" text-anchor="middle">&#x4E3B;&#x52A8;&#x62C9;&#x53D6;&#x8BCD;&#x5143;&#x5230;&#x672C;&#x5730;&#x6C60;</text>
+  <rect class="box disp" x="510" y="70" width="430" height="32"/>
+  <text x="725" y="91" text-anchor="middle">&#x6E05;&#x7406; workspace&#xFF08;&#x4E0E; L2/&#x5408;&#x5E76;&#x5E76;&#x884C;&#xFF09;</text>
+
+  <!-- TMA load lane -->
+  <rect class="box l1" x="295" y="140" width="160" height="32"/>
+  <text x="375" y="161" text-anchor="middle">L1 wave: &#x52A0;&#x8F7D; X / W&#x2081;</text>
+  <rect class="box l2" x="465" y="140" width="160" height="32"/>
+  <text x="545" y="161" text-anchor="middle">L2 wave: &#x52A0;&#x8F7D; H / W&#x2082;</text>
+  <rect class="box l1" x="635" y="140" width="100" height="32"/>
+  <text x="685" y="161" text-anchor="middle">L1 wave 2</text>
+  <rect class="box l2" x="745" y="140" width="100" height="32"/>
+  <text x="795" y="161" text-anchor="middle">L2 wave 2</text>
+
+  <!-- UMMA lane -->
+  <rect class="box l1" x="305" y="210" width="150" height="32"/>
+  <text x="380" y="231" text-anchor="middle">L1 UMMA</text>
+  <rect class="box l2" x="475" y="210" width="150" height="32"/>
+  <text x="550" y="231" text-anchor="middle">L2 UMMA</text>
+  <rect class="box l1" x="645" y="210" width="90" height="32"/>
+  <text x="690" y="231" text-anchor="middle">L1</text>
+  <rect class="box l2" x="745" y="210" width="100" height="32"/>
+  <text x="795" y="231" text-anchor="middle">L2</text>
+
+  <!-- Epilogue lane -->
+  <rect class="box swi" x="335" y="280" width="135" height="32"/>
+  <text x="402" y="301" text-anchor="middle">SwiGLU + &#x91CF;&#x5316;</text>
+  <rect class="box comb" x="490" y="280" width="135" height="32"/>
+  <text x="558" y="301" text-anchor="middle">L2: &#x8FDC;&#x7AEF;&#x5199;&#x56DE;</text>
+  <rect class="box swi" x="660" y="280" width="80" height="32"/>
+  <text x="700" y="301" text-anchor="middle">SwiGLU</text>
+  <rect class="box comb" x="755" y="280" width="100" height="32"/>
+  <text x="805" y="301" text-anchor="middle">L2 &#x5199;&#x56DE;</text>
+
+  <!-- Combine lane -->
+  <rect class="box comb" x="640" y="350" width="300" height="32"/>
+  <text x="790" y="371" text-anchor="middle">&#x672C;&#x8FDB;&#x7A0B;&#x5408;&#x5E76; top-k &#x69FD;&#x4F4D; &#x2192; BF16 &#x8F93;&#x51FA;</text>
+
+  <!-- Barriers -->
+  <line x1="290" y1="60" x2="290" y2="395" class="baracross"/>
+  <text x="290" y="55" text-anchor="middle" fill="#0070b8" font-size="11">NVLink barrier</text>
+  <line x1="635" y1="60" x2="635" y2="395" class="barrier"/>
+  <text x="635" y="55" text-anchor="middle" fill="#c00" font-size="11">grid_sync (&#x6CE2;&#x6B21;&#x95F4;)</text>
+
+  <!-- Dependency arrows -->
+  <path d="M455 226 L475 226" stroke="#444" marker-end="url(#arr)" fill="none"/>
+  <path d="M455 226 L470 296" stroke="#aa6600" marker-end="url(#arr)" fill="none"/>
+  <text x="406" y="265" class="sub" fill="#aa6600">L1 &#x8F93;&#x51FA; &#x2192; L2 &#x8F93;&#x5165;(arrival mask)</text>
+
+  <path d="M625 296 L640 365" stroke="#888" marker-end="url(#arr)" fill="none"/>
+</svg>
