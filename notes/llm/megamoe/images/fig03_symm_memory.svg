@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 540" font-family="Helvetica, Arial, sans-serif" font-size="12">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 560" font-family="Helvetica, Arial, sans-serif" font-size="11">
   <defs>
     <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
       <path d="M0,0 L10,5 L0,10 z" fill="#0070b8"/>
     </marker>
   </defs>
   <style>
-    .title{font-size:16px;font-weight:600;}
-    .sub{font-size:11px;fill:#666;}
+    .title{font-size:15px;font-weight:600;}
+    .sub{font-size:10px;fill:#666;}
     .box{stroke:#333;stroke-width:1.2;}
     .ws{fill:#f3d4d4;}
     .inp{fill:#dde7ff;}
@@ -17,61 +17,60 @@
     .arrow{stroke:#0070b8;stroke-width:1.4;fill:none;}
   </style>
 
-  <text x="20" y="28" class="title">&#x56FE; 3  &#x5BF9;&#x79F0;&#x663E;&#x5B58;&#x5E03;&#x5C40;&#xFF1A;&#x6BCF;&#x4E2A;&#x8FDB;&#x7A0B;&#x90FD;&#x770B;&#x5230;&#x4E00;&#x4EFD;&#x76F8;&#x540C;&#x7ED3;&#x6784;</text>
-  <text x="20" y="46" class="sub">&#x8FDC;&#x7AEF;&#x8BFB;&#x5199;&#x901A;&#x8FC7; SymBuffer.map(local_ptr, dst_rank) &#x628A;&#x672C;&#x5730;&#x6307;&#x9488;&#x504F;&#x79FB;&#x5230;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x4E0A;&#x7684;&#x540C;&#x4E00;&#x903B;&#x8F91;&#x4F4D;&#x7F6E;</text>
+  <text x="20" y="26" class="title">&#x56FE; 3  &#x5BF9;&#x79F0;&#x663E;&#x5B58;&#x5E03;&#x5C40;</text>
+  <text x="20" y="44" class="sub">&#x6BCF;&#x4E2A;&#x8FDB;&#x7A0B;&#x90FD;&#x770B;&#x5230;&#x4E00;&#x4EFD;&#x76F8;&#x540C;&#x7ED3;&#x6784;&#xFF1B;&#x8FDC;&#x7AEF;&#x8BFB;&#x5199;&#x901A;&#x8FC7; SymBuffer.map() &#x628A;&#x672C;&#x5730;&#x6307;&#x9488;&#x504F;&#x79FB;&#x5230;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;</text>
 
-  <!-- Rank 0 buffer -->
-  <text x="40" y="80" font-weight="600">rank 0 &#x7684; sym_buffer</text>
-  <g transform="translate(40,90)">
-    <rect class="box ws" x="0" y="0" width="380" height="80"/>
-    <text x="190" y="20" text-anchor="middle" font-weight="600">Workspace</text>
-    <text x="190" y="38" text-anchor="middle" class="sub">grid + NVLink &#x5C4F;&#x969C; / expert_send_count / expert_recv_count(+sum)</text>
-    <text x="190" y="56" text-anchor="middle" class="sub">l1_arrival_count / l2_arrival_mask</text>
-    <text x="190" y="74" text-anchor="middle" class="sub">src_token_topk_idx &#x8868; / TokenSrcMetadata</text>
+  <!-- Rank 0 buffer (wider boxes: 430px) -->
+  <text x="30" y="75" font-weight="600">rank 0</text>
+  <g transform="translate(30,85)">
+    <rect class="box ws" x="0" y="0" width="430" height="75"/>
+    <text x="215" y="18" text-anchor="middle" font-weight="600">Workspace</text>
+    <text x="215" y="34" text-anchor="middle" class="sub">&#x5C4F;&#x969C;&#x8BA1;&#x6570;&#x5668; / &#x4E13;&#x5BB6;&#x53D1;&#x9001;&#x63A5;&#x6536;&#x8BA1;&#x6570;</text>
+    <text x="215" y="48" text-anchor="middle" class="sub">l1_arrival / l2_arrival_mask</text>
+    <text x="215" y="62" text-anchor="middle" class="sub">&#x6E90;&#x7D22;&#x5F15;&#x8868; / TokenSrcMetadata</text>
 
-    <rect class="box inp" x="0" y="85" width="380" height="55"/>
-    <text x="190" y="105" text-anchor="middle" font-weight="600">&#x8F93;&#x5165;&#x533A;&#xFF08;&#x6765;&#x81EA;&#x524D;&#x4E00;&#x4E2A; kernel&#xFF09;</text>
-    <text x="190" y="123" text-anchor="middle" class="sub">x [T,H] FP8  +  x_sf  +  topk_idx  +  topk_weights</text>
+    <rect class="box inp" x="0" y="80" width="430" height="45"/>
+    <text x="215" y="100" text-anchor="middle" font-weight="600">&#x8F93;&#x5165;&#x533A;</text>
+    <text x="215" y="116" text-anchor="middle" class="sub">x [T,H] FP8 + x_sf + topk_idx + topk_weights</text>
 
-    <rect class="box l1p" x="0" y="145" width="380" height="55"/>
-    <text x="190" y="165" text-anchor="middle" font-weight="600">L1 &#x6C60;&#xFF08;&#x4E13;&#x5BB6;&#x8FDE;&#x7EED;&#xFF09;</text>
-    <text x="190" y="183" text-anchor="middle" class="sub">FP8 &#x8BCD;&#x5143; [pool_T, H] + UE8M0 SF + &#x8DEF;&#x7531;&#x6743;&#x91CD;</text>
+    <rect class="box l1p" x="0" y="130" width="430" height="45"/>
+    <text x="215" y="150" text-anchor="middle" font-weight="600">L1 &#x6C60;&#xFF08;&#x4E13;&#x5BB6;&#x8FDE;&#x7EED;&#xFF09;</text>
+    <text x="215" y="166" text-anchor="middle" class="sub">FP8 &#x8BCD;&#x5143; + UE8M0 SF + &#x8DEF;&#x7531;&#x6743;&#x91CD;</text>
 
-    <rect class="box l2p" x="0" y="205" width="380" height="55"/>
-    <text x="190" y="225" text-anchor="middle" font-weight="600">L2 &#x6C60;&#xFF08;SwiGLU &#x540E;&#xFF09;</text>
-    <text x="190" y="243" text-anchor="middle" class="sub">FP8 &#x4E2D;&#x95F4;&#x6FC0;&#x6D3B; [pool_T, I] + UE8M0 SF</text>
+    <rect class="box l2p" x="0" y="180" width="430" height="45"/>
+    <text x="215" y="200" text-anchor="middle" font-weight="600">L2 &#x6C60;&#xFF08;SwiGLU &#x540E;&#xFF09;</text>
+    <text x="215" y="216" text-anchor="middle" class="sub">FP8 &#x4E2D;&#x95F4;&#x6FC0;&#x6D3B; + UE8M0 SF</text>
 
-    <rect class="box cmb" x="0" y="265" width="380" height="60"/>
-    <text x="190" y="285" text-anchor="middle" font-weight="600">&#x5408;&#x5E76;&#x7F13;&#x51B2;&#x533A;</text>
-    <text x="190" y="303" text-anchor="middle" class="sub">BF16 [topk, T_max, H]</text>
-    <text x="190" y="319" text-anchor="middle" class="sub">&#x6BCF;&#x4E2A; top-k &#x69FD;&#x4F4D;&#x7531;&#x8FDC;&#x7AEF; rank &#x5199;&#x5165;&#xFF0C;&#x672C; rank &#x6C42;&#x548C;</text>
+    <rect class="box cmb" x="0" y="230" width="430" height="50"/>
+    <text x="215" y="250" text-anchor="middle" font-weight="600">&#x5408;&#x5E76;&#x7F13;&#x51B2;&#x533A;</text>
+    <text x="215" y="266" text-anchor="middle" class="sub">BF16 [topk, T_max, H]</text>
   </g>
 
-  <!-- Rank 1 buffer -->
-  <text x="540" y="80" font-weight="600">rank 1 &#x7684; sym_buffer&#xFF08;&#x7ED3;&#x6784;&#x540C;&#x4E0A;&#xFF09;</text>
-  <g transform="translate(540,90)">
-    <rect class="box ws" x="0" y="0" width="380" height="80"/>
-    <text x="190" y="44" text-anchor="middle" class="sub">Workspace</text>
-    <rect class="box inp" x="0" y="85" width="380" height="55"/>
-    <text x="190" y="116" text-anchor="middle" class="sub">&#x8F93;&#x5165;&#x533A;</text>
-    <rect class="box l1p" x="0" y="145" width="380" height="55"/>
-    <text x="190" y="176" text-anchor="middle" class="sub">L1 &#x6C60;</text>
-    <rect class="box l2p" x="0" y="205" width="380" height="55"/>
-    <text x="190" y="236" text-anchor="middle" class="sub">L2 &#x6C60;</text>
-    <rect class="box cmb" x="0" y="265" width="380" height="60"/>
-    <text x="190" y="298" text-anchor="middle" class="sub">&#x5408;&#x5E76;&#x7F13;&#x51B2;&#x533A;</text>
+  <!-- Rank 1 buffer (same structure, compact) -->
+  <text x="570" y="75" font-weight="600">rank 1&#xFF08;&#x7ED3;&#x6784;&#x540C;&#x4E0A;&#xFF09;</text>
+  <g transform="translate(570,85)">
+    <rect class="box ws" x="0" y="0" width="430" height="75"/>
+    <text x="215" y="42" text-anchor="middle" class="sub">Workspace</text>
+    <rect class="box inp" x="0" y="80" width="430" height="45"/>
+    <text x="215" y="107" text-anchor="middle" class="sub">&#x8F93;&#x5165;&#x533A;</text>
+    <rect class="box l1p" x="0" y="130" width="430" height="45"/>
+    <text x="215" y="157" text-anchor="middle" class="sub">L1 &#x6C60;</text>
+    <rect class="box l2p" x="0" y="180" width="430" height="45"/>
+    <text x="215" y="207" text-anchor="middle" class="sub">L2 &#x6C60;</text>
+    <rect class="box cmb" x="0" y="230" width="430" height="50"/>
+    <text x="215" y="260" text-anchor="middle" class="sub">&#x5408;&#x5E76;&#x7F13;&#x51B2;&#x533A;</text>
   </g>
 
-  <!-- Cross-arrows -->
-  <path d="M420 200 C 470 200 470 200 540 200" class="arrow" marker-end="url(#ar2)"/>
-  <text x="480" y="195" text-anchor="middle" fill="#0070b8" class="sub">&#x5206;&#x53D1;&#xFF1A;rank 1 &#x4E3B;&#x52A8;&#x4ECE; rank 0 &#x8F93;&#x5165;&#x533A;&#x62C9;&#x53D6;</text>
+  <!-- Cross-arrows (between the two columns) -->
+  <path d="M460 195 C 500 195 520 195 570 195" class="arrow" marker-end="url(#ar2)"/>
+  <text x="515" y="188" text-anchor="middle" fill="#0070b8" font-size="10">&#x5206;&#x53D1;&#xFF1A;&#x4ECE;&#x8FDC;&#x7AEF;&#x8F93;&#x5165;&#x533A;&#x62C9;&#x53D6;</text>
 
-  <path d="M540 295 C 480 320 470 320 420 295" class="arrow" marker-end="url(#ar2)"/>
-  <text x="480" y="345" text-anchor="middle" fill="#0070b8" class="sub">&#x5408;&#x5E76;&#x5199;&#x56DE;&#xFF1A;rank 1 &#x628A;&#x4E13;&#x5BB6;&#x8F93;&#x51FA;&#x5199;&#x5230; rank 0 &#x5408;&#x5E76;&#x7F13;&#x51B2;&#x533A;</text>
+  <path d="M570 300 C 530 320 500 320 460 300" class="arrow" marker-end="url(#ar2)"/>
+  <text x="515" y="340" text-anchor="middle" fill="#0070b8" font-size="10">&#x5408;&#x5E76;&#xFF1A;&#x5199;&#x56DE;&#x8FDC;&#x7AEF;&#x5408;&#x5E76;&#x7F13;&#x51B2;&#x533A;</text>
 
   <!-- Bottom note -->
-  <rect x="40" y="450" width="900" height="70" fill="#fafafa" stroke="#bbb"/>
-  <text x="50" y="472" font-weight="600">&#x6307;&#x9488;&#x6620;&#x5C04;&#x89C4;&#x5219;</text>
-  <text x="50" y="492" class="sub">SymBuffer.map(p, r) = p + offsets[r]&#xFF0C;&#x5176;&#x4E2D; offsets[r] = base[r] - base[self]</text>
-  <text x="50" y="510" class="sub">&#x2192; &#x540C;&#x4E00;&#x903B;&#x8F91;&#x7ED3;&#x6784;&#x5728;&#x4E0D;&#x540C; rank &#x4E0A;&#x504F;&#x79FB;&#x4E0D;&#x540C;&#xFF0C;&#x4F46;&#x6BCF;&#x4E2A;&#x5B57;&#x6BB5;&#x7684;&#x201C;&#x76F8;&#x5BF9;&#x4F4D;&#x7F6E;&#x201D;&#x4E00;&#x81F4;&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8BFB;&#x5199;&#x8FDC;&#x7AEF;&#x540C;&#x540D;&#x5B57;&#x6BB5;&#x3002;</text>
+  <rect x="30" y="470" width="1000" height="60" fill="#fafafa" stroke="#bbb" rx="4"/>
+  <text x="40" y="492" font-weight="600" font-size="11">&#x6307;&#x9488;&#x6620;&#x5C04;</text>
+  <text x="40" y="510" class="sub">map(p, r) = p + offsets[r]&#xFF0C;offsets[r] = base[r] - base[self]</text>
+  <text x="40" y="524" class="sub">&#x2192; &#x76F8;&#x540C;&#x903B;&#x8F91;&#x4F4D;&#x7F6E;&#x5728;&#x4E0D;&#x540C; rank &#x4E0A;&#x504F;&#x79FB;&#x4E0D;&#x540C;&#xFF0C;&#x4F46;&#x5B57;&#x6BB5;&#x76F8;&#x5BF9;&#x4F4D;&#x7F6E;&#x4E00;&#x81F4;</text>
 </svg>
