@@ -5,8 +5,8 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Papers-76-blue?style=flat-square" alt="Papers">
-  <img src="https://img.shields.io/badge/Read-60-green?style=flat-square" alt="Read">
+  <img src="https://img.shields.io/badge/Papers-79-blue?style=flat-square" alt="Papers">
+  <img src="https://img.shields.io/badge/Read-63-green?style=flat-square" alt="Read">
   <img src="https://img.shields.io/badge/To_Read-16-orange?style=flat-square" alt="To Read">
 </p>
 
@@ -19,6 +19,7 @@
 - [LLM Training](#-llm-training)
 - [Deep Learning](#-deep-learning)
 - [LLM for Kernel Optimization](#-llm-for-kernel-optimization)
+- [Agent Systems](#-agent-systems)
 - [GPU Microarchitecture](#-gpu-microarchitecture)
 - [Math Foundations](#-math-foundations)
 - [Compiler](#-compiler)
@@ -92,7 +93,10 @@
 | ✅ | **Mirage Persistent Kernel: A Compiler and Runtime for Mega-Kernelizing Tensor Programs** | arXiv'25 | [Paper](https://arxiv.org/pdf/2512.22219) |
 | ✅ | **TileRT: Tile-Based Runtime for Ultra-Low-Latency LLM Inference** | — | [Paper](https://github.com/tile-ai/TileRT) |
 | ✅ | **SonicMoE: Accelerating MoE with IO and Tile-aware Optimizations** | arXiv'25 | [Paper](https://arxiv.org/pdf/2512.14080) |
+| ✅ 📝 | **MegaMoE** (fused MoE megakernel, DeepGEMM) | DeepGEMM PR | [Source](https://github.com/deepseek-ai/DeepGEMM/pull/304) / [Note](notes/llm/megamoe/megamoe.md) |
 | ✅ | **Compiling LLMs into a MegaKernel: A Path to Low-Latency Inference** | Blog | [Paper](https://zhihaojia.medium.com/compiling-llms-into-a-megakernel-a-path-to-low-latency-inference-cf7840913c17) |
+
+**MegaMoE 摘要（非正式论文，见 DeepGEMM PR #304）**：把 MoE 前向中分发、两层分组 GEMM、SwiGLU、合并压进**单一持久化 CUDA 核**；用对称显存布局与 NVLink 在核内做专家并行词元交换，并以波次调度、L1/L2 词元池上的细粒度到达计数 / 掩码，把通信与计算流水重叠；SM100 上按分发、TMA+MMA、尾声与合并划分线程束角色与寄存器预算。
 
 ## 🏋️ LLM Training
 
@@ -141,6 +145,7 @@
 | ✅ | **Gated Linear Attention Transformers with Hardware-Efficient Training** | arXiv | [Paper](papers/DL/GLA.pdf) / [Note](https://github.com/KuangjuX/Notes/blob/main/DeepLearning/LinearAttention.md) |
 | ✅ | **Kimi Linear Attention: An Expressive, Efficient Attention Architecture** | arXiv'25 | [Paper](https://arxiv.org/pdf/2510.26692) |
 | ✅ | **DeepSeek-V3.2: Pushing the Frontier of Open Large Language Models** | arXiv'25 | [Paper](https://arxiv.org/pdf/2512.02556) |
+| ✅ 📝 | **DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence** | Tech report'26 | [Paper](https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro/blob/main/DeepSeek_V4.pdf) / [Note](notes/llm/deepseek-v4/deepseek-v4.md) |
 
 ### On-Device / Mobile
 
@@ -154,6 +159,12 @@
 | Status | Paper | Venue | Links |
 |:------:|-------|-------|-------|
 | ✅ | **AVO: Agentic Variation Operators for Autonomous Evolutionary Search** | arXiv'26 | [Paper](https://arxiv.org/abs/2603.24517) / [Note](notes/llm-for-kernel/avo.md) |
+
+## 🧩 Agent Systems
+
+| Status | Paper | Venue | Links |
+|:------:|-------|-------|-------|
+| ✅ 📝 | **SkVM: Revisiting Language VM for Skills across Heterogenous LLMs and Harnesses** | arXiv'26 | [Paper](https://arxiv.org/abs/2604.03088) / [Note](notes/agent/skvm/skvm.md) |
 
 ## 🖥️ GPU Microarchitecture
 
