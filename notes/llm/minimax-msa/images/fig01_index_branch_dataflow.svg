@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 520" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica, Arial, sans-serif" font-size="12">
+  <style>
+    .title{font-size:16px;font-weight:600;}
+    .sub{font-size:10px;fill:#666;}
+    .box{stroke:#444;stroke-width:1.2;}
+    .lbl{font-size:12.5px;font-weight:600;}
+    .shape{font-size:10px;fill:#0b6b3a;font-family:Menlo,Consolas,monospace;}
+    .note{font-size:10.5px;fill:#555;}
+    .inp{fill:#f2f2f2;}
+    .idx{fill:#dde7ff;}
+    .pool{fill:#ffe2c8;}
+    .main{fill:#d9efd0;}
+    .band{fill:none;stroke:#bbb;stroke-width:1;stroke-dasharray:4 3;}
+  </style>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#444"/>
+    </marker>
+  </defs>
+
+  <text x="24" y="28" class="title">图 1  Index Branch 数据流与张量形状（以 N = 8192 为例，B = 8192/128 = 64 个块）</text>
+  <text x="24" y="47" class="sub">配置：d_model = 3072，H_q = 64，H_kv = 4，G = 16，d_h = 128，d_idx = 128，B_k = 128，k = 16</text>
+
+  <rect class="band" x="18" y="66" width="1026" height="150" rx="6"/>
+  <text x="28" y="82" class="sub">Index Branch（只做选择，不产生输出，不进残差流）</text>
+
+  <rect class="box inp"  x="25"  y="92" width="155" height="86" rx="4"/>
+  <text x="102" y="115" text-anchor="middle" class="lbl">X  隐藏状态</text>
+  <text x="102" y="136" text-anchor="middle" class="shape">(8192, 3072)</text>
+  <text x="102" y="158" text-anchor="middle" class="sub">stopgrad 后送入索引</text>
+
+  <rect class="box idx"  x="197" y="92" width="155" height="86" rx="4"/>
+  <text x="274" y="112" text-anchor="middle" class="lbl">两个投影矩阵</text>
+  <text x="274" y="132" text-anchor="middle" class="shape">W_q: 3072x512</text>
+  <text x="274" y="147" text-anchor="middle" class="shape">W_k: 3072x128</text>
+  <text x="274" y="167" text-anchor="middle" class="sub">全部新增参数就这些</text>
+
+  <rect class="box idx"  x="369" y="92" width="155" height="86" rx="4"/>
+  <text x="446" y="112" text-anchor="middle" class="lbl">Q_idx / K_idx</text>
+  <text x="446" y="132" text-anchor="middle" class="shape">(8192, 4, 128)</text>
+  <text x="446" y="147" text-anchor="middle" class="shape">(8192, 1, 128)</text>
+  <text x="446" y="167" text-anchor="middle" class="sub">4 个查询头 / 1 个共享键头</text>
+
+  <rect class="box idx"  x="541" y="92" width="155" height="86" rx="4"/>
+  <text x="618" y="112" text-anchor="middle" class="lbl">S_idx  token 级分数</text>
+  <text x="618" y="133" text-anchor="middle" class="shape">(8192, 4, 8192)</text>
+  <text x="618" y="155" text-anchor="middle" class="sub">QK/sqrt(d_idx)，因果 mask</text>
+  <text x="618" y="170" text-anchor="middle" class="sub">仍是 N^2 —— 平方项在此</text>
+
+  <rect class="box pool" x="713" y="92" width="155" height="86" rx="4"/>
+  <text x="790" y="112" text-anchor="middle" class="lbl">M_idx  块级分数</text>
+  <text x="790" y="133" text-anchor="middle" class="shape">(8192, 4, 64)</text>
+  <text x="790" y="155" text-anchor="middle" class="sub">BlockMaxPool，块内取 max</text>
+  <text x="790" y="170" text-anchor="middle" class="sub">候选量压缩 128 倍</text>
+
+  <rect class="box pool" x="885" y="92" width="155" height="86" rx="4"/>
+  <text x="962" y="112" text-anchor="middle" class="lbl">I  选中块下标</text>
+  <text x="962" y="133" text-anchor="middle" class="shape">(8192, 4, 16)</text>
+  <text x="962" y="155" text-anchor="middle" class="sub">TopK(k=16)</text>
+  <text x="962" y="170" text-anchor="middle" class="sub">+ 强制含 local block</text>
+
+  <line x1="180" y1="135" x2="195" y2="135" stroke="#444" marker-end="url(#ar)"/>
+  <line x1="352" y1="135" x2="367" y2="135" stroke="#444" marker-end="url(#ar)"/>
+  <line x1="524" y1="135" x2="539" y2="135" stroke="#444" marker-end="url(#ar)"/>
+  <line x1="696" y1="135" x2="711" y2="135" stroke="#444" marker-end="url(#ar)"/>
+  <line x1="868" y1="135" x2="883" y2="135" stroke="#444" marker-end="url(#ar)"/>
+
+  <path d="M 962 178 L 962 250 L 700 250 L 700 292" fill="none" stroke="#c0392b" stroke-width="1.6" marker-end="url(#ar)"/>
+  <text x="830" y="243" text-anchor="middle" class="sub" fill="#c0392b">离散路由决策（不可微，需要 KL 损失来训，见 3.2）</text>
+
+  <path d="M 102 178 L 102 320 L 195 320" fill="none" stroke="#444" stroke-width="1.2" marker-end="url(#ar)"/>
+
+  <rect class="band" x="190" y="270" width="854" height="130" rx="6"/>
+  <text x="200" y="286" class="sub">Main Branch（标准 softmax attention，一行代码都没改，只是 KV 变少了）</text>
+
+  <rect class="box main" x="197" y="292" width="200" height="86" rx="4"/>
+  <text x="297" y="315" text-anchor="middle" class="lbl">Gather K, V</text>
+  <text x="297" y="336" text-anchor="middle" class="shape">16 块 x 128 = 2048 tok</text>
+  <text x="297" y="357" text-anchor="middle" class="sub">块内连续，可用 TMA 搬运</text>
+
+  <rect class="box main" x="447" y="292" width="200" height="86" rx="4"/>
+  <text x="547" y="315" text-anchor="middle" class="lbl">SDPA（精确，无近似）</text>
+  <text x="547" y="336" text-anchor="middle" class="shape">softmax(QK/sqrt(d_h))V</text>
+  <text x="547" y="357" text-anchor="middle" class="sub">组内 16 个 query 头共用这份 KV</text>
+
+  <rect class="box main" x="697" y="292" width="200" height="86" rx="4"/>
+  <text x="797" y="315" text-anchor="middle" class="lbl">输出 O</text>
+  <text x="797" y="336" text-anchor="middle" class="shape">(8192, 64, 128)</text>
+  <text x="797" y="357" text-anchor="middle" class="sub">每 query 代价 O(k*B_k)，与 N 无关</text>
+
+  <line x1="397" y1="335" x2="445" y2="335" stroke="#444" marker-end="url(#ar)"/>
+  <line x1="647" y1="335" x2="695" y2="335" stroke="#444" marker-end="url(#ar)"/>
+
+  <line x1="24" y1="428" x2="1036" y2="428" stroke="#ddd"/>
+  <text x="24" y="450" class="note">索引分支参数量：W_q^idx = 3072x512 = 1.57M，W_k^idx = 3072x128 = 0.39M，合计 <tspan font-weight="600">1.97M / 层</tspan></text>
+  <text x="24" y="468" class="note">对比同层主注意力（W_q + W_k + W_v + W_o）= 53.5M  →  索引分支仅占 <tspan font-weight="600" fill="#c0392b">3.7%</tspan>；41 层合计 80.6M，占 109B 全模型 <tspan font-weight="600" fill="#c0392b">0.07%</tspan></text>
+  <text x="24" y="492" class="note">注：d_idx 论文未直接给出，由 1M 上下文下 28.4 倍的 FLOPs 缩减反推得 d_idx 约为 128。</text>
+</svg>

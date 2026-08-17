@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 470" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica, Arial, sans-serif" font-size="12">
+  <style>
+    .title{font-size:16px;font-weight:600;}
+    .ptitle{font-size:13px;font-weight:600;fill:#1f3d7a;}
+    .sub{font-size:10.5px;fill:#666;}
+    .mono{font-family:Menlo,Consolas,monospace;font-size:11px;}
+    .shape{font-family:Menlo,Consolas,monospace;font-size:11px;fill:#0b6b3a;font-weight:600;}
+    .box{stroke:#444;stroke-width:1.1;}
+    .q{fill:#dde7ff;}
+    .k{fill:#e7d8f0;}
+    .n{fill:#f2f2f2;}
+    .hot{fill:#fdeceb;stroke:#e8b4b0;}
+    .cool{fill:#eaf6ec;stroke:#a8d5b1;}
+    .note{font-size:10.5px;fill:#555;}
+  </style>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <text x="24" y="28" class="title">图 5  为什么 Q_idx 有 4 个头，而 K_idx 只有 1 个</text>
+
+  <text x="24" y="60" class="ptitle">1. 做决策的单位是"GQA 组"，一共 4 个</text>
+  <rect class="box n" x="24" y="72" width="300" height="150" rx="4"/>
+  <text x="38" y="92" class="sub">64 个 query 头，每 16 个共享一个 KV 头：</text>
+  <g>
+    <rect class="box q" x="38" y="102" width="62" height="24" rx="3"/>
+    <text x="69" y="118" text-anchor="middle" class="sub">组 0（16 头）</text>
+    <rect class="box q" x="108" y="102" width="62" height="24" rx="3"/>
+    <text x="139" y="118" text-anchor="middle" class="sub">组 1（16 头）</text>
+    <rect class="box q" x="178" y="102" width="62" height="24" rx="3"/>
+    <text x="209" y="118" text-anchor="middle" class="sub">组 2（16 头）</text>
+    <rect class="box q" x="248" y="102" width="62" height="24" rx="3"/>
+    <text x="279" y="118" text-anchor="middle" class="sub">组 3（16 头）</text>
+  </g>
+  <line x1="69"  y1="126" x2="69"  y2="150" stroke="#555" marker-end="url(#ar)"/>
+  <line x1="139" y1="126" x2="139" y2="150" stroke="#555" marker-end="url(#ar)"/>
+  <line x1="209" y1="126" x2="209" y2="150" stroke="#555" marker-end="url(#ar)"/>
+  <line x1="279" y1="126" x2="279" y2="150" stroke="#555" marker-end="url(#ar)"/>
+  <text x="174" y="146" text-anchor="middle" class="sub">每组各要一份"检索意图"</text>
+  <g>
+    <rect class="box q" x="38" y="152" width="62" height="26" rx="3"/>
+    <text x="69" y="169" text-anchor="middle" class="mono">Q_idx[0]</text>
+    <rect class="box q" x="108" y="152" width="62" height="26" rx="3"/>
+    <text x="139" y="169" text-anchor="middle" class="mono">Q_idx[1]</text>
+    <rect class="box q" x="178" y="152" width="62" height="26" rx="3"/>
+    <text x="209" y="169" text-anchor="middle" class="mono">Q_idx[2]</text>
+    <rect class="box q" x="248" y="152" width="62" height="26" rx="3"/>
+    <text x="279" y="169" text-anchor="middle" class="mono">Q_idx[3]</text>
+  </g>
+  <text x="174" y="198" text-anchor="middle" class="shape">Q_idx : (N, 4, 128)</text>
+  <text x="174" y="214" text-anchor="middle" class="sub">4 个组 = 4 个独立的"提问者"</text>
+
+  <text x="348" y="60" class="ptitle">2. K_idx 描述"这个 token 讲什么"，与谁在问无关</text>
+  <rect class="box n" x="348" y="72" width="300" height="150" rx="4"/>
+  <rect class="box k" x="440" y="86" width="116" height="26" rx="3"/>
+  <text x="498" y="103" text-anchor="middle" class="sub">位置 j 的 token</text>
+  <line x1="498" y1="112" x2="498" y2="130" stroke="#555" marker-end="url(#ar)"/>
+  <rect class="box k" x="410" y="132" width="176" height="30" rx="3"/>
+  <text x="498" y="151" text-anchor="middle" class="mono">K_idx[j] 一个 128 维描述符</text>
+  <g stroke="#555" fill="none">
+    <path d="M 440 162 L 388 190" marker-end="url(#ar)"/>
+    <path d="M 476 162 L 452 190" marker-end="url(#ar)"/>
+    <path d="M 520 162 L 544 190" marker-end="url(#ar)"/>
+    <path d="M 556 162 L 608 190" marker-end="url(#ar)"/>
+  </g>
+  <text x="388" y="202" text-anchor="middle" class="sub">组 0</text>
+  <text x="452" y="202" text-anchor="middle" class="sub">组 1</text>
+  <text x="544" y="202" text-anchor="middle" class="sub">组 2</text>
+  <text x="608" y="202" text-anchor="middle" class="sub">组 3</text>
+  <text x="498" y="216" text-anchor="middle" class="sub">4 个组共用同一份描述，只需 1 个头</text>
+
+  <text x="672" y="60" class="ptitle">3. decode 时两侧成本极度不对称</text>
+  <rect class="box n" x="672" y="72" width="304" height="150" rx="4"/>
+  <rect class="cool" x="684" y="84" width="280" height="56" rx="4"/>
+  <text x="696" y="102" class="mono" font-weight="600">Q_idx：只为当前这 1 个 token 计算</text>
+  <text x="696" y="119" class="note">算完即弃，不进 cache</text>
+  <text x="696" y="134" class="note">做成 4 个头几乎不花钱</text>
+  <rect class="hot" x="684" y="150" width="280" height="62" rx="4"/>
+  <text x="696" y="168" class="mono" font-weight="600">K_idx：全部历史 token 都要缓存</text>
+  <text x="696" y="185" class="note">1M 上下文，1 个头 = 256 MB</text>
+  <text x="696" y="200" class="note">每多 1 个头就多 256 MB</text>
+
+  <line x1="24" y1="244" x2="976" y2="244" stroke="#ddd"/>
+  <text x="24" y="268" class="ptitle">结论：把"多样性"放在便宜的 Q 侧，把"节俭"放在昂贵的 K 侧</text>
+  <text x="24" y="294" class="note">1M 上下文下的缓存账（bf16）：</text>
+  <g class="mono" font-size="11">
+    <text x="44" y="316">主分支 KV cache = 1M x 4 头 x 128 x 2B x 2(K,V) = <tspan font-weight="700">2048 MB</tspan></text>
+    <text x="44" y="336">索引 cache（1 头，实际方案） = 1M x 1 x 128 x 2B = <tspan font-weight="700" fill="#1a7f37">256 MB</tspan>  （+12.5%）</text>
+    <text x="44" y="356">索引 cache（假如做成 4 头） = 1M x 4 x 128 x 2B = <tspan font-weight="700" fill="#c0392b">1024 MB</tspan>  （+50%）</text>
+  </g>
+
+  <line x1="24" y1="374" x2="976" y2="374" stroke="#ddd"/>
+  <text x="24" y="396" class="note"><tspan font-weight="600">一句话类比</tspan>：这就像搜索引擎。4 个组是 4 个<tspan font-weight="600">不同的用户</tspan>，各自发出各自的查询词（Q_idx 要 4 份）；</text>
+  <text x="24" y="416" class="note">而全网文档只需要建<tspan font-weight="600">一套索引</tspan>（K_idx 只要 1 份）—— 你不会为每个用户单独建一遍索引库。</text>
+  <text x="24" y="444" class="note"><tspan font-weight="600">注意</tspan>：这里的"意图"与"内容"之分是<tspan font-weight="600">设计假设</tspan>，论文用消融验证了它够用，而非从第一性原理证明。</text>
+</svg>

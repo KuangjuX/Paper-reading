@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 610" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica, Arial, sans-serif" font-size="12">
+  <style>
+    .title{font-size:16px;font-weight:600;}
+    .ptitle{font-size:13px;font-weight:600;fill:#1f3d7a;}
+    .sub{font-size:10.5px;fill:#666;}
+    .mono{font-family:Menlo,Consolas,monospace;font-size:11px;}
+    .shape{font-family:Menlo,Consolas,monospace;font-size:11.5px;fill:#0b6b3a;font-weight:600;}
+    .box{stroke:#444;stroke-width:1.2;}
+    .a{fill:#dde7ff;}
+    .b{fill:#ffe2c8;}
+    .c{fill:#d9efd0;}
+    .p{fill:#e7d8f0;}
+    .n{fill:#f2f2f2;}
+    .note{font-size:10.5px;fill:#555;}
+    .warn{font-size:10.5px;fill:#c0392b;}
+  </style>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#444"/>
+    </marker>
+    <pattern id="seg64" width="10.9" height="34" patternUnits="userSpaceOnUse">
+      <rect width="9.2" height="34" fill="#ffd9b0"/>
+    </pattern>
+    <pattern id="seg128" width="9" height="34" patternUnits="userSpaceOnUse">
+      <rect width="7.5" height="34" fill="#ffe9d4"/>
+    </pattern>
+  </defs>
+
+  <text x="24" y="28" class="title">图 4  三个关键维度变换（N = 8192，H_kv = 4，d_idx = 128，B_k = 128，B = 64，k = 16）</text>
+
+  <text x="24" y="60" class="ptitle">1. 打分：K_idx 只有 1 个头，沿"组"轴广播到 4 份</text>
+
+  <rect class="box a" x="30" y="72" width="164" height="62" rx="4"/>
+  <text x="112" y="94" text-anchor="middle" font-weight="600">Q_idx</text>
+  <text x="112" y="114" text-anchor="middle" class="shape">(8192, 4, 128)</text>
+  <text x="112" y="148" text-anchor="middle" class="sub">位置 i / 组 r / 特征 d</text>
+
+  <text x="212" y="110" font-size="18" text-anchor="middle">x</text>
+
+  <rect class="box p" x="232" y="72" width="164" height="62" rx="4"/>
+  <text x="314" y="94" text-anchor="middle" font-weight="600">K_idx</text>
+  <text x="314" y="114" text-anchor="middle" class="shape">(8192, 1, 128)</text>
+  <text x="314" y="148" text-anchor="middle" class="sub">位置 j / <tspan fill="#c0392b" font-weight="600">1 个共享头</tspan> / 特征 d</text>
+
+  <line x1="404" y1="103" x2="452" y2="103" stroke="#444" marker-end="url(#ar)"/>
+  <text x="428" y="94" text-anchor="middle" class="sub">广播</text>
+
+  <rect class="box a" x="462" y="72" width="190" height="62" rx="4"/>
+  <text x="557" y="94" text-anchor="middle" font-weight="600">S_idx（token 级分数）</text>
+  <text x="557" y="114" text-anchor="middle" class="shape">(8192, 4, 8192)</text>
+  <text x="557" y="148" text-anchor="middle" class="sub">位置 i / 组 r / <tspan font-weight="600">被检索位置 j</tspan></text>
+
+  <rect x="672" y="72" width="298" height="62" rx="4" fill="#fdeceb" stroke="#e8b4b0"/>
+  <text x="686" y="92" class="warn" font-weight="600">这个张量永远不会被真正存下来</text>
+  <text x="686" y="110" class="note">bf16 下 N=8192 就要 512 MiB；N=1M 时约 8 TB</text>
+  <text x="686" y="126" class="note">内核里逐 tile 算完立刻 max 规约掉</text>
+
+  <text x="30" y="172" class="mono">einsum("i r d, j d -&gt; i r j")   —— 第 2 轴的 1 沿 4 个组广播；这一步就是全部 N^2 项的来源</text>
+
+  <line x1="24" y1="190" x2="976" y2="190" stroke="#eee"/>
+  <text x="24" y="214" class="ptitle">2. 池化：把最后一轴 8192 切成 64 x 128，再沿块内取 max</text>
+
+  <text x="30" y="240" class="shape">(8192, 4, 8192)</text>
+  <text x="160" y="240" class="mono">--- reshape --&gt;</text>
+  <text x="290" y="240" class="shape">(8192, 4, 64, 128)</text>
+  <text x="430" y="240" class="mono">--- max(axis=-1) --&gt;</text>
+  <text x="590" y="240" class="shape">(8192, 4, 64)</text>
+  <text x="700" y="240" class="sub">（reshape 不动数据，只是换个看法）</text>
+
+  <text x="30" y="266" class="sub">固定住某一个 (i, r)，最后一轴的 8192 个分数：</text>
+  <rect x="30" y="274" width="698" height="34" fill="url(#seg64)" stroke="#c88" stroke-width="0.6"/>
+  <text x="736" y="296" class="sub">64 个块</text>
+
+  <path d="M 128 308 L 108 336" stroke="#999" stroke-dasharray="3 2" fill="none"/>
+  <path d="M 139 308 L 400 336" stroke="#999" stroke-dasharray="3 2" fill="none"/>
+  <rect x="108" y="336" width="292" height="34" fill="url(#seg128)" stroke="#c88" stroke-width="0.6"/>
+  <text x="254" y="358" text-anchor="middle" class="sub">块 b 内部：128 个 token 的分数</text>
+
+  <line x1="254" y1="372" x2="254" y2="396" stroke="#c0392b" stroke-width="1.5" marker-end="url(#ar)"/>
+  <text x="266" y="390" class="warn" font-weight="600">取 max（不是 mean）</text>
+
+  <rect class="box b" x="222" y="398" width="64" height="26" rx="3"/>
+  <text x="254" y="416" text-anchor="middle" class="mono">1 个值</text>
+
+  <text x="430" y="300" class="note">整块都在 i 之后，全是负无穷，max 也是负无穷，自动出局</text>
+  <text x="430" y="318" class="note">含 i 的那块只有部分可见，max 只在可见 token 上取</text>
+  <text x="430" y="336" class="note">候选量从 8192 降到 64 —— top-k 的问题规模缩小 128 倍</text>
+
+  <line x1="24" y1="440" x2="976" y2="440" stroke="#eee"/>
+  <text x="24" y="464" class="ptitle">3. Gather：16 个块下标转成实际取出的 KV</text>
+
+  <rect class="box b" x="30" y="478" width="150" height="58" rx="4"/>
+  <text x="105" y="500" text-anchor="middle" font-weight="600">I（块下标）</text>
+  <text x="105" y="520" text-anchor="middle" class="shape">(8192, 4, 16)</text>
+
+  <line x1="188" y1="507" x2="228" y2="507" stroke="#444" marker-end="url(#ar)"/>
+  <text x="208" y="498" text-anchor="middle" class="sub">展开</text>
+
+  <rect class="box c" x="238" y="478" width="210" height="58" rx="4"/>
+  <text x="343" y="500" text-anchor="middle" font-weight="600">每个下标转成 128 个连续 token</text>
+  <text x="343" y="520" text-anchor="middle" class="shape">16 x 128 = 2048</text>
+
+  <line x1="456" y1="507" x2="496" y2="507" stroke="#444" marker-end="url(#ar)"/>
+
+  <rect class="box c" x="506" y="478" width="200" height="58" rx="4"/>
+  <text x="606" y="500" text-anchor="middle" font-weight="600">K_sel / V_sel（单个 i, r）</text>
+  <text x="606" y="520" text-anchor="middle" class="shape">(2048, 128)</text>
+
+  <rect x="726" y="478" width="244" height="58" rx="4" fill="#eaf6ec" stroke="#a8d5b1"/>
+  <text x="740" y="498" class="note">这 2048 个 token 供该组<tspan font-weight="600">全部 16 个</tspan></text>
+  <text x="740" y="514" class="note">query 头共用，一次加载喂饱 16 个头</text>
+  <text x="740" y="530" class="note">这就是"组内共享"换来的算术强度</text>
+
+  <text x="24" y="566" class="note"><tspan font-weight="600">注意</tspan>：2048 是上界。含 i 的那个 local 块通常只有一部分因果可见，所以实际 token 数一般小于 2048（图 3 的例子里是 1929）。</text>
+  <text x="24" y="586" class="note">主分支单个组的打分矩阵形状为 (16 个 query 头, 2048 个 KV)，正好是一个规整的稠密小矩阵 —— 稀疏性已经在 gather 阶段被"吸收"掉了。</text>
+</svg>

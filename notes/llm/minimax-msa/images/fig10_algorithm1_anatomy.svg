@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 660" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica, Arial, sans-serif" font-size="12">
+  <style>
+    .title{font-size:16px;font-weight:600;}
+    .sub{font-size:10.5px;fill:#666;}
+    .mono{font-family:Menlo,Consolas,monospace;font-size:11px;}
+    .shape{font-family:Menlo,Consolas,monospace;font-size:10px;fill:#0b6b3a;}
+    .ln{font-family:Menlo,Consolas,monospace;font-size:11px;font-weight:700;fill:#888;}
+    .box{stroke:#444;stroke-width:1.1;}
+    .main{fill:#d9efd0;}
+    .idx{fill:#e7d8f0;}
+    .ret{fill:#f2f2f2;}
+    .hdr{font-size:12.5px;font-weight:600;}
+    .note{font-size:10.5px;fill:#555;}
+    .cut{fill:#c0392b;font-size:10.5px;font-weight:600;}
+  </style>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+    </marker>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#c0392b"/>
+    </marker>
+  </defs>
+
+  <text x="24" y="28" class="title">图 10  Algorithm 1 的依赖关系与梯度隔离</text>
+  <text x="24" y="47" class="sub">绿色 = 主分支路径（由 L_LM 训练）；紫色 = 索引分支路径（由 L_KL 训练）；红色 = 梯度被切断处</text>
+
+  <text x="40" y="76" class="hdr" fill="#2d6a3e">主分支</text>
+  <text x="620" y="76" class="hdr" fill="#6b3d8a">索引分支</text>
+
+  <rect class="box main" x="40" y="88" width="300" height="56" rx="4"/>
+  <text x="52" y="107" class="ln">1:</text>
+  <text x="76" y="107" class="mono">Q, K, V &lt;- X·W_q, X·W_k, X·W_v</text>
+  <text x="76" y="126" class="shape">(N,64,128) (N,4,128) (N,4,128)</text>
+
+  <rect class="box idx" x="620" y="88" width="320" height="56" rx="4"/>
+  <text x="632" y="107" class="ln">2:</text>
+  <text x="656" y="107" class="mono">Q_idx, K_idx &lt;- sg(X)·W_iq, sg(X)·W_ik</text>
+  <text x="656" y="126" class="shape">(N,4,128)　(N,1,128)　　沿 X 的梯度被切断</text>
+
+  <rect class="box idx" x="620" y="166" width="320" height="50" rx="4"/>
+  <text x="632" y="185" class="ln">3:</text>
+  <text x="656" y="185" class="mono">M_idx &lt;- BlockMaxPool(Q_idx, K_idx, B_k)</text>
+  <text x="656" y="203" class="shape">(N,4,64)　逐组、因果；S_idx 从不物化</text>
+
+  <rect class="box idx" x="620" y="238" width="320" height="50" rx="4"/>
+  <text x="632" y="257" class="ln">4:</text>
+  <text x="656" y="257" class="mono">I &lt;- TopK(M_idx, k)</text>
+  <text x="656" y="275" class="shape">(N,4,16)　整数下标，含 local block</text>
+
+  <rect class="box main" x="40" y="310" width="300" height="56" rx="4"/>
+  <text x="52" y="329" class="ln">5:</text>
+  <text x="76" y="329" class="mono">O &lt;- TopKAttn(Q, K, V, I)</text>
+  <text x="76" y="348" class="shape">(N,64,128)　gather 与 attention 融合</text>
+
+  <rect class="box main" x="40" y="390" width="300" height="50" rx="4"/>
+  <text x="52" y="409" class="ln">6:</text>
+  <text x="76" y="409" class="mono">output &lt;- O·W_o</text>
+  <text x="76" y="427" class="shape">(N,3072)　回到残差流</text>
+
+  <rect class="box idx" x="620" y="330" width="320" height="64" rx="4"/>
+  <text x="632" y="349" class="ln">7:</text>
+  <text x="656" y="349" class="mono">L_KL &lt;- KLdiv(Q_idx, K_idx,</text>
+  <text x="656" y="366" class="mono">　　　　　　 sg(Q), sg(K), I)</text>
+  <text x="656" y="384" class="shape">标量　老师侧切断；注意 V 没有传进来</text>
+
+  <rect class="box ret" x="330" y="470" width="340" height="44" rx="4"/>
+  <text x="342" y="490" class="ln">8:</text>
+  <text x="366" y="490" class="mono">return output, L_KL</text>
+  <text x="366" y="507" class="sub">一层返回两样东西 —— 这在 Transformer 里并不常见</text>
+
+  <line x1="190" y1="144" x2="190" y2="306" stroke="#555" marker-end="url(#ar)"/>
+  <line x1="780" y1="144" x2="780" y2="164" stroke="#555" marker-end="url(#ar)"/>
+  <line x1="780" y1="216" x2="780" y2="236" stroke="#555" marker-end="url(#ar)"/>
+  <line x1="780" y1="288" x2="780" y2="328" stroke="#555" marker-end="url(#ar)"/>
+  <path d="M 620 263 L 470 263 L 470 338 L 344 338" fill="none" stroke="#555" marker-end="url(#ar)"/>
+  <text x="470" y="255" text-anchor="middle" class="sub">路由决策</text>
+  <path d="M 340 100 L 580 100 L 580 356 L 616 356" fill="none" stroke="#c0392b" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+  <text x="580" y="92" text-anchor="middle" class="cut">sg(Q), sg(K)</text>
+  <path d="M 940 116 L 970 116 L 970 372 L 944 372" fill="none" stroke="#555" marker-end="url(#ar)"/>
+  <line x1="190" y1="366" x2="190" y2="388" stroke="#555" marker-end="url(#ar)"/>
+  <path d="M 190 440 L 190 492 L 326 492" fill="none" stroke="#555" marker-end="url(#ar)"/>
+  <path d="M 780 394 L 780 492 L 674 492" fill="none" stroke="#555" marker-end="url(#ar)"/>
+
+  <line x1="24" y1="534" x2="976" y2="534" stroke="#ddd"/>
+  <text x="24" y="556" class="hdr">最关键的结构性质：两个损失训练两组<tspan fill="#c0392b">完全不相交</tspan>的参数</text>
+
+  <rect class="box main" x="40" y="568" width="420" height="64" rx="4"/>
+  <text x="54" y="588" class="mono" font-weight="700">L_LM  →  W_q, W_k, W_v, W_o</text>
+  <text x="54" y="606" class="note">经第 6、5 行回传，并继续流向主干更早的层</text>
+  <text x="54" y="623" class="note">走不到索引分支：第 4 行的 TopK 天然不可微</text>
+
+  <rect class="box idx" x="520" y="568" width="420" height="64" rx="4"/>
+  <text x="534" y="588" class="mono" font-weight="700">L_KL  →  W_iq, W_ik（仅此两个矩阵）</text>
+  <text x="534" y="606" class="note">走不到主分支：第 7 行 sg(Q), sg(K) 挡住</text>
+  <text x="534" y="623" class="note">走不到主干：第 2 行 sg(X) 挡住，到此为止</text>
+
+  <text x="24" y="652" class="note">两条路径只在<tspan font-weight="600">前向</tspan>上耦合：第 4 行的 I 决定主分支能看到什么，第 1 行的 Q、K 决定老师长什么样。反向则完全隔离。</text>
+</svg>

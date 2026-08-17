@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 470" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica, Arial, sans-serif" font-size="12">
+  <style>
+    .title{font-size:16px;font-weight:600;}
+    .sub{font-size:10.5px;fill:#666;}
+    .lbl{font-size:13px;font-weight:600;}
+    .mono{font-family:Menlo,Consolas,monospace;font-size:11px;}
+    .panel{fill:#fafafa;stroke:#ccc;stroke-width:1;}
+    .barpos{fill:#5b8ff9;}
+    .barneg{fill:#d9d9d9;}
+    .needle{fill:#c0392b;}
+    .axis{stroke:#999;stroke-width:1;}
+    .ok{fill:#1a7f37;font-weight:600;}
+    .bad{fill:#c0392b;font-weight:600;}
+    .note{font-size:10.5px;fill:#555;}
+  </style>
+
+  <text x="24" y="28" class="title">图 2  块内取 max 还是 mean —— 一个"大海捞针"的具体例子</text>
+  <text x="24" y="47" class="sub">两个候选块各含 128 个 token，索引器要决定先读哪一个。分数为 q·k/sqrt(d) 的结果。</text>
+
+  <rect class="panel" x="24" y="62" width="452" height="230" rx="5"/>
+  <text x="40" y="84" class="lbl">块 A：埋着 1 根"针"</text>
+  <text x="40" y="101" class="sub">1 个 token 强匹配 (+8.0)，其余 127 个无关 (-1.0)</text>
+  <line class="axis" x1="40" y1="245" x2="460" y2="245"/>
+  <text x="466" y="249" class="mono" fill="#999">0</text>
+  <g>
+    <rect class="barneg" x="44"  y="245" width="11" height="12"/>
+    <rect class="barneg" x="61"  y="245" width="11" height="12"/>
+    <rect class="barneg" x="78"  y="245" width="11" height="12"/>
+    <rect class="barneg" x="95"  y="245" width="11" height="12"/>
+    <rect class="barneg" x="112" y="245" width="11" height="12"/>
+    <rect class="barneg" x="129" y="245" width="11" height="12"/>
+    <rect class="barneg" x="146" y="245" width="11" height="12"/>
+    <rect class="needle" x="163" y="149" width="11" height="96"/>
+    <rect class="barneg" x="180" y="245" width="11" height="12"/>
+    <rect class="barneg" x="197" y="245" width="11" height="12"/>
+    <rect class="barneg" x="214" y="245" width="11" height="12"/>
+    <rect class="barneg" x="231" y="245" width="11" height="12"/>
+    <rect class="barneg" x="248" y="245" width="11" height="12"/>
+    <rect class="barneg" x="265" y="245" width="11" height="12"/>
+    <rect class="barneg" x="282" y="245" width="11" height="12"/>
+    <rect class="barneg" x="299" y="245" width="11" height="12"/>
+    <rect class="barneg" x="316" y="245" width="11" height="12"/>
+    <rect class="barneg" x="333" y="245" width="11" height="12"/>
+    <rect class="barneg" x="350" y="245" width="11" height="12"/>
+    <rect class="barneg" x="367" y="245" width="11" height="12"/>
+    <rect class="barneg" x="384" y="245" width="11" height="12"/>
+    <rect class="barneg" x="401" y="245" width="11" height="12"/>
+    <rect class="barneg" x="418" y="245" width="11" height="12"/>
+    <rect class="barneg" x="435" y="245" width="11" height="12"/>
+  </g>
+  <text x="168" y="142" text-anchor="middle" class="mono" fill="#c0392b">+8.0</text>
+  <text x="250" y="277" text-anchor="middle" class="sub">（示意 24 根，实际 128 个 token）</text>
+
+  <rect class="panel" x="504" y="62" width="452" height="230" rx="5"/>
+  <text x="520" y="84" class="lbl">块 B：全体平庸</text>
+  <text x="520" y="101" class="sub">128 个 token 分数全部 = +0.5，没有任何一个真正相关</text>
+  <line class="axis" x1="520" y1="245" x2="940" y2="245"/>
+  <text x="946" y="249" class="mono" fill="#999">0</text>
+  <g>
+    <rect class="barpos" x="524" y="239" width="11" height="6"/>
+    <rect class="barpos" x="541" y="239" width="11" height="6"/>
+    <rect class="barpos" x="558" y="239" width="11" height="6"/>
+    <rect class="barpos" x="575" y="239" width="11" height="6"/>
+    <rect class="barpos" x="592" y="239" width="11" height="6"/>
+    <rect class="barpos" x="609" y="239" width="11" height="6"/>
+    <rect class="barpos" x="626" y="239" width="11" height="6"/>
+    <rect class="barpos" x="643" y="239" width="11" height="6"/>
+    <rect class="barpos" x="660" y="239" width="11" height="6"/>
+    <rect class="barpos" x="677" y="239" width="11" height="6"/>
+    <rect class="barpos" x="694" y="239" width="11" height="6"/>
+    <rect class="barpos" x="711" y="239" width="11" height="6"/>
+    <rect class="barpos" x="728" y="239" width="11" height="6"/>
+    <rect class="barpos" x="745" y="239" width="11" height="6"/>
+    <rect class="barpos" x="762" y="239" width="11" height="6"/>
+    <rect class="barpos" x="779" y="239" width="11" height="6"/>
+    <rect class="barpos" x="796" y="239" width="11" height="6"/>
+    <rect class="barpos" x="813" y="239" width="11" height="6"/>
+    <rect class="barpos" x="830" y="239" width="11" height="6"/>
+    <rect class="barpos" x="847" y="239" width="11" height="6"/>
+    <rect class="barpos" x="864" y="239" width="11" height="6"/>
+    <rect class="barpos" x="881" y="239" width="11" height="6"/>
+    <rect class="barpos" x="898" y="239" width="11" height="6"/>
+    <rect class="barpos" x="915" y="239" width="11" height="6"/>
+  </g>
+  <text x="730" y="228" text-anchor="middle" class="mono" fill="#5b8ff9">+0.5 x 128</text>
+
+  <text x="40"  y="320" class="mono">块 A：  max = <tspan font-weight="700" fill="#c0392b">+8.00</tspan>    mean = (8.0 + 127 x (-1.0)) / 128 = <tspan font-weight="700" fill="#c0392b">-0.93</tspan></text>
+  <text x="40"  y="341" class="mono">块 B：  max = <tspan font-weight="700" fill="#5b8ff9">+0.50</tspan>    mean = <tspan font-weight="700" fill="#5b8ff9">+0.50</tspan></text>
+
+  <line x1="24" y1="356" x2="956" y2="356" stroke="#ddd"/>
+
+  <rect x="24" y="368" width="452" height="52" rx="4" fill="#fdeceb" stroke="#e8b4b0"/>
+  <text x="40" y="389" class="mono">mean-pool（MoBA 路线）：B(+0.50) &gt; A(-0.93)</text>
+  <text x="40" y="410" class="bad" font-size="12">选中块 B，那根针被 127 个无关 token 稀释掉了</text>
+
+  <rect x="504" y="368" width="452" height="52" rx="4" fill="#eaf6ec" stroke="#a8d5b1"/>
+  <text x="520" y="389" class="mono">max-pool（MSA 路线）：A(+8.00) &gt; B(+0.50)</text>
+  <text x="520" y="410" class="ok" font-size="12">选中块 A，命中</text>
+
+  <text x="24" y="444" class="note">关键点：mean 与 max 的差别不是"调参偏好"。由内积的线性性，<tspan class="mono">q·mean(k_j) = mean(q·k_j)</tspan>，所以"块内 key 向量取平均再打分"在数学上<tspan font-weight="600">完全等价于</tspan>对 token 分数取 mean。</text>
+  <text x="24" y="462" class="note">而 max <tspan font-weight="600">不能</tspan>和内积交换顺序 —— 这正是 MSA 必须老老实实算出全部 N^2 个 token 级分数、因而只能把 d_idx 和 H_kv 压到极小的根本原因。</text>
+</svg>

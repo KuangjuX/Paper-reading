@@ -73,6 +73,7 @@
 | ✅ | **Efficient Streaming Language Models with Attention Sinks** | ICLR'24 | [Paper](https://arxiv.org/pdf/2309.17453) |
 | ✅ | **Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference** | ICML'24 | [Paper](https://arxiv.org/pdf/2406.10774) |
 | ✅ | **DuoAttention: Efficient Long-Context LLM Inference with Retrieval and Streaming Heads** | ICLR'25 | [Paper](https://arxiv.org/pdf/2410.10819v1) |
+| ✅ | **MiniMax Sparse Attention** | arXiv'26 | [Paper](https://arxiv.org/abs/2606.13392) / [Note](notes/llm/minimax-msa/msa.md) |
 
 ### LLM Serving
 

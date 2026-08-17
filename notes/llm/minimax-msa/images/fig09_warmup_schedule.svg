@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 582" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica, Arial, sans-serif" font-size="12">
+  <style>
+    .title{font-size:16px;font-weight:600;}
+    .ptitle{font-size:13px;font-weight:600;fill:#1f3d7a;}
+    .sub{font-size:10.5px;fill:#666;}
+    .mono{font-family:"SF Mono",Menlo,Consolas,monospace;font-size:11px;}
+    .box{stroke:#444;stroke-width:1.1;}
+    .warm{fill:#fdf0d5;stroke:#d8b45a;}
+    .sparse{fill:#dde7ff;stroke:#5a8fd6;}
+    .dense{fill:#eaf6ec;stroke:#a8d5b1;}
+    .nn{fill:#f7f7f7;}
+    .note{font-size:10.5px;fill:#555;}
+    .hl{fill:#fdeceb;stroke:#e8b4b0;}
+    .th{font-size:11px;font-weight:600;fill:#1f3d7a;}
+  </style>
+  <defs>
+    <marker id="c1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#666"/>
+    </marker>
+  </defs>
+
+  <text x="24" y="28" class="title">图 9 · 索引器 Warmup：两阶段训练日程</text>
+
+  <text x="24" y="56" class="ptitle">动机 · 训练最初期主分支的注意力分布在剧烈变形（附录 B.4，Figure 10）</text>
+  <rect class="box nn" x="24" y="68" width="952" height="94" rx="5"/>
+  <text x="40" y="90" class="note">注意力熵在最初几百步内从平滑迅速塌成尖锐分布。此时若第 0 步就开启 top-k，会形成一个闭环故障：</text>
+  <text x="66" y="112" class="mono">索引器近乎随机　→　主分支被路由到无信息的 token　→　老师分布本身变坏　→　KL 监督被污染</text>
+  <path d="M 812 118 L 812 130 L 60 130 L 60 118" stroke="#c0392b" stroke-width="1.2" fill="none" marker-end="url(#c1)"/>
+  <text x="76" y="150" class="note" fill="#c0392b">恶性循环 —— 而且索引器要追的还是一个正在高速移动的目标</text>
+
+  <line x1="24" y1="198" x2="976" y2="198" stroke="#ddd"/>
+
+  <text x="24" y="200" class="ptitle">MSA-PT · 从零训练，总预算 3T tokens</text>
+  <rect class="box warm" x="24" y="212" width="70" height="42" rx="4"/>
+  <text x="59" y="230" text-anchor="middle" class="mono" font-size="10">Warmup</text>
+  <text x="59" y="246" text-anchor="middle" class="mono" font-size="10">40B</text>
+  <rect class="box sparse" x="96" y="212" width="800" height="42" rx="4"/>
+  <text x="496" y="238" text-anchor="middle" class="mono">稀疏训练　2960B tokens（占 98.7%）</text>
+  <text x="908" y="238" class="sub">3T</text>
+
+  <text x="24" y="290" class="ptitle">MSA-CPT · 从 2.6T 的 Full-Attention checkpoint 转换，续训 400B</text>
+  <rect class="box dense" x="24" y="302" width="330" height="42" rx="4"/>
+  <text x="189" y="328" text-anchor="middle" class="mono">已有的稠密 GQA 预训练　2.6T tokens</text>
+  <rect class="box warm" x="356" y="302" width="82" height="42" rx="4"/>
+  <text x="397" y="320" text-anchor="middle" class="mono" font-size="10">Warmup</text>
+  <text x="397" y="336" text-anchor="middle" class="mono" font-size="10">40B（占 10%）</text>
+  <rect class="box sparse" x="440" y="302" width="456" height="42" rx="4"/>
+  <text x="668" y="328" text-anchor="middle" class="mono">稀疏续训　360B tokens</text>
+  <text x="908" y="328" class="sub">3T</text>
+
+  <line x1="397" y1="350" x2="397" y2="368" stroke="#666" stroke-width="1.2" marker-end="url(#c1)"/>
+  <text x="410" y="366" class="note">此处替换注意力层、新增两个索引投影（随机初始化）</text>
+
+  <line x1="24" y1="384" x2="976" y2="384" stroke="#ddd"/>
+
+  <text x="24" y="408" class="ptitle">两个阶段到底差在哪：唯一变的是主分支看多少 KV，以及 KL 在多大的支撑集上算</text>
+
+  <rect class="box nn" x="24" y="420" width="952" height="146" rx="5"/>
+  <line x1="24" y1="448" x2="976" y2="448" stroke="#ccc"/>
+  <line x1="330" y1="420" x2="330" y2="566" stroke="#ccc"/>
+  <line x1="654" y1="420" x2="654" y2="566" stroke="#ccc"/>
+
+  <text x="42" y="440" class="th">对比项</text>
+  <text x="348" y="440" class="th">Warmup 阶段（前 40B tokens）</text>
+  <text x="672" y="440" class="th">稀疏阶段（其余全部）</text>
+
+  <line x1="24" y1="478" x2="976" y2="478" stroke="#eee"/>
+  <line x1="24" y1="508" x2="976" y2="508" stroke="#eee"/>
+  <line x1="24" y1="538" x2="976" y2="538" stroke="#eee"/>
+
+  <text x="42" y="468" class="note">主分支注意力</text>
+  <text x="348" y="468" class="note">全注意力（不做 top-k 路由）</text>
+  <text x="672" y="468" class="note">只看 top-k 选中的 k·B_k 个 token</text>
+
+  <text x="42" y="498" class="note">KL 的支撑集</text>
+  <text x="348" y="498" class="note">全部因果可见 token（整条序列）</text>
+  <text x="672" y="498" class="note">选中块诱导的 token 集合 I_tok</text>
+
+  <text x="42" y="528" class="note">索引器的角色</text>
+  <text x="348" y="528" class="note">纯旁观者，只学不管事</text>
+  <text x="672" y="528" class="note">接管路由，决定主分支能看到什么</text>
+
+  <text x="42" y="558" class="note">主干是否受影响</text>
+  <text x="348" y="558" class="note">不受影响（等价于普通稠密训练）</text>
+  <text x="672" y="558" class="note">不受影响（KL 已被 detach）</text>
+</svg>
