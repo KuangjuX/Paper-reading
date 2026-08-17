@@ -538,6 +538,8 @@ $$O^{(h)}_i = \operatorname{softmax}\left(\frac{Q^{(h)}_i \left(K^{(r)}[\mathcal
 
 ![图 8 KL 损失的师生分布怎么构造](images/fig08_kl_teacher_student.svg)
 
+> 专题延伸：[MSA 中的 KL 对齐与局部知识蒸馏](msa-kl-distillation.md)——包括 soft-label 视角、$P^\text{idx}-P$ 梯度、支撑集盲区、LSE kernel 优化和训练指标解读。
+
 思路：既然 LM 损失给不了信号，就**直接告诉索引器"主分支实际最关注哪些 token"**，让它去模仿。
 
 **第一步 · 确定支撑集**。记 $\mathcal{I}^{(r)}_{i,\text{tok}}$ 为选中块诱导出的因果可见 token 集合。$i = 5000$ 的例子里就是那 1929 个 token。师生**在同一个支撑集上**比较。
@@ -560,22 +562,25 @@ $$\mathcal{L}_\text{KL} = \frac{1}{N H_{kv}} \sum_{i=1}^{N} \sum_{r=1}^{H_{kv}} 
 
 **② KL 方向是 $D_\text{KL}(P \| P^\text{idx})$，老师在前。**
 
-这是**前向 KL**，性质是 mass-covering。看一个具体数字：假设老师给某 token 的概率是 0.3，而学生只给了 0.001。
+教师 $P$ 被 stop-gradient，因此最小化这项 KL 对 Index Branch 等价于最小化 soft-label cross entropy：
 
-| | 该项贡献 |
-|---|---|
-| 前向 KL：$P \log \frac{P}{P^\text{idx}}$ | $0.3 \ln \frac{0.3}{0.001} = 0.3 \times 5.70 = \mathbf{1.71}$ |
-| 反向 KL：$P^\text{idx} \log \frac{P^\text{idx}}{P}$ | $0.001 \ln \frac{0.001}{0.3} = \mathbf{-0.0057}$ |
+$$D_\text{KL}(P \| P^\text{idx}) = -\sum_j P_j \log P_j^\text{idx} - H(P)$$
 
-**同一个"漏选"错误，前向 KL 的惩罚强度是反向的约 300 倍**。对检索器来说这正是想要的——**宁可多选，不能漏选**，召回比精确重要得多。若用反向 KL，学生会倾向于蜷缩到单一模式，对检索是灾难。
+若学生 logits 为 $z_j=S_{i,j}^\text{idx}$，最关键的梯度是：
+
+$$\frac{\partial D_\text{KL}(P \| P^\text{idx})}{\partial z_j}=P_j^\text{idx}-P_j$$
+
+所以教师认为重要、学生低估的位置会被提高 index logit；学生高估的位置则会被压低。当 $P_j$ 较大而 $P_j^\text{idx}$ 很小时，前向 KL 会产生显著惩罚，这符合稀疏检索不希望漏掉重要位置的直觉。
+
+需要避免一个常见但不严谨的论证：不能把 forward-KL 和 reverse-KL 的**单个位置项**直接比较倍数，因为 KL 只有对完整分布求和后才保证非负，reverse-KL 的单项可以为负。论文也没有报告 KL 方向的专项消融；这里最可靠的依据是完整目标和上面的 $P^\text{idx}-P$ 梯度。
 
 **③ KL 建在 token 级分数 $S^\text{idx}$ 上，不是块级分数 $M^\text{idx}$。**
 
 如果对块级分数算 KL，由于 $M^\text{idx}$ 是 max-pool 的结果，每个块只有**取到最大值的那 1 个 token** 能拿到梯度，另外 127 个完全不被校准。放在 token 级，1929 个分数全部得到监督。
 
-**④ 老师的计算几乎是免费的。**
+**④ 老师复用了主分支已有的归一化信息。**
 
-$P^{(r)}$ 需要的归一化常数就是主分支前向已经算出的 LSE。4.3 节把这些 LSE 直接写到显存，从而**整个 KL 前向被跳过**——因为 KL 只影响反向梯度，前向的损失数值本身没人要。
+$P^{(r)}$ 需要的归一化常数就是主分支前向已经算出的 LSE。4.3 节把这些 LSE 直接写到显存，使实现能够跳过一个独立、重复计算 softmax 的 KL-forward kernel，再在自定义 backward 中根据 logits 与 LSE 重建概率并注入梯度。
 
 #### 机制二：梯度截断——把 KL 关进索引分支
 
