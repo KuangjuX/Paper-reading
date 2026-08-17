@@ -159,6 +159,7 @@
 | Status | Paper | Venue | Links |
 |:------:|-------|-------|-------|
 | ✅ | **AVO: Agentic Variation Operators for Autonomous Evolutionary Search** | arXiv'26 | [Paper](https://arxiv.org/abs/2603.24517) / [Note](notes/llm-for-kernel/avo.md) |
+| ✅ 📝 | **CAKE: Compiler-Agent Co-Design for Frontier Kernel Evolution** | arXiv'26 | [Paper](https://arxiv.org/abs/2608.16292) / [Note](notes/llm-for-kernel/CAKE.md) |
 
 ## 🧩 Agent Systems
 
