@@ -5,8 +5,8 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Papers-81-blue?style=flat-square" alt="Papers">
-  <img src="https://img.shields.io/badge/Read-65-green?style=flat-square" alt="Read">
+  <img src="https://img.shields.io/badge/Papers-82-blue?style=flat-square" alt="Papers">
+  <img src="https://img.shields.io/badge/Read-66-green?style=flat-square" alt="Read">
   <img src="https://img.shields.io/badge/To_Read-16-orange?style=flat-square" alt="To Read">
 </p>
 
