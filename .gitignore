@@ -3,3 +3,5 @@ papers/*
 .venv/*
 tmp/*
 *.json
+
+.workbuddy-ai/
