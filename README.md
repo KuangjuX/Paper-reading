@@ -106,6 +106,7 @@
 | Status | Paper | Venue | Links |
 |:------:|-------|-------|-------|
 | ⬜ | **LoongTrain: Efficient Training of Long-Sequence LLMs with Head-Context Parallelism** | — | [Paper](https://arxiv.org/pdf/2406.18485) |
+| ✅ 📝 | **PithTrain: A Compact and Agent-Native MoE Training System** | arXiv'26 | [Paper](https://arxiv.org/abs/2605.31463) / [Note](notes/llm/pithtrain/pithtrain.md) / [Code Guide](notes/llm/pithtrain/pithtrain-code-guide.md) |
 
 ### RL Training
 
