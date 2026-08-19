@@ -5,8 +5,8 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Papers-82-blue?style=flat-square" alt="Papers">
-  <img src="https://img.shields.io/badge/Read-66-green?style=flat-square" alt="Read">
+  <img src="https://img.shields.io/badge/Papers-83-blue?style=flat-square" alt="Papers">
+  <img src="https://img.shields.io/badge/Read-67-green?style=flat-square" alt="Read">
   <img src="https://img.shields.io/badge/To_Read-16-orange?style=flat-square" alt="To Read">
 </p>
 
@@ -92,6 +92,7 @@
 |:------:|-------|-------|-------|
 | ✅ | **Look Ma, No Bubbles! Designing a Low-Latency Megakernel for Llama-1B** | Blog | [Paper](https://hazyresearch.stanford.edu/blog/2025-05-27-no-bubbles) |
 | ✅ | **Mirage Persistent Kernel: A Compiler and Runtime for Mega-Kernelizing Tensor Programs** | arXiv'25 | [Paper](https://arxiv.org/pdf/2512.22219) |
+| ✅ 📝 | **Event Tensor: A Unified Abstraction for Compiling Dynamic Megakernel** | MLSys'26 | [Paper](https://arxiv.org/abs/2604.13327) / [Note](notes/llm/event-tensor/event-tensor.md) |
 | ✅ | **TileRT: Tile-Based Runtime for Ultra-Low-Latency LLM Inference** | — | [Paper](https://github.com/tile-ai/TileRT) |
 | ✅ | **SonicMoE: Accelerating MoE with IO and Tile-aware Optimizations** | arXiv'25 | [Paper](https://arxiv.org/pdf/2512.14080) |
 | ✅ 📝 | **MegaMoE** (fused MoE megakernel, DeepGEMM) | DeepGEMM PR | [Source](https://github.com/deepseek-ai/DeepGEMM/pull/304) / [Note](notes/llm/megamoe/megamoe.md) |
