@@ -775,8 +775,297 @@ $$N^* = \frac{4 H_q d_h k B_k}{H_{kv} d_\text{idx}} = \frac{4 \times 64 \times 1
 
 ---
 
+## 第 4 章：Kernel Design
+
+### 4.2 为什么 Sparse Attention Forward 采用 KV-outer
+
+> 论文中的术语是 **KV-outer**，不是 KV-owner。`outer` 表示把 `(KV block, KV head)` 放在 kernel 的外层遍历维度。
+>
+> 独立专题笔记：[MSA 为什么采用 KV-outer Sparse Attention Forward](msa-kv-outer-forward.md)。该笔记进一步记录了完整 I/O 推导、reverse-index 数据结构、two-phase combine 证明、负载均衡和适用边界。
+
+KV-outer 不改变 MSA 的数学语义，只改变稀疏 attention 在 GPU 上的**循环顺序和工作分配方式**：
+
+```text
+Q-outer：固定 query，逐个读取它选择的 KV blocks
+
+KV-outer：固定 KV block，找出所有选择它的 queries 并一起计算
+```
+
+论文选择 KV-outer 的根本原因是：
+
+> **MSA 的多个 query 经常选择相同的 KV block。固定 KV block 后，可以让一批 queries 复用同一次 K/V tile 加载，并把它们拼成更大的 Tensor Core MMA。**
+
+#### 1. 从一个选择例子看重复读取
+
+假设四个 query 的 Top-k 结果是：
+
+```text
+q0 -> block A, C
+q1 -> block A, D
+q2 -> block A, C
+q3 -> block A, B
+```
+
+Q-outer 的访问顺序是：
+
+```text
+q0: load A, C
+q1: load A, D
+q2: load A, C
+q3: load A, B
+```
+
+block A 被重复读取 4 次，block C 被重复读取 2 次。真实 MSA 中 attention sink、local blocks 和其他热门语义块都可能产生这种复用机会。
+
+KV-outer 先把 q2k 关系反转为 k2q：
+
+```text
+A -> q0, q1, q2, q3
+B -> q3
+C -> q0, q2
+D -> q1
+```
+
+然后加载 block A 的 K/V tile，把 `q0...q3` gather 进来共同计算。严格地说，热门 block 可能被 scheduler 拆给多个 CTA，因此不是“全局永远只读取一次”，而是：
+
+> **每次 K/V tile 加载可以在一批 gathered queries 之间摊销。**
+
+#### 2. Q-outer 的 I/O 为什么太高
+
+设：
+
+- $H_q$：query head 数；
+- $H_{kv}$：KV head 数；
+- $G=H_q/H_{kv}$：GQA ratio；
+- $N$：序列长度；
+- $d_h$：head dimension；
+- $B_k$：KV block size；
+- $k$：每个 query/group 选择的 block 数。
+
+两种遍历顺序执行相同数量的 attention 计算：
+
+$$\mathrm{FLOPs}=4H_qNd_hkB_k. \tag{13}$$
+
+论文按每个元素 2 bytes 估算 Q-outer 的 I/O：
+
+$$
+\mathrm{IO}_{Q\text{-outer}}
+=
+\underbrace{2\cdot2\cdot H_qNd_h}_{\mathrm{read}(Q)+\mathrm{write}(O)}
++
+\underbrace{2\cdot2\cdot H_{kv}NkB_kd_h}_{\mathrm{read}(K+V)}.
+\tag{14}
+$$
+
+长序列下第二项占主导：每个 query 都重新 gather 自己选择的 $kB_k$ 个 K/V token。因此算术强度近似为：
+
+$$
+\frac{\mathrm{FLOPs}}{\mathrm{IO}}
+\approx
+\frac{H_q}{H_{kv}}
+=G.
+$$
+
+主实验配置中 $G=64/4=16$，所以 Q-outer 的算术强度约为 16。
+
+#### 3. KV-outer 用较小的 Q/partial 流量替换大量重复 K/V 流量
+
+KV-outer 的 FLOPs 不变，但 I/O 变成：
+
+$$
+\begin{aligned}
+\mathrm{IO}_{KV\text{-outer}}
+={}&
+\underbrace{2\cdot2\cdot H_{kv}Nd_h}_{\mathrm{read}(K+V)} \\
+&+
+\underbrace{2\cdot2\cdot H_qNkd_h}_{\mathrm{read}(Q)+\mathrm{write}(O_{buf})} \\
+&+
+\underbrace{2\cdot H_qN(k+1)d_h}_{\mathrm{read}(O_{buf})+\mathrm{write}(O)}.
+\end{aligned}
+\tag{16}
+$$
+
+最关键的变化是 K/V 读取项：
+
+$$
+O(NkB_kd_h)
+\quad\longrightarrow\quad
+O(Nd_h).
+$$
+
+代价是增加了 query gather、partial output 写回和 combine，但这些流量按 $d_h$ 计，而被避免的重复 K/V 流量按 $B_kd_h$ 计。由于 $B_k=128$，这个交换非常划算。
+
+论文得到：
+
+$$
+\frac{\mathrm{FLOPs}}{\mathrm{IO}}
+\approx
+\frac{2}{3}B_k.
+$$
+
+代入主实验配置：
+
+$$
+\text{Q-outer}\approx G=16,
+\qquad
+\text{KV-outer}\approx\frac{2}{3}\times128=85.3.
+$$
+
+KV-outer 的估计算术强度约为 Q-outer 的 $85.3/16\approx5.3$ 倍。这个数字**不是 wall-clock 加速比**，只说明每搬运一个字节可以执行更多计算，更有机会利用 Tensor Core，而不是被 HBM 带宽限制。
+
+#### 4. KV-outer 使 Query Concatenation 成为可能
+
+固定一个 KV head 后，一个 query 位置只贡献 $G=16$ 个 query heads。单独处理时 score GEMM 大致是：
+
+$$
+\underbrace{Q}_{16\times128}
+\times
+\underbrace{K^\top}_{128\times128}
+\longrightarrow
+\underbrace{S}_{16\times128}.
+$$
+
+MMA 的 $M$ 维只有 16，Tensor Core tile 填不满。
+
+Q-outer 下，不同 query 通常选择不同 KV 子集，不能简单沿序列维拼接。但在 KV-outer 中，当前 gathered queries 都选择了**同一个 KV block**，共享相同的 $K$ operand。
+
+论文把：
+
+$$
+\left\lceil\frac{128}{G}\right\rceil
+=
+\frac{128}{16}
+=8
+$$
+
+个 query positions 拼接起来。每个位置贡献 16 个 heads：
+
+$$
+8\times16=128,
+$$
+
+最终形成规整的：
+
+$$
+Q_{cat}^{128\times128}(K_{block}^{128\times128})^\top,
+$$
+
+即 $128\times128$ score MMA。一次连续 K/V block 加载可以喂给更多计算，矩阵形状也更适合 Tensor Core。
+
+#### 5. 从 q2k 到 k2q：KV-outer 需要 Reverse Sparse Index
+
+Top-k 原始输出回答：
+
+```text
+对于 query q，它选择了哪些 KV blocks？
+```
+
+即：
+
+$$
+(i,r)\longrightarrow\mathcal I_i^{(r)}.
+$$
+
+KV-outer kernel 需要反过来回答：
+
+```text
+对于 (KV block, KV head)，有哪些 queries 选择了它？
+```
+
+因此 forward 前需要构造类似 CSR 的 reverse index：
+
+```text
+q2k Top-k indices
+        ↓ histogram / prefix sum / scatter
+k2q reverse sparse index
+        ↓
+KV-outer scheduler
+```
+
+这会带来额外的索引构造和 query gather 开销，但换来了 K/V tile 复用和更大的 MMA。
+
+#### 6. KV-outer 为什么必须使用 Two-phase Forward
+
+一个 query 选择的 $k=16$ 个 blocks 可能被 16 个不同 CTA 分别处理。单个 CTA 只看到其中一个 block，不能直接得到所有 selected tokens 上的全局 softmax。
+
+所以 forward 分成两个 kernel。
+
+**K1：计算每个 block/chunk 的局部 attention。** 对 partial $s$：
+
+$$
+L_s=\log\sum_{j\in\mathcal J_s}\exp S_j,
+$$
+
+$$
+O_s
+=
+\sum_{j\in\mathcal J_s}\exp(S_j-L_s)V_j.
+$$
+
+写入 HBM buffer：
+
+$$
+O_{buf}[s,i,h],
+\qquad
+LSE_{buf}[s,i,h].
+$$
+
+**K2：对一个 query 的所有 partials 做精确合并。**
+
+$$
+L=\log\sum_s\exp L_s,
+\qquad
+w_s=\exp(L_s-L),
+$$
+
+$$
+O=\sum_sw_sO_s.
+$$
+
+将 $w_sO_s$ 展开：
+
+$$
+\sum_s\sum_{j\in\mathcal J_s}\exp(S_j-L)V_j,
+$$
+
+正好等于所有 selected tokens 上的一次全局 softmax。因此 two-phase 只是执行分解，**没有引入额外的 attention 数值近似**。
+
+#### 7. 热门 KV block 的负载均衡
+
+不同 block 的 query 数可能相差几个数量级：
+
+- sink block 可能被几乎所有 query 选择；
+- 普通远程 block 可能只被少量 query 选择。
+
+如果一个 `(KV block, KV head)` 固定映射到一个 CTA，热门 block 会形成严重长尾。论文的 scheduler 因此沿 gathered-query 维把热门 tile 切成多个 chunk，每个 chunk 最多约 $2kB_k$ 个 queries，并分发给多个 CTA。
+
+Scheduler 还会预先给每个 `(query, chunk)` 分配 $O_{buf}$ slot，使 K1 可以直接写入预定位置，不需要对输出做 atomic accumulation；K2 根据每个 query 的 slot count 合并有效 partials。
+
+#### 8. 收益与代价总结
+
+| 维度 | Q-outer | KV-outer |
+|---|---|---|
+| 外层遍历 | Query | `(KV block, KV head)` |
+| 主要复用对象 | Q | K/V block |
+| 不规则读取 | K/V gather | Query gather |
+| 热门 K/V block | 被多个 queries 重复读取 | 在 gathered queries 间摊销 |
+| 算术强度 | $\approx G=16$ | $\approx\frac{2}{3}B_k=85.3$ |
+| Score MMA | 单位置只有 $M=16$ | 8 个位置拼成 $M=128$ |
+| Softmax | 可在 query 内直接完成 | 需要 partial + exact combine |
+| 额外成本 | 较低 | reverse index、scheduler、HBM buffer、K2 |
+
+所以论文的取舍不是“KV-outer 没有代价”，而是：
+
+> **用 reverse index、query gather 和 two-phase combine 的额外成本，换取更少的重复 K/V 流量、更高的算术强度和更饱满的 Tensor Core MMA。**
+
+这个分析针对论文第 4.2 节的 **sparse prefill（query length 与 KV length 相等）**，不能直接假设 decoding 阶段采用完全相同的调度方式。
+
+更详细的论文—实现对应见：[Equations (13)–(16)：Q-outer 与 KV-outer](MiniMax%20Sparse%20Attention：论文算法与代码实现精确对应.md#411-equations-13-16q-outer-与-kv-outer)。
+
+---
+
 ## 待续
 
-- 第 4 章：内核设计（exp-free top-k、KV-outer 稀疏注意力、两阶段 combine、稀疏 KL 反向）
+- 第 4 章其余部分：exp-free top-k、稀疏 KL 反向
 - 第 5 章：109B 实验（MSA-PT vs MSA-CPT vs Full Attention）
 - 附录 B/C：消融（梯度来源、KL 梯度截断、warmup、可学习 sink、块大小、强制 sink/local、索引 value 头）
