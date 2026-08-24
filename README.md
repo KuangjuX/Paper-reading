@@ -5,9 +5,9 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Papers-83-blue?style=flat-square" alt="Papers">
-  <img src="https://img.shields.io/badge/Read-67-green?style=flat-square" alt="Read">
-  <img src="https://img.shields.io/badge/To_Read-16-orange?style=flat-square" alt="To Read">
+  <img src="https://img.shields.io/badge/Papers-105-blue?style=flat-square" alt="Papers">
+  <img src="https://img.shields.io/badge/Read-69-green?style=flat-square" alt="Read">
+  <img src="https://img.shields.io/badge/To_Read-36-orange?style=flat-square" alt="To Read">
 </p>
 
 ---
@@ -74,6 +74,63 @@
 | ✅ | **Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference** | ICML'24 | [Paper](https://arxiv.org/pdf/2406.10774) |
 | ✅ | **DuoAttention: Efficient Long-Context LLM Inference with Retrieval and Streaming Heads** | ICLR'25 | [Paper](https://arxiv.org/pdf/2410.10819v1) |
 | ✅ | **MiniMax Sparse Attention** | arXiv'26 | [Paper](https://arxiv.org/abs/2606.13392) / [Note](notes/llm/minimax-msa/msa.md) |
+
+### MSA / DSA Reading Path
+
+| Status | Paper | Why It Matters | Links |
+|:------:|-------|----------------|-------|
+| ⬜ | **Fast Transformer Decoding: One Write-Head is All You Need** | MQA 原始论文；理解所有 Query heads 共享 KV 与 decode 带宽瓶颈 | [Paper](https://arxiv.org/abs/1911.02150) |
+| ⬜ | **GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints** | 建立 MHA–GQA–MQA 的连续关系；理解 MSA 为什么按 GQA group 独立选择 | [Paper](https://arxiv.org/abs/2305.13245) |
+| ⬜ | **DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model** | MLA、latent KV compression、decoupled RoPE，以及 `uk_proj` / `uo_proj` 的矩阵吸收 | [Paper](https://arxiv.org/abs/2405.04434) |
+| ⬜ | **SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs** | 可学习的 block gate、自蒸馏与 block-sparse kernel；最接近 MSA Indexer 的对照之一 | [Paper](https://arxiv.org/abs/2410.13276) |
+| ⬜ | **Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention** | 同时研究压缩、选择、局部窗口与硬件对齐；理解 DSA 的算法–kernel 协同背景 | [Paper](https://arxiv.org/abs/2502.11089) |
+| ⬜ | **MoBA: Mixture of Block Attention for Long-Context LLMs** | MoE 风格的 block routing；适合对比 MSA 的 block max-pooling 与 group-specific selection | [Paper](https://arxiv.org/abs/2502.13189) |
+| ⬜ | **MInference 1.0: Accelerating Pre-filling for Long-Context LLMs via Dynamic Sparse Attention** | 无需重新训练的动态稀疏 prefill；对比学习式 Indexer 与预设 attention pattern | [Paper](https://arxiv.org/abs/2407.02490) |
+| ⬜ | **SpargeAttn: Accurate Sparse Attention Accelerating Any Model Inference** | 两阶段在线过滤与 softmax-aware pruning；理解推理期稀疏化的另一条路线 | [Paper](https://arxiv.org/abs/2502.18137) |
+
+**建议顺序：** MQA → GQA → DeepSeek-V2/MLA → SeerAttention → Native Sparse Attention → MoBA → [Quest](https://arxiv.org/abs/2406.10774) → MInference → SpargeAttn。
+
+#### Algorithm and Training Foundations
+
+这组论文用于从算子实现反向补齐 MSA/DSA 所依赖的算法与训练概念：稀疏 pattern、内容路由、不可微 Top-k、知识蒸馏、Router 稳定性和稀疏归一化。
+
+##### Sparse Pattern and Content Routing
+
+| Status | Paper | Why It Matters | Links |
+|:------:|-------|----------------|-------|
+| ⬜ | **Generating Long Sequences with Sparse Transformers** | 固定 factorized sparse pattern 与早期 block-sparse kernel；理解“规则但不自适应”的稀疏性 | [Paper](https://arxiv.org/abs/1904.10509) |
+| ⬜ | **Longformer: The Long-Document Transformer** | local window + global token；理解局部先验和全局信息通路 | [Paper](https://arxiv.org/abs/2004.05150) |
+| ⬜ | **Reformer: The Efficient Transformer** | LSH attention、bucket、排序和 reversible layers；理解动态候选集带来的数据重排成本 | [Paper](https://arxiv.org/abs/2001.04451) |
+| ⬜ | **Efficient Content-Based Sparse Attention with Routing Transformers** | online k-means 内容路由；连接固定 sparse pattern 与 learned Indexer | [Paper](https://arxiv.org/abs/2003.05997) |
+
+> **Big Bird** 已在 [Attention Mechanisms & Variants](#attention-mechanisms--variants) 中记录并标为已读，不在这里重复计数。
+
+##### Differentiable Top-k and Discrete Selection
+
+| Status | Paper | Why It Matters | Links |
+|:------:|-------|----------------|-------|
+| ⬜ | **Sparser is Faster and Less is More: Efficient Sparse Attention for Long-Range Transformers** | SparseK scoring network + differentiable Top-k；直接对比 MSA/DSA 的 hard Top-k + KL 路线 | [Paper](https://arxiv.org/abs/2406.16747) |
+| ⬜ | **Differentiable Top-k Operator with Optimal Transport** | 用熵正则 Optimal Transport 平滑 Top-k，理解连续松弛及其梯度 | [Paper](https://arxiv.org/abs/2002.06504) |
+| ⬜ | **Fast, Differentiable and Sparse Top-k: A Convex Analysis Perspective** | 从凸优化构造可微且真正稀疏的 Top-k，并讨论 GPU/TPU-friendly 算法 | [Paper](https://arxiv.org/abs/2302.01425) |
+| ⬜ | **Categorical Reparameterization with Gumbel-Softmax** | 离散采样的经典连续松弛；理解 temperature、annealing 与 soft-train/hard-inference 差异 | [Paper](https://arxiv.org/abs/1611.01144) |
+
+##### Distillation and Router Training
+
+| Status | Paper | Why It Matters | Links |
+|:------:|-------|----------------|-------|
+| ⬜ | **Distilling the Knowledge in a Neural Network** | soft target、temperature 与 KL；理解主 attention 如何作为 Indexer teacher | [Paper](https://arxiv.org/abs/1503.02531) |
+| ⬜ | **Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity** | hard Top-1 routing、capacity 与 load-balancing loss；将 Indexer 理解成 memory router | [Paper](https://arxiv.org/abs/2101.03961) |
+| ⬜ | **ST-MoE: Designing Stable and Transferable Sparse Expert Models** | Router 稳定性、辅助损失与 router z-loss；理解小型路由器如何影响整个模型训练 | [Paper](https://arxiv.org/abs/2202.08906) |
+| ⬜ | **Mixture-of-Experts with Expert Choice Routing** | expert 选择 token 而非 token 选择 expert；类比 q2k→k2q reverse index 与 KV-owner 调度 | [Paper](https://arxiv.org/abs/2202.09368) |
+
+##### Sparse Normalization
+
+| Status | Paper | Why It Matters | Links |
+|:------:|-------|----------------|-------|
+| ⬜ | **From Softmax to Sparsemax: A Sparse Model of Attention and Multi-Label Classification** | 在概率 simplex 上产生精确零值并保留可计算 Jacobian | [Paper](https://arxiv.org/abs/1602.02068) |
+| ⬜ | **Adaptively Sparse Transformers** | 使用可学习的 $\alpha$-entmax 让不同 attention heads 自适应选择稠密或稀疏分布 | [Paper](https://arxiv.org/abs/1909.00015) |
+
+**算法/训练补课顺序：** Sparse Transformer → Routing Transformer → SparseK Attention → Differentiable Top-k → Knowledge Distillation → Switch Transformer / ST-MoE → 回看 SeerAttention、NSA、MSA 与 DSA。
 
 ### LLM Serving
 
