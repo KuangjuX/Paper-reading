@@ -1,0 +1,3 @@
+[submodule "skills/paper-reading-skill"]
+	path = skills/paper-reading-skill
+	url = git@github.com:KuangjuX/paper-reading-skill.git
