@@ -6,8 +6,8 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Papers-260-blue?style=flat-square" alt="Papers">
-  <img src="https://img.shields.io/badge/Read-69-green?style=flat-square" alt="Read">
-  <img src="https://img.shields.io/badge/To_Read-191-orange?style=flat-square" alt="To Read">
+  <img src="https://img.shields.io/badge/Read-70-green?style=flat-square" alt="Read">
+  <img src="https://img.shields.io/badge/To_Read-190-orange?style=flat-square" alt="To Read">
 </p>
 
 ---
@@ -355,7 +355,7 @@
 
 | Status | Paper | Why It Matters | Links |
 |:------:|-------|----------------|-------|
-| ⬜ | **Distilling the Knowledge in a Neural Network** | soft target、temperature 与 KL；理解主 attention 如何作为 Indexer teacher | [Paper](https://arxiv.org/abs/1503.02531) |
+| ✅ 📝 | **Distilling the Knowledge in a Neural Network** | soft target、temperature 与 KL；理解主 attention 如何作为 Indexer teacher | [Paper](https://arxiv.org/abs/1503.02531) / [Note](notes/llm/knowledge-distillation/distilling-the-knowledge-in-a-neural-network.md) |
 | ⬜ | **Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity** | hard Top-1 routing、capacity 与 load-balancing loss；将 Indexer 理解成 memory router | [Paper](https://arxiv.org/abs/2101.03961) |
 | ⬜ | **ST-MoE: Designing Stable and Transferable Sparse Expert Models** | Router 稳定性、辅助损失与 router z-loss；理解小型路由器如何影响整个模型训练 | [Paper](https://arxiv.org/abs/2202.08906) |
 | ⬜ | **Mixture-of-Experts with Expert Choice Routing** | expert 选择 token 而非 token 选择 expert；类比 q2k→k2q reverse index 与 KV-owner 调度 | [Paper](https://arxiv.org/abs/2202.09368) |
