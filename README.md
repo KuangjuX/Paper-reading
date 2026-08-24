@@ -5,9 +5,9 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Papers-260-blue?style=flat-square" alt="Papers">
+  <img src="https://img.shields.io/badge/Papers-273-blue?style=flat-square" alt="Papers">
   <img src="https://img.shields.io/badge/Read-70-green?style=flat-square" alt="Read">
-  <img src="https://img.shields.io/badge/To_Read-190-orange?style=flat-square" alt="To Read">
+  <img src="https://img.shields.io/badge/To_Read-203-orange?style=flat-square" alt="To Read">
 </p>
 
 ---
@@ -58,6 +58,8 @@
 | ✅ | **TileLang: A Composable Tiled Programming Model for AI Systems** | — | [Paper](https://arxiv.org/pdf/2504.17577) |
 | ✅ | **Tawa: Automatic Warp Specialization for Modern GPUs with Asynchronous References** | arXiv'25 | [Paper](https://arxiv.org/pdf/2510.14719) |
 | ✅ | **KPerfIR: Towards an Open and Compiler-centric Ecosystem for GPU Kernel Performance Tooling on Modern AI Workloads** | OSDI'25 | [Paper](https://www.usenix.org/system/files/osdi25-guan.pdf) |
+| ⬜ | **Optimal Software Pipelining and Warp Specialization for Tensor Core GPUs** | OSDI'26 | [Paper](https://www.usenix.org/conference/osdi26/presentation/soi) |
+| ⬜ | **GraCE: Unlocking CUDA Graphs with Compiler Support for ML Workloads** | OSDI'26 | [Paper](https://www.usenix.org/conference/osdi26/presentation/ghosh) |
 
 ## 🚀 LLM Inference
 
@@ -90,6 +92,7 @@
 | ✅ | **Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference** | ICML'24 | [Paper](https://arxiv.org/pdf/2406.10774) |
 | ✅ | **DuoAttention: Efficient Long-Context LLM Inference with Retrieval and Streaming Heads** | ICLR'25 | [Paper](https://arxiv.org/pdf/2410.10819v1) |
 | ✅ | **MiniMax Sparse Attention** | arXiv'26 | [Paper](https://arxiv.org/abs/2606.13392) / [Note](notes/llm/minimax-msa/msa.md) |
+| ⬜ | **Unifying Sparse Attention with Hierarchical Memory for Scalable Long-Context LLM Serving (SPIN)** | arXiv'26 | [Paper](https://arxiv.org/abs/2604.26837) |
 
 ### LLM Serving
 
@@ -113,6 +116,10 @@
 | ⬜ | **LoongServe: Efficiently Serving Long-Context Large Language Models with Elastic Sequence Parallelism** | SOSP'24 | [Paper](https://dl.acm.org/doi/pdf/10.1145/3694715.3695948) |
 | ⬜ | **Mooncake: Trading More Storage for Less Computation — A KVCache-centric Architecture for Serving LLM Chatbot** | FAST'25 | [Paper](https://www.usenix.org/system/files/fast25-qin.pdf) |
 | ⬜ | **NanoFlow: Towards Optimal Large Language Model Serving Throughput** | OSDI'25 | [Paper](https://www.usenix.org/system/files/osdi25-zhu-kan.pdf) |
+| ⬜ | **From Tokens to Layers: Redefining Stall-Free Scheduling for LLM Serving with Layered Prefill** | MLSys'26 | [Paper](https://proceedings.mlsys.org/paper_files/paper/2026/hash/c0f460c6d63599ea870ba9db63dc96a9-Abstract-Conference.html) |
+| ⬜ | **CRAFT: Fine-Grained Cost-Aware Expert Replication for Efficient Mixture-of-Experts Serving** | MLSys'26 | [Paper](https://proceedings.mlsys.org/paper_files/paper/2026/hash/3a7f9e485845dac27423375c934cb4db-Abstract-Conference.html) |
+| ⬜ | **Strata: Hierarchical Context Caching for Long Context Language Model Serving** | OSDI'26 | [Paper](https://www.usenix.org/conference/osdi26/presentation/xie-zhiqiang) |
+| ⬜ | **No Buffer, No Bottleneck: Efficient Zero-Copy KV Cache Offloading for Long-Context LLMs (DirectKV)** | OSDI'26 | [Paper](https://www.usenix.org/conference/osdi26/presentation/luo) |
 
 ### Quantization & Compression
 
@@ -134,12 +141,13 @@
 | Status | Paper | Venue | Links |
 |:------:|-------|-------|-------|
 | ✅ | **Look Ma, No Bubbles! Designing a Low-Latency Megakernel for Llama-1B** | Blog | [Paper](https://hazyresearch.stanford.edu/blog/2025-05-27-no-bubbles) |
-| ✅ | **Mirage Persistent Kernel: A Compiler and Runtime for Mega-Kernelizing Tensor Programs** | arXiv'25 | [Paper](https://arxiv.org/pdf/2512.22219) |
+| ✅ | **MPK: A Compiler and Runtime for Mega-Kernelizing Tensor Programs** | OSDI'26 | [Paper](https://www.usenix.org/conference/osdi26/presentation/cheng) |
 | ✅ 📝 | **Event Tensor: A Unified Abstraction for Compiling Dynamic Megakernel** | MLSys'26 | [Paper](https://arxiv.org/abs/2604.13327) / [Note](notes/llm/event-tensor/event-tensor.md) |
 | ✅ | **TileRT: Tile-Based Runtime for Ultra-Low-Latency LLM Inference** | — | [Paper](https://github.com/tile-ai/TileRT) |
 | ✅ | **SonicMoE: Accelerating MoE with IO and Tile-aware Optimizations** | arXiv'25 | [Paper](https://arxiv.org/pdf/2512.14080) |
 | ✅ 📝 | **MegaMoE** (fused MoE megakernel, DeepGEMM) | DeepGEMM PR | [Source](https://github.com/deepseek-ai/DeepGEMM/pull/304) / [Note](notes/llm/megamoe/megamoe.md) |
 | ✅ | **Compiling LLMs into a MegaKernel: A Path to Low-Latency Inference** | Blog | [Paper](https://zhihaojia.medium.com/compiling-llms-into-a-megakernel-a-path-to-low-latency-inference-cf7840913c17) |
+| ⬜ | **Ada-MK: Adaptive MegaKernel Optimization via Automated DAG-based Search for LLM Inference** | arXiv'26 | [Paper](https://arxiv.org/abs/2605.11581) |
 
 **MegaMoE 摘要（非正式论文，见 DeepGEMM PR #304）**：把 MoE 前向中分发、两层分组 GEMM、SwiGLU、合并压进**单一持久化 CUDA 核**；用对称显存布局与 NVLink 在核内做专家并行词元交换，并以波次调度、L1/L2 词元池上的细粒度到达计数 / 掩码，把通信与计算流水重叠；SM100 上按分发、TMA+MMA、尾声与合并划分线程束角色与寄存器预算。
 
@@ -233,7 +241,8 @@
 | ⬜ | **TileLink: Generating Efficient Compute-Communication Overlapping Kernels using Tile-Centric Primitives** | MLSys'25 | [Paper](https://arxiv.org/pdf/2503.20313) |
 | ⬜ | **Triton-distributed: Programming Overlapping Kernels on Distributed AI Systems with the Triton Compiler** | — | [Paper](https://arxiv.org/pdf/2504.19442) |
 | ⬜ | **FlashOverlap: A Lightweight Design for Efficiently Overlapping Communication and Computation** | EuroSys'25 | [Paper](https://arxiv.org/pdf/2504.19519) |
-| ⬜ | **TokenWeave: Efficient Compute-Communication Overlap for Distributed LLM Inference** | — | [Paper](https://arxiv.org/pdf/2505.11329) |
+| ⬜ | **TokenWeave: Efficient Compute-Communication Overlap for Distributed LLM Inference** | MLSys'26 | [Paper](https://proceedings.mlsys.org/paper_files/paper/2026/hash/73ba81c7b25134a559c8a9c39ec1a4c3-Abstract-Conference.html) |
+| ⬜ | **UEP: Portable Expert-Parallel Communication** | OSDI'26 | [Paper](https://www.usenix.org/conference/osdi26/presentation/mao-ziming-uep) |
 
 ## 🧠 Deep Learning
 
@@ -324,8 +333,9 @@
 | ⬜ | **MoBA: Mixture of Block Attention for Long-Context LLMs** | MoE 风格的 block routing；适合对比 MSA 的 block max-pooling 与 group-specific selection | [Paper](https://arxiv.org/abs/2502.13189) |
 | ⬜ | **MInference 1.0: Accelerating Pre-filling for Long-Context LLMs via Dynamic Sparse Attention** | 无需重新训练的动态稀疏 prefill；对比学习式 Indexer 与预设 attention pattern | [Paper](https://arxiv.org/abs/2407.02490) |
 | ⬜ | **SpargeAttn: Accurate Sparse Attention Accelerating Any Model Inference** | 两阶段在线过滤与 softmax-aware pruning；理解推理期稀疏化的另一条路线 | [Paper](https://arxiv.org/abs/2502.18137) |
+| ⬜ | **BLASST: Dynamic BLocked Attention Sparsity via Softmax Thresholding** | 复用 online softmax 统计量跳过低贡献 blocks；无需训练并覆盖 MHA/GQA/MQA/MLA | [Paper](https://proceedings.mlsys.org/paper_files/paper/2026/hash/c6ee784cbe46d854843e4c883a3321ef-Abstract-Conference.html) |
 
-**现代架构阅读顺序：** MQA → GQA → DeepSeek-V2/MLA → SeerAttention → Native Sparse Attention → MoBA → [Quest](https://arxiv.org/abs/2406.10774) → MInference → SpargeAttn。
+**现代架构阅读顺序：** MQA → GQA → DeepSeek-V2/MLA → SeerAttention → Native Sparse Attention → MoBA → [Quest](https://arxiv.org/abs/2406.10774) → MInference → SpargeAttn → BLASST。
 
 #### Algorithm and Training Foundations
 
@@ -434,6 +444,9 @@
 |:------:|-------|-------|-------|
 | ✅ | **AVO: Agentic Variation Operators for Autonomous Evolutionary Search** | arXiv'26 | [Paper](https://arxiv.org/abs/2603.24517) / [Note](notes/llm-for-kernel/avo.md) |
 | ✅ 📝 | **CAKE: Compiler-Agent Co-Design for Frontier Kernel Evolution** | arXiv'26 | [Paper](https://arxiv.org/abs/2608.16292) / [Note](notes/llm-for-kernel/CAKE.md) |
+| ⬜ | **FlashInfer-Bench: Building the Virtuous Cycle for AI-driven LLM Systems** | MLSys'26 | [Paper](https://proceedings.mlsys.org/paper_files/paper/2026/hash/37e44c4b5321605735be9761f9b758fc-Abstract-Conference.html) |
+| ⬜ | **Harness Engineering for LLM-Driven GPU Kernel Generation** | arXiv'26 | [Paper](https://arxiv.org/abs/2607.17979) |
+| ⬜ | **Agentic Kernel Optimization: Generating State-of-the-Art GPU Kernels Without Hand-Written CUDA** | arXiv'26, preliminary | [Paper](https://arxiv.org/abs/2608.14560) |
 
 ## 🧩 Agent Systems
 
