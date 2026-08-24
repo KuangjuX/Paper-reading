@@ -1064,6 +1064,15 @@ Scheduler 还会预先给每个 `(query, chunk)` 分配 $O_{buf}$ slot，使 K1 
 
 ---
 
+## 延伸笔记
+
+- [MSA Indexer 与 DSA Lightning Indexer 的差别](msa-vs-dsa-indexer.md)：从选择粒度、head 共享、KV 表示、KL 教师和 kernel 复用五个维度对比两者。
+- [DeepSeek Sparse Attention (DSA) 算法流程](../deepseek-dsa/deepseek-sparse-attention-dsa.md)：Lightning Indexer、Top-2048、MLA MQA-mode、`uo_proj` 与两阶段训练的完整链路。
+- [MSA 中的 KL 对齐与局部知识蒸馏](msa-kl-distillation.md)：MSA 的局部教师—学生关系与梯度公式。
+- [MSA 为什么采用 KV-outer Sparse Attention Forward](msa-kv-outer-forward.md)：稀疏主分支的内核执行顺序与 two-phase exact combine。
+
+---
+
 ## 待续
 
 - 第 4 章其余部分：exp-free top-k、稀疏 KL 反向
