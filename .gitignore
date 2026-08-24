@@ -3,5 +3,12 @@ papers/*
 .venv/*
 tmp/*
 *.json
+!package.json
+
+# VitePress build output and cache
+.vitepress/cache/
+.vitepress/dist/
+.pnpm-store/
+node_modules/
 
 .workbuddy-ai/
