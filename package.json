@@ -6,6 +6,7 @@
   "scripts": {
     "docs:dev": "vitepress dev . --host 0.0.0.0",
     "docs:build": "vitepress build .",
+    "docs:check-math": "node scripts/check-math-rendering.mjs",
     "docs:preview": "vitepress preview . --host 0.0.0.0"
   },
   "devDependencies": {

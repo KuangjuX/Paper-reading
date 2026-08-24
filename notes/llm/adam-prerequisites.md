@@ -30,9 +30,9 @@ Adam 不是一个适合零基础直接阅读的起点。它把 Momentum 的“�
 
 设训练集有 $N$ 个样本，第 $i$ 个样本产生 loss $\ell_i(\theta)$：
 
-\[
+$$
 L(\theta)=\frac{1}{N}\sum_{i=1}^{N}\ell_i(\theta)
-\]
+$$
 
 | 词 | 在这条路线中的含义 |
 |---|---|
@@ -64,9 +64,9 @@ L(\theta)=\frac{1}{N}\sum_{i=1}^{N}\ell_i(\theta)
 
 **过关练习**：对单样本线性模型
 
-\[
+$$
 \hat y=wx+b,\qquad \ell=(\hat y-y)^2
-\]
+$$
 
 手算 $\partial\ell/\partial w$ 和 $\partial\ell/\partial b$，再用 PyTorch autograd 核对。两者一致即可，不需要推一般反向传播证明。
 
@@ -96,11 +96,11 @@ L(\theta)=\frac{1}{N}\sum_{i=1}^{N}\ell_i(\theta)
 
 三者只改变“用哪些样本估计当前梯度”：[Deep Learning Book §8.1.3、§8.3.1](https://www.deeplearningbook.org/contents/optimization.html)说明了经验目标可以分解为逐样本 loss，并且均匀抽样的 minibatch 平均梯度可作为总体梯度的无偏估计。
 
-\[
+$$
 g_{\text{full}}=\frac1N\sum_{i=1}^{N}\nabla\ell_i(\theta),
 \qquad
 g_{\mathcal B}=\frac1B\sum_{i\in\mathcal B}\nabla\ell_i(\theta)
-\]
+$$
 
 **学习目标**：能解释为什么不用每一步都遍历全量数据；能同时说出较大 batch 的计算效率/低噪声优势和单步成本。
 
@@ -121,9 +121,9 @@ g_{\mathcal B}=\frac1B\sum_{i\in\mathcal B}\nabla\ell_i(\theta)
 
 **过关练习**：任选教材中的一种明确 convention，对梯度序列
 
-\[
+$$
 g_1=(4,1),\quad g_2=(-4,1),\quad g_3=(4,1)
-\]
+$$
 
 手算三步 velocity。解释为什么第一维容易振荡，而第二维应积累速度。
 
