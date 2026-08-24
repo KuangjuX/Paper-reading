@@ -126,13 +126,22 @@
 }
 
 .vp-doc .mermaid-diagram__canvas {
-  min-width: 620px;
+  box-sizing: border-box;
+  width: max-content;
+  min-width: 100%;
   padding: 1.25rem;
+}
+
+.vp-doc .mermaid-diagram .nodeLabel p,
+.vp-doc .mermaid-diagram .edgeLabel p {
+  margin: 0;
+  line-height: 1.5;
 }
 
 .vp-doc .mermaid-diagram__canvas svg {
   display: block;
-  width: 100%;
+  width: auto;
+  max-width: none;
   height: auto;
   margin: 0 auto;
 }

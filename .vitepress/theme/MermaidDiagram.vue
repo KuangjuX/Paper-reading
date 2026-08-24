@@ -50,9 +50,10 @@ export default defineComponent({
           theme: useDarkTheme ? 'dark' : 'neutral',
           fontFamily:
             'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif',
+          htmlLabels: true,
           flowchart: {
-            htmlLabels: true,
-            useMaxWidth: true,
+            useMaxWidth: false,
+            wrappingWidth: 280,
           },
         })
 
