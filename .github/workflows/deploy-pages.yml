@@ -11,6 +11,7 @@ on:
       - "README.md"
       - "package.json"
       - "pnpm-lock.yaml"
+      - "scripts/**"
   workflow_dispatch:
 
 permissions:
@@ -51,6 +52,9 @@ jobs:
 
       - name: Verify math rendering
         run: pnpm docs:check-math
+
+      - name: Verify Mermaid diagrams
+        run: pnpm docs:check-diagrams
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v4

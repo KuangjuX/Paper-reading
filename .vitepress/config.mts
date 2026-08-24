@@ -148,6 +148,23 @@ export default defineConfig({
     image: {
       lazyLoading: true,
     },
+    config(markdown) {
+      const defaultFence = markdown.renderer.rules.fence
+
+      if (!defaultFence) return
+
+      markdown.renderer.rules.fence = (tokens, index, options, env, self) => {
+        const token = tokens[index]
+        const language = token.info.trim().split(/\s+/)[0]
+
+        if (language !== 'mermaid') {
+          return defaultFence(tokens, index, options, env, self)
+        }
+
+        const encodedSource = encodeURIComponent(token.content.trim())
+        return `<MermaidDiagram code="${encodedSource}" />\n`
+      }
+    },
   },
 
   themeConfig: {
