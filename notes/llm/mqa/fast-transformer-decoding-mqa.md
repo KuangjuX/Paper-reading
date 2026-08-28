@@ -154,7 +154,7 @@ Attention scores 与 vocabulary logits 还位于不同的轴：
 | 分数 | 典型 shape | 回答的问题 |
 |---|---|---|
 | Attention scores | $[b,h,L_q,L_k]$ | 当前 query 应从哪些历史位置读取信息？ |
-| Vocabulary logits | $[b,L_q,|\mathcal V|]$ | 下一个 token 应是词表中的哪个 token 类型？ |
+| Vocabulary logits | $[b,L_q,\lvert\mathcal V\rvert]$ | 下一个 token 应是词表中的哪个 token 类型？ |
 
 最终 hidden state 经 LM head 得到：
 
