@@ -6,8 +6,8 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Papers-273-blue?style=flat-square" alt="Papers">
-  <img src="https://img.shields.io/badge/Read-70-green?style=flat-square" alt="Read">
-  <img src="https://img.shields.io/badge/To_Read-203-orange?style=flat-square" alt="To Read">
+  <img src="https://img.shields.io/badge/Read-71-green?style=flat-square" alt="Read">
+  <img src="https://img.shields.io/badge/To_Read-202-orange?style=flat-square" alt="To Read">
 </p>
 
 ---
@@ -325,7 +325,7 @@
 
 | Status | Paper | Why It Matters | Links |
 |:------:|-------|----------------|-------|
-| ⬜ | **Fast Transformer Decoding: One Write-Head is All You Need** | MQA 原始论文；理解所有 Query heads 共享 KV 与 decode 带宽瓶颈 | [Paper](https://arxiv.org/abs/1911.02150) |
+| ✅ 📝 | **Fast Transformer Decoding: One Write-Head is All You Need** | MQA 原始论文；理解所有 Query heads 共享 KV 与 decode 带宽瓶颈 | [Paper](https://arxiv.org/abs/1911.02150) / [Note](notes/llm/mqa/fast-transformer-decoding-mqa.md) |
 | ⬜ | **GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints** | 建立 MHA–GQA–MQA 的连续关系；理解 MSA 为什么按 GQA group 独立选择 | [Paper](https://arxiv.org/abs/2305.13245) |
 | ⬜ | **DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model** | MLA、latent KV compression、decoupled RoPE，以及 `uk_proj` / `uo_proj` 的矩阵吸收 | [Paper](https://arxiv.org/abs/2405.04434) |
 | ⬜ | **SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs** | 可学习的 block gate、自蒸馏与 block-sparse kernel；最接近 MSA Indexer 的对照之一 | [Paper](https://arxiv.org/abs/2410.13276) |
